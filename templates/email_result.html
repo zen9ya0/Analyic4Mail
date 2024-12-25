@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>郵件分析結果</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header-buttons">
+            <button onclick="window.location.href='/'" class="home-button">
+                <i class="fas fa-home"></i> 返回首頁
+            </button>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'tab1')">郵件資訊</button>
+                <button class="tab-button" onclick="openTab(event, 'tab2')">IP 檢查結果</button>
+                <button class="tab-button" onclick="openTab(event, 'tab3')">書籤三</button>
+            </div>
+
+            <div id="tab1" class="tab-content active">
+                <table class="email-info">
+                    {{ email_info | safe }}
+                </table>
+            </div>
+
+            <div id="tab2" class="tab-content">
+                <h2>IP 檢查結果</h2>
+                <div id="ipCheckResult">
+                    <p>點擊郵件路由中的 IP 檢查按鈕來查看結果</p>
+                </div>
+            </div>
+
+            <div id="tab3" class="tab-content">
+                <h2>書籤三的內容</h2>
+                <p>未來功能擴展區域</p>
+            </div>
+        </div>
+
+        <div class="footer-buttons">
+            <button onclick="window.location.href='/'" class="home-button">
+                <i class="fas fa-home"></i> 返回首頁
+            </button>
+            <button onclick="scrollToTop()" class="top-button" id="topBtn">
+                <i class="fas fa-arrow-up"></i> 回到頂部
+            </button>
+        </div>
+    </div>
+
+    <script>
+    async function checkIP(ip) {
+        try {
+            const response = await fetch(`/check_ip/${ip}`);
+            const data = await response.json();
+            
+            document.querySelector('[onclick="openTab(event, \'tab2\')"]').click();
+            
+            const resultDiv = document.getElementById('ipCheckResult');
+            
+            if (data.error) {
+                resultDiv.innerHTML = `
+                    <div class="ip-result-item error">
+                        <h3>錯誤</h3>
+                        <p>${data.message}</p>
+                    </div>`;
+            } else {
+                let riskClass = '';
+                const score = data.data.abuseConfidenceScore;
+                if (score > 80) {
+                    riskClass = 'high-risk';
+                } else if (score > 30) {
+                    riskClass = 'medium-risk';
+                } else {
+                    riskClass = 'low-risk';
+                }
+                
+                let tableRows = '';
+                for (const [key, value] of Object.entries(data.data)) {
+                    let displayValue = value;
+                    if (typeof value === 'object' && value !== null) {
+                        displayValue = JSON.stringify(value, null, 2);
+                    }
+                    
+                    tableRows += `
+                        <tr>
+                            <td><strong>${key}</strong></td>
+                            <td>${displayValue}</td>
+                        </tr>`;
+                }
+                
+                resultDiv.innerHTML = `
+                    <div class="ip-result-item ${riskClass}">
+                        <h3>IP 檢查結果: ${ip}</h3>
+                        <table class="result-table">
+                            <tbody>
+                                ${tableRows}
+                            </tbody>
+                        </table>
+                    </div>`;
+            }
+        } catch (error) {
+            console.error('檢查 IP 時發生錯誤:', error);
+            document.getElementById('ipCheckResult').innerHTML = `
+                <div class="ip-result-item error">
+                    <h3>錯誤</h3>
+                    <p>檢查 IP 時發生錯誤: ${error.message}</p>
+                </div>`;
+        }
+    }
+
+    function openTab(evt, tabName) {
+        const tabcontent = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        
+        const tablinks = document.getElementsByClassName("tab-button");
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    window.onscroll = function() {
+        const topButton = document.getElementById("topBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            topButton.style.display = "block";
+        } else {
+            topButton.style.display = "none";
+        }
+    };
+    </script>
+</body>
+</html>
