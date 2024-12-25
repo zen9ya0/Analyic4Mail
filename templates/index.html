@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>郵件分析系統</title>
+</head>
+<body>
+    <div class="container">
+        <h1>郵件分析系統</h1>
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+            <div class="file-input-container">
+                <input type="file" name="file" id="file" class="file-input">
+                <label for="file" class="file-label">選擇郵件文件</label>
+            </div>
+            <button type="submit" class="submit-button">上傳分析</button>
+        </form>
+    </div>
+</body>
+</html>
