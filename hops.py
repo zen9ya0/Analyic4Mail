@@ -4,9 +4,10 @@ from datetime import datetime
 import email
 from email import policy
 from email.parser import BytesParser
+import os
 
 # 設定命令行參數解析器
-parser = argparse.ArgumentParser(description='Extract email header information.')
+parser = argparse.ArgumentParser(description='Extract email hops information.')
 parser.add_argument('filename', type=str, help='The name of the file containing email headers')
 
 def parse_time(time_str):
@@ -20,6 +21,8 @@ def parse_time(time_str):
 
 def parse_received_headers(eml_file_path):
     """解析 EML 文件中的 Received 標頭"""
+    if not os.path.exists(eml_file_path):  # 檢查文件是否存在
+        raise FileNotFoundError(f"文件 {eml_file_path} 不存在")
     hops_info = []
     
     with open(eml_file_path, 'rb') as f:
@@ -59,3 +62,12 @@ def parse_received_headers(eml_file_path):
         previous_time = current_time
 
     return hops_info
+
+def main(eml_file_path):
+    hops_info = parse_received_headers(eml_file_path)
+    return hops_info
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    hops_info = main(args.filename)
+    print(hops_info)  # 或者將結果寫入文件
