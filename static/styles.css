@@ -1,167 +1,73 @@
-/* 添加新的樣式 */
-.tab-container {
-    width: 100%;
-    margin: 20px 0;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
 }
-
-.tab-buttons {
-    overflow: hidden;
-    border: 1px solid #ccc;
+h1 {
+    color: #007bff;
+    text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #007bff;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
     background-color: #f1f1f1;
 }
-
-.tab-button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
+.attachment, .recipient {
+    display: block; /* 每個項目在新的一行 */
 }
-
-.tab-button:hover {
-    background-color: #ddd;
-}
-
-.tab-button.active {
-    background-color: #ccc;
-}
-
-.tab-content {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.email-info {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.email-info td {
-    padding: 8px;
-    border: 1px solid #ddd;
-}
-
-.email-info td:first-child {
-    width: 150px;
-    background-color: #f8f8f8;
-    font-weight: bold;
-}
-
-.ip-result-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 4px;
-}
-
-.high-risk {
-    background-color: #ffe6e6;
-    border-color: #ffb3b3;
-}
-
-.medium-risk {
-    background-color: #fff3e6;
-    border-color: #ffd9b3;
-}
-
-.low-risk {
-    background-color: #e6ffe6;
-    border-color: #b3ffb3;
-}
-
-.error {
-    background-color: #ffe6e6;
-    border-color: #ffb3b3;
-}
-
-.result-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.result-table td {
-    padding: 8px;
-    border: 1px solid #ddd;
-}
-
-.result-table td:first-child {
-    width: 200px;
-    background-color: #f8f8f8;
-}
-
-.check-button {
-    background-color: #4CAF50;
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
     color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-    margin-left: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
-
-.check-button:hover {
-    background-color: #45a049;
+a:hover {
+    background-color: #0056b3;
 }
-
-.url-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.upload-area {
+    background-color: #e9f7fe; /* 淺藍色背景 */
+    border: 2px dashed #007bff; /* 虛線邊框 */
+    border-radius: 10px; /* 圓角 */
+    padding: 20px; /* 內邊距 */
+    text-align: center; /* 文字居中 */
+    margin-top: 20px; /* 上方間距 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
 }
-
-.url-list li {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
+.upload-area input[type="file"] {
+    margin: 10px 0; /* 上下間距 */
 }
-
-.url-list li:last-child {
-    border-bottom: none;
+.upload-area button {
+    padding: 10px 20px; /* 按鈕內邊距 */
+    font-size: 16px; /* 字體大小 */
+    border: none; /* 去掉邊框 */
+    border-radius: 5px; /* 圓角 */
+    background-color: #007bff; /* 按鈕背景色 */
+    color: white; /* 按鈕文字顏色 */
+    cursor: pointer; /* 鼠標指針 */
+    transition: background-color 0.3s; /* 背景色過渡效果 */
 }
-
-.footer-buttons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
-}
-
-.home-button, .top-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-.top-button {
-    background-color: #2196F3;
-    display: none;
-}
-
-.home-button:hover, .top-button:hover {
-    opacity: 1;
-}
-
-.header-buttons {
-    margin: 10px 0;
-    position: sticky;
-    top: 10px;
-    z-index: 1000;
-}
+.upload-area button:hover {
+    background-color: #0056b3; /* 懸停時的背景色 */
+} 
