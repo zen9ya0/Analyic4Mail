@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郵件內容</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* 返回置頂按鈕樣式 */
+        .back-to-top, .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none; /* 初始隱藏 */
+            transition: background-color 0.3s;
+        }
+        .back-to-top:hover, .back-to-home:hover {
+            background-color: #0056b3;
+        }
+        .back-to-home {
+            right: 120px; /* 調整位置以避免重疊 */
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.location.href='/'" style="margin-bottom: 20px;">回到首頁</button>
+    <h1>郵件內容</h1>
+    <table>
+        <tr>
+            <th>寄件人</th>
+            <td>{{ sender or '未知' }}</td>
+        </tr>
+        <tr>
+            <th>收件人</th>
+            <td>
+                {% if recipient %}
+                    {% for r in recipient.split(',') %}
+                        <span class="recipient">{{ r }}</span>
+                    {% endfor %}
+                {% else %}
+                    <span>未知</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>主旨</th>
+            <td>{{ subject or '無主旨' }}</td>
+        </tr>
+        <tr>
+            <th>附件</th>
+            <td>
+                {% if attachments %}
+                    <ul>
+                        {% for attachment in attachments %}
+                            <li>{{ attachment }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <span>無附件</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>附件 SHA256 值</th>
+            <td>
+                {% if sha256_values %}
+                    <ul>
+                        {% for sha256 in sha256_values %}
+                            <li>{{ sha256 }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <span>無附件</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>內文</th>
+            <td><pre>{{ body or '無內文' }}</pre></td>
+        </tr>
+        <tr>
+            <th>網址</th>
+            <td>
+                {% if urls %}
+                    <ul>
+                        {% for url in urls %}
+                            <li>{{ url }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <span>無網址</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Hops 節點資訊</th>
+            <td>
+                <div id="hops-info">
+                    <!-- Hops 資訊將在這裡顯示 -->
+                </div>
+            </td>
+        </tr>
+    </table>
+    <button class="back-to-home" onclick="window.location.href='/'">回到首頁</button>
+    <button class="back-to-top" onclick="scrollToTop()">返回置頂</button>
+
+    <script>
+        // 返回置頂功能
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 顯示或隱藏返回置頂按鈕
+        window.onscroll = function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+
+        // 獲取 Hops 資訊
+        async function fetchHopsInfo() {
+            const response = await fetch('/hops', {
+                method: 'POST',
+                body: new FormData(document.getElementById('uploadForm'))
+            });
+            if (response.ok) {
+                const hopsInfo = await response.json();
+                const hopsInfoDiv = document.getElementById('hops-info');
+                hopsInfoDiv.innerHTML = '<ul>' + hopsInfo.map(hop => `<li>From: ${hop.from}, By: ${hop.by}, Time: ${hop.time}, Delay: ${hop.delay}</li>`).join('') + '</ul>';
+            } else {
+                console.error('獲取 Hops 資訊失敗');
+            }
+        }
+
+        // 在頁面加載時獲取 Hops 資訊
+        window.onload = fetchHopsInfo;
+    </script>
+</body>
+</html>
