@@ -1,21 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>檔案上傳</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>郵件分析系統</title>
 </head>
 <body>
-    <div class="container">
-        <h1>郵件分析系統</h1>
-        <form method="post" enctype="multipart/form-data" class="upload-form">
-            <div class="file-input-container">
-                <input type="file" name="file" id="file" class="file-input">
-                <label for="file" class="file-label">選擇郵件文件</label>
-            </div>
-            <button type="submit" class="submit-button">上傳分析</button>
+    <h1>上傳 .msg 或 .eml 檔案</h1>
+    <div class="upload-area">
+        <p>請選擇要上傳的檔案（.msg 或 .eml 格式）</p>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" accept=".msg,.eml" required>
+            <button type="submit">上傳</button>
         </form>
+        <div id="response" style="display:none;"></div>
     </div>
+
+    <script>
+        document.getElementById('uploadForm').onsubmit = async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            const fileInput = document.getElementById('fileInput');
+            const responseDiv = document.getElementById('response');
+
+            responseDiv.style.display = "none";
+            responseDiv.className = '';
+            responseDiv.innerText = '';
+
+            if (!fileInput.files.length) {
+                responseDiv.className = 'error';
+                responseDiv.style.display = "block";
+                responseDiv.innerText = '請選擇檔案後再上傳！';
+                return;
+            }
+
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const contentType = response.headers.get('Content-Type');
+                    if (contentType && contentType.includes('text/html')) {
+                        const html = await response.text();
+                        document.open();
+                        document.write(html);
+                        document.close();
+                    } else {
+                        const result = await response.json();
+                        responseDiv.className = 'success';
+                        responseDiv.style.display = "block";
+                        responseDiv.innerText = result.message || '檔案已成功處理！';
+                    }
+                } else {
+                    const result = await response.json();
+                    responseDiv.className = 'error';
+                    responseDiv.style.display = "block";
+                    responseDiv.innerText = result.error || '上傳失敗，請稍後再試！';
+                }
+            } catch (error) {
+                responseDiv.className = 'error';
+                responseDiv.style.display = "block";
+                responseDiv.innerText = '發生錯誤：' + error.message;
+            }
+        };
+    </script>
 </body>
 </html>
