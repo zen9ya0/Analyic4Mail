@@ -5,6 +5,7 @@ import email
 from email import policy
 from email.parser import BytesParser
 import os
+import json  # 用於輸出 JSON 格式
 
 # 設定命令行參數解析器
 parser = argparse.ArgumentParser(description='Extract email hops information.')
@@ -64,10 +65,13 @@ def parse_received_headers(eml_file_path):
     return hops_info
 
 def main(eml_file_path):
-    hops_info = parse_received_headers(eml_file_path)
-    return hops_info
+    try:
+        hops_info = parse_received_headers(eml_file_path)
+        print(json.dumps(hops_info, indent=2))  # 以 JSON 格式輸出
+    except Exception as e:
+        error_message = {'error': str(e)}
+        print(json.dumps(error_message, indent=2))  # 以 JSON 格式輸出錯誤
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    hops_info = main(args.filename)
-    print(hops_info)  # 或者將結果寫入文件
+    main(args.filename)
