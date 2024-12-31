@@ -5,3 +5,8 @@
 #檢查來源IP
 #持續更新功能中
 #python3 app.py
+
+#修正msg分析功能失效問題
+#新增VirusTotal功能
+#新增檔案HASH值
+#新增DKIM、SPF、DMARC檢查功能
