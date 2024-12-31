@@ -3,146 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>郵件內容</title>
+    <title>郵件威脅分析</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* 返回置頂按鈕樣式 */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em; /* 使用相對單位 */
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+            border-bottom: none;
+        }
+        .tab:hover {
+            background-color: #0056b3;
+        }
+        .tab.active {
+            background-color: white;
+            color: #007bff;
+            border-bottom: 1px solid white;
+        }
+        .tab-content {
+            border: 1px solid #ddd;
+            padding: 20px;
+            display: none; /* 隱藏所有內容 */
+        }
+        .tab-content.active {
+            display: block; /* 顯示當前選中的內容 */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            table-layout: auto; /* 自動調整表格大小 */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            word-wrap: break-word; /* 內容自動換行 */
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            transform: rotate(0deg); /* 旋轉標題為橫向 */
+            white-space: nowrap; /* 防止換行 */
+            height: 50px; /* 調整高度以適應旋轉的標題 */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
         .back-to-top, .back-to-home {
             position: fixed;
-            bottom: 20px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
             padding: 10px 15px;
             cursor: pointer;
-            display: none; /* 初始隱藏 */
             transition: background-color 0.3s;
         }
         .back-to-top:hover, .back-to-home:hover {
             background-color: #0056b3;
         }
         .back-to-home {
-            right: 120px; /* 調整位置以避免重疊 */
+            top: 20px; /* 右上角 */
+            right: 20px;
+        }
+        .back-to-top {
+            bottom: 80px; /* 調整位置以避免重疊 */
+            right: 20px;
+            display: none; /* 初始隱藏 */
+        }
+        .content {
+            white-space: pre-wrap; /* 允許換行 */
+            overflow-wrap: break-word; /* 內容自動換行 */
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em; /* 在小螢幕上調整字體大小 */
+            }
+            th, td {
+                padding: 8px; /* 在小螢幕上減少內邊距 */
+            }
+        }
+        button i {
+            color: #007bff; /* 設定圖示顏色 */
+            font-size: 1.2em; /* 設定圖示大小 */
+            transition: color 0.3s;
+        }
+        button:hover i {
+            color: #0056b3; /* 滑鼠懸停時改變顏色 */
+        }
+        .download-button {
+            display: inline-block; /* 使按鈕顯示為行內塊 */
+            background: none; /* 移除背景 */
+            color: #007bff; /* 圖示顏色 */
+            border: none; /* 無邊框 */
+            cursor: pointer; /* 鼠標懸停時顯示為手形 */
+            transition: color 0.3s; /* 顏色過渡效果 */
+        }
+        .download-button:hover {
+            color: #0056b3; /* 懸停顏色 */
+        }
+        .download-button i {
+            font-size: 1.5em; /* 圖示大小 */
+        }
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5); /* 背景顏色 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none; /* 初始隱藏 */
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-    <button onclick="window.location.href='/'" style="margin-bottom: 20px;">回到首頁</button>
-    <h1>郵件內容</h1>
-    <table>
-        <tr>
-            <th>寄件人</th>
-            <td>{{ sender or '未知' }}</td>
-        </tr>
-        <tr>
-            <th>收件人</th>
-            <td>
-                {% if recipient %}
-                    {% for r in recipient.split(',') %}
-                        <span class="recipient">{{ r }}</span>
+    <button class="back-to-home" onclick="window.location.href='/'">回到首頁</button>
+    <h1>郵件分析</h1>
+    
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('email-info')">郵件資訊</div>
+        <div class="tab" onclick="showTab('ip-check')">IP Check</div>
+        <div class="tab" onclick="showTab('virustotal')">Virustotal</div>
+    </div>
+
+    <div id="email-info" class="tab-content active">
+        <table>
+            <tr>
+                <th>寄件人</th>
+                <td>{{ sender or '' }}</td>
+            </tr>
+            <tr>
+                <th>回覆收件人</th>
+                <td style="color: {% if reply_to and reply_to != sender %} red {% endif %};">
+                    {{ reply_to or '' }}
+                </td>
+            </tr>
+            <tr>
+                <th>收件人</th>
+                <td>
+                    {% if recipient %}
+                        {% for r in recipient.split(',') %}
+                            <span class="recipient">{{ r }}</span><br> <!-- 每個收件人換行 -->
+                        {% endfor %}
+                    {% else %}
+                        <span>未知</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>副本收件人</th>
+                <td>
+                    {% if cc %}
+                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
+                            {% for email in cc.split(',') %}
+                                <li style="text-align: left;">{{ email.strip() }}</li> <!-- 靠左對齊 -->
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <span></span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>主旨</th>
+                <td>{{ subject or '' }}</td>
+            </tr>
+            <tr>
+                <th>內文</th>
+                <td><pre>{{ body or '' }}</pre></td>
+            </tr>
+            <tr>
+                <th>內文網址</th>
+                <td>
+                    {% if urls %}
+                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
+                            {% for url in urls %}
+                                <li style="text-align: left;">{{ url }}</li> <!-- 靠左對齊 -->
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <span></span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>附件</th>
+                <td>
+                    {% if attachments %}
+                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
+                            {% for attachment in attachments %}
+                                <li style="text-align: left;">
+                                    {{ attachment.filename }}
+                                    <a href="#" class="download-button" style="margin-left: 10px;" onclick="confirmDownload('{{ attachment.filename }}')">
+                                        <i class="fas fa-download"></i> <!-- 使用下載圖示 -->
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <span>無附件</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+        <h2>Hops 節點資訊</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>來源</th>
+                    <th>目的</th>
+                    <th>時間</th>
+                    <th>延遲</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if hops_info %}
+                    {% for hop in hops_info %}
+                        <tr>
+                            <td>
+                                {{ hop.from }}
+                                <button onclick="checkIP('{{ hop.from }}')" style="border: none; background: none; cursor: pointer;">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </td>
+                            <td>
+                                {{ hop.by }}
+                                <button onclick="checkIP('{{ hop.by }}')" style="border: none; background: none; cursor: pointer;">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </td>
+                            <td>{{ hop.time }}</td>
+                            <td>{{ hop.delay }}</td>
+                        </tr>
                     {% endfor %}
                 {% else %}
-                    <span>未知</span>
+                    <tr>
+                        <td colspan="5">無 Hops 資訊</td>
+                    </tr>
                 {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th>主旨</th>
-            <td>{{ subject or '無主旨' }}</td>
-        </tr>
-        <tr>
-            <th>附件</th>
-            <td>
-                {% if attachments %}
-                    <ul>
-                        {% for attachment in attachments %}
-                            <li>{{ attachment }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <span>無附件</span>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th>附件 SHA256 值</th>
-            <td>
-                {% if sha256_values %}
-                    <ul>
-                        {% for sha256 in sha256_values %}
-                            <li>{{ sha256 }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <span>無附件</span>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th>內文</th>
-            <td><pre>{{ body or '無內文' }}</pre></td>
-        </tr>
-        <tr>
-            <th>網址</th>
-            <td>
-                {% if urls %}
-                    <ul>
-                        {% for url in urls %}
-                            <li>{{ url }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <span>無網址</span>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th>Hops 節點資訊</th>
-            <td>
-                <div id="hops-info">
-                    <!-- Hops 資訊將在這裡顯示 -->
-                </div>
-            </td>
-        </tr>
-    </table>
-    <button class="back-to-home" onclick="window.location.href='/'">回到首頁</button>
+            </tbody>
+        </table>
+
+        <!-- 新增 DomainKeys、SPF、DMARC 檢查 -->
+        <h2>檢查 DomainKeys、SPF、DMARC</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>檢查項目</th>
+                    <th>結果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DomainKeys</td>
+                    <td>待檢查</td> <!-- 這裡可以根據實際檢查結果更新 -->
+                </tr>
+                <tr>
+                    <td>SPF</td>
+                    <td>待檢查</td> <!-- 這裡可以根據實際檢查結果更新 -->
+                </tr>
+                <tr>
+                    <td>DMARC</td>
+                    <td>待檢查</td> <!-- 這裡可以根據實際檢查結果更新 -->
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 新增 附件檔 HASH -->
+        <table>
+            <h2>附件檔分析</h2>
+            {% if hash_values %}
+            <thead>
+                <tr>
+                    <th>檔案名稱</th>
+                    <th>HASH</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hash in hash_values %}
+                    <tr>
+                        <td rowspan="3">{{ hash.original_filename }}</td>
+                        <td>{{ hash.saved_filename }}</td>
+                        <td>{{ hash.md5 }}</td>
+                        <td>{{ hash.sha1 }}</td>
+                        <td>{{ hash.sha256 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% else %}
+            <p>無附件可供分析。</p>
+        {% endif %}
+        </table>
+    </div>
+
+    <div id="ip-check" class="tab-content">
+        <h2>IP Check 內容</h2>
+        <div id="ip-check-result" style="white-space: pre-wrap;"></div>
+    </div>
+
+    <div id="virustotal" class="tab-content">
+        <h2>Virustotal 內容</h2>
+        <p>這裡將顯示 Virustotal 的相關資訊。</p>
+        <!-- 在這裡添加 Virustotal 的具體內容 -->
+    </div>
+
     <button class="back-to-top" onclick="scrollToTop()">返回置頂</button>
 
+    <div id="download-confirmation" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>提示</h3>
+            <p>下載功能不會檢查檔案是否含有惡意行為!!!，請確認後再下載。</p>
+            <button id="confirm-download" style="margin-right: 10px;">確認</button>
+            <button id="cancel-download">取消</button>
+        </div>
+    </div>
+
     <script>
-        // 返回置頂功能
+        function showTab(tabId) {
+            // 隱藏所有的 tab-content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 移除所有 tab 的 active 類別
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 顯示當前選中的 tab-content
+            document.getElementById(tabId).classList.add('active');
+            // 設置當前 tab 為 active
+            event.target.classList.add('active');
+        }
+
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 顯示或隱藏返回置頂按鈕
         window.onscroll = function() {
             const backToTopButton = document.querySelector('.back-to-top');
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
+            backToTopButton.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? 'block' : 'none';
         };
 
-        // 獲取 Hops 資訊
-        async function fetchHopsInfo() {
-            const response = await fetch('/hops', {
-                method: 'POST',
-                body: new FormData(document.getElementById('uploadForm'))
-            });
-            if (response.ok) {
-                const hopsInfo = await response.json();
-                const hopsInfoDiv = document.getElementById('hops-info');
-                hopsInfoDiv.innerHTML = '<ul>' + hopsInfo.map(hop => `<li>From: ${hop.from}, By: ${hop.by}, Time: ${hop.time}, Delay: ${hop.delay}</li>`).join('') + '</ul>';
+        function checkIP(ip) {
+            const match = ip.match(/\[([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)\]/);
+            if (match && match[1]) {
+                const extractedIP = match[1]; // 提取的 IP 地址
+                fetch(`/check_ip?ip=${extractedIP}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultDiv = document.getElementById('ip-check-result');
+                        resultDiv.innerHTML = ''; // 清空之前的結果
+
+                        if (data.error) {
+                            resultDiv.innerHTML = `<p style="color: red;">${data.message}</p>`; // 顯示錯誤消息
+                        } else {
+                            // 格式化結果
+                            const resultHTML = `
+                                <h3>IP 檢查結果: ${extractedIP}</h3>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>檢查項目</th>
+                                            <th>結果</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>IP 地址</td>
+                                            <td>${data.data.ipAddress}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ISP</td>
+                                            <td>${data.data.isp}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>國家</td>
+                                            <td>${data.data.countryCode}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>滯留時間</td>
+                                            <td>${data.data.lastReportedAt}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>風險評分</td>
+                                            <td>${data.data.abuseConfidenceScore}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>報告數量</td>
+                                            <td>${data.data.totalReports}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            `;
+                            resultDiv.innerHTML = resultHTML; // 顯示檢查結果
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('ip-check-result').innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`; // 顯示錯誤消息
+                    });
             } else {
-                console.error('獲取 Hops 資訊失敗');
+                document.getElementById('ip-check-result').innerHTML = '<p style="color: red;">未找到有效的 IP 地址</p>'; // 顯示錯誤消息
             }
         }
 
-        // 在頁面加載時獲取 Hops 資訊
-        window.onload = fetchHopsInfo;
+        let currentFile = '';
+
+        function confirmDownload(filename) {
+            currentFile = filename; // 記錄當前要下載的檔案
+            document.getElementById('download-confirmation').style.display = 'flex'; // 顯示模態框
+        }
+
+        document.getElementById('confirm-download').onclick = function() {
+            window.location.href = `/download/${currentFile}`; // 確認下載
+            document.getElementById('download-confirmation').style.display = 'none'; // 隱藏模態框
+        };
+
+        document.getElementById('cancel-download').onclick = function() {
+            document.getElementById('download-confirmation').style.display = 'none'; // 隱藏模態框
+        };
     </script>
 </body>
 </html>
