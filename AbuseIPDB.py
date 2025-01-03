@@ -1,6 +1,6 @@
 import requests
 import logging
-from conf import ABUSEIPDB_API_KEY
+from config import ABUSEIPDB_API_KEY
 
 # 設定日誌記錄
 logging.basicConfig(
