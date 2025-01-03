@@ -1,6 +1,8 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from markupsafe import escape
 import os
+import platform
+import tempfile
 import email
 from email import policy
 from email.parser import BytesParser
@@ -13,13 +15,34 @@ import json
 from email.utils import parseaddr, getaddresses
 import datetime  # 確保導入 datetime 模組
 from AbuseIPDB import check_ip  # 導入 check_ip 函數
+from VT import VirusTotalAPI, load_config  # 確保正確導入
 
 app = Flask(__name__)
 
 # 設定 logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-UPLOAD_FOLDER = 'uploads'
+# 根據作業系統設定上傳目錄
+def get_upload_folder():
+    system = platform.system().lower()
+    if system == 'windows':
+        # Windows 環境使用 %TEMP%
+        base_path = os.environ.get('TEMP', tempfile.gettempdir())
+    else:
+        # Linux/Unix 環境使用 $TMPDIR 或 /tmp
+        base_path = os.environ.get('TMPDIR', '/tmp')
+    
+    # 在臨時目錄下創建特定的子目錄
+    upload_folder = os.path.join(base_path, 'email_analyzer_uploads')
+    
+    # 確保目錄存在
+    if not os.path.exists(upload_folder):
+        os.makedirs(upload_folder)
+        logging.info(f'創建上傳目錄: {upload_folder}')
+    
+    return upload_folder
+
+UPLOAD_FOLDER = get_upload_folder()
 ALLOWED_EXTENSIONS = {'msg', 'eml'}
 
 def allowed_file(filename):
@@ -44,57 +67,60 @@ def upload_file():
         file_extension = file.filename.rsplit('.', 1)[1].lower()
         # 生成新的檔案名稱
         new_filename = f"{timestamp}.{file_extension}"
-        file_path = os.path.join(UPLOAD_FOLDER, new_filename)  # 使用新的檔案名稱
+        file_path = os.path.join(UPLOAD_FOLDER, new_filename)
         
-        if not os.path.exists(UPLOAD_FOLDER):
-            os.makedirs(UPLOAD_FOLDER)
-            logging.info(f'創建上傳目錄: {UPLOAD_FOLDER}')
-
-        file.save(file_path)
-        logging.info(f'檔案上傳成功: {new_filename} 到 {file_path}')
-
         try:
-            msg = parse_email(file_path, new_filename)  # 使用新的檔案名稱
-            if not msg:
-                return jsonify({'error': '無法解析郵件'}), 500
-
-            logging.debug(f'解析郵件成功: {msg["subject"]}')
-            urls, modified_urls = extract_urls(msg['body'])
-            hash_values = save_attachments(msg['attachments'])  # 使用新的檔案名稱並獲取哈希值
-            logging.debug(f"生成的附件哈希值: {hash_values}")
-
-            if not hash_values:
-                logging.warning('無附件哈希值生成，可能未解析到附件')
-                hash_values = [{'filename': '無附件', 'md5': 'N/A', 'sha1': 'N/A', 'sha256': 'N/A'}]
-
-            # 執行 hops.py 並獲取結果
-            hops_info = []
+            file.save(file_path)
+            logging.info(f'檔案上傳成功: {new_filename} 到 {file_path}')
+            
             try:
-                result = subprocess.run(['python3', 'hops.py', file_path], capture_output=True, text=True)
-                if result.returncode == 0:
-                    hops_info = json.loads(result.stdout)  # 將結果轉換為 Python 對象
-                    logging.debug(f'hops.py 返回的結果: {hops_info}')
-                else:
-                    logging.error(f'hops.py 執行失敗，返回碼: {result.returncode}')
-            except Exception as e:
-                logging.error(f'執行 hops.py 時發生錯誤: {e}')
+                msg = parse_email(file_path, new_filename)  # 使用新的檔案名稱
+                if not msg:
+                    return jsonify({'error': '無法解析郵件'}), 500
 
-            return render_template(
-                'display.html',
-                sender=escape(msg['sender']),
-                recipient=escape(msg['recipient']),
-                cc=escape(', '.join(msg['cc'])),  # 傳遞 CC 資料
-                subject=escape(msg['subject']),
-                body=escape(msg['body']),
-                attachments=msg['attachments'],  # 傳遞附件
-                hash_values=hash_values,  # 傳遞哈希值
-                urls=modified_urls,
-                hops_info=hops_info  # 傳遞 Hops 資訊
-            )
+                logging.debug(f'解析郵件成功: {msg["subject"]}')
+                urls, modified_urls = extract_urls(msg['body'])
+                hash_values = save_attachments(msg['attachments'])
+                logging.debug(f"生成的附件哈希值: {hash_values}")
+                logging.debug(f"提取的 URLs: {urls}")
+
+                if not hash_values:
+                    logging.warning('無附件哈希值生成，可能未解析到附件')
+                    hash_values = [{'filename': '無附件', 'md5': 'N/A', 'sha1': 'N/A', 'sha256': 'N/A'}]
+
+                # 執行 hops.py 並獲取結果
+                hops_info = []
+                try:
+                    result = subprocess.run(['python3', 'hops.py', file_path], capture_output=True, text=True)
+                    if result.returncode == 0:
+                        hops_info = json.loads(result.stdout)
+                        logging.debug(f'hops.py 返回的結果: {hops_info}')
+                    else:
+                        logging.error(f'hops.py 執行失敗，返回碼: {result.returncode}')
+                except Exception as e:
+                    logging.error(f'執行 hops.py 時發生錯誤: {e}')
+
+                return render_template(
+                    'display.html',
+                    sender=escape(msg['sender']),
+                    recipient=escape(msg['recipient']),
+                    cc=escape(', '.join(msg['cc'])),
+                    subject=escape(msg['subject']),
+                    body=escape(msg['body']),
+                    attachments=msg['attachments'],
+                    hash_values=hash_values,
+                    urls=urls,
+                    modified_urls=modified_urls,
+                    hops_info=hops_info
+                )
+
+            except Exception as e:
+                logging.error(f'解析郵件時發生錯誤: {e}', exc_info=True)
+                return jsonify({'error': f'解析郵件時發生錯誤: {str(e)}'}), 500
 
         except Exception as e:
-            logging.error(f'解析郵件時發生錯誤: {e}', exc_info=True)
-            return jsonify({'error': f'解析郵件時發生錯誤: {str(e)}'}), 500
+            logging.error(f'檔案處理時發生錯誤: {str(e)}')
+            return jsonify({'error': f'檔案處理時發生錯誤: {str(e)}'}), 500
 
     logging.warning('上傳的檔案類型不正確')
     return jsonify({'error': '請上傳 .msg 或 .eml 檔案'}), 400
@@ -140,7 +166,6 @@ def parse_email(file_path, new_filename):
             attachments = []
             for attachment in msg.attachments:
                 try:
-                    # 使用 extract_msg 提供的方法獲取附件的原始檔名
                     original_filename = attachment.longFilename or attachment.shortFilename
                     attachments.append({
                         'filename': original_filename,
@@ -156,8 +181,7 @@ def parse_email(file_path, new_filename):
                 'subject': msg.subject,
                 'body': msg.body or '無內文',
                 'attachments': attachments,
-                'ip_check_results': ip_check_results,  # 傳遞 IP 檢查結果
-                'hops_info': hops_info  # 傳遞 Hops 資訊
+                'reply_to': msg.reply_to if hasattr(msg, 'reply_to') else None
             }
     except Exception as e:
         logging.error(f'解析郵件時發生錯誤: {e}')
@@ -183,16 +207,20 @@ def clean_email_list(email_list):
     logging.debug(f'清理後的 CC 列表: {cleaned_emails}')
     return cleaned_emails
 
-def extract_urls(body):
-    """提取內文中的網址"""
-    urls = re.findall(r'https?://[^\s]+', body)
-    unique_urls = set(urls)
-    modified_urls = [url.replace('.', '[.]') for url in unique_urls]
-    return urls, modified_urls
+def extract_urls(text):
+    """提取內文中的網址並去除重複"""
+    # 使用正則表達式提取網址
+    url_pattern = re.compile(r'https?://[^\s]+')
+    urls = url_pattern.findall(text)
+    
+    # 去除重複網址
+    unique_urls = list(set(urls))
+    
+    return unique_urls, [url.replace('http', 'hxxp') for url in unique_urls]
 
 def save_attachments(attachments):
     """保存附件並計算哈希值"""
-    hash_values = []  # 用於存儲每個附件的哈希值
+    hash_values = []
     for attachment in attachments:
         if attachment['data']:
             # 獲取原始檔案的副檔名
@@ -205,30 +233,39 @@ def save_attachments(attachments):
             # 檢查檔案是否已存在，若存在則添加數字後綴
             counter = 1
             while os.path.exists(attachment_path):
-                attachment_path = os.path.join(UPLOAD_FOLDER, f"{original_filename.rsplit('.', 1)[0]}_{counter}.{file_extension}")
+                name_without_ext = original_filename.rsplit('.', 1)[0]
+                attachment_path = os.path.join(
+                    UPLOAD_FOLDER, 
+                    f"{name_without_ext}_{counter}.{file_extension}" if file_extension else f"{name_without_ext}_{counter}"
+                )
                 counter += 1
             
-            with open(attachment_path, 'wb') as f:
-                f.write(attachment['data'])  # 保存附件數據
+            try:
+                with open(attachment_path, 'wb') as f:
+                    f.write(attachment['data'])
 
-            # 計算哈希值
-            md5_hash = hashlib.md5()
-            sha1_hash = hashlib.sha1()
-            sha256_hash = hashlib.sha256()
-            md5_hash.update(attachment['data'])
-            sha1_hash.update(attachment['data'])
-            sha256_hash.update(attachment['data'])
+                # 計算哈希值
+                md5_hash = hashlib.md5()
+                sha1_hash = hashlib.sha1()
+                sha256_hash = hashlib.sha256()
+                md5_hash.update(attachment['data'])
+                sha1_hash.update(attachment['data'])
+                sha256_hash.update(attachment['data'])
 
-            # 將哈希值和原始檔名存儲到列表中
-            hash_values.append({
-                'original_filename': original_filename,  # 新增原始檔名
-                'md5': md5_hash.hexdigest(),
-                'sha1': sha1_hash.hexdigest(),
-                'sha256': sha256_hash.hexdigest()
-            })
+                hash_values.append({
+                    'original_filename': original_filename,
+                    'md5': md5_hash.hexdigest(),
+                    'sha1': sha1_hash.hexdigest(),
+                    'sha256': sha256_hash.hexdigest()
+                })
 
-            logging.info(f'附件保存成功: {attachment_path}')
-    return hash_values  # 返回哈希值列表
+                logging.info(f'附件保存成功: {attachment_path}')
+                
+            except Exception as e:
+                logging.error(f'保存附件時發生錯誤: {str(e)}')
+                continue
+                
+    return hash_values
 
 def generate_default_filename(data):
     return f"attachment_{hashlib.md5(data).hexdigest()}"
@@ -241,6 +278,74 @@ def check_ip_route():
 
     result = check_ip(ip)  # 調用 AbuseIPDB 的檢查函數
     return jsonify(result)
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    """處理檔案下載請求"""
+    try:
+        # 獲取當前系統的臨時目錄路徑
+        system = platform.system().lower()
+        if system == 'windows':
+            # Windows 環境使用 %TEMP%
+            base_path = os.environ.get('TEMP', tempfile.gettempdir())
+        else:
+            # Linux/Unix 環境使用 $TMPDIR 或 /tmp
+            base_path = os.environ.get('TMPDIR', '/tmp')
+        
+        # 構建完整的檔案路徑
+        file_path = os.path.join(base_path, 'email_analyzer_uploads', filename)
+        
+        # 檢查檔案是否存在
+        if not os.path.exists(file_path):
+            logging.error(f'檔案不存在: {file_path}')
+            return jsonify({'error': '檔案不存在'}), 404
+
+        # 從正確的目錄提供檔案下載
+        logging.info(f'開始下載檔案: {filename}, 路徑: {file_path}')
+        return send_from_directory(
+            directory=os.path.dirname(file_path),  # 使用檔案所在的目錄
+            path=filename,
+            as_attachment=True,  # 這會觸發下載而不是在瀏覽器中顯示
+            download_name=filename  # 確保下載時使用原始檔名
+        )
+    except Exception as e:
+        logging.error(f'下載檔案時發生錯誤: {str(e)}')
+        return jsonify({'error': '檔案下載失敗'}), 500
+
+@app.route('/virustotal/<file_hash>', methods=['GET'])
+def virustotal_report(file_hash):
+    """獲取 VirusTotal 報告"""
+    try:
+        # 獲取 API 金鑰
+        api_key = load_config()
+        vt = VirusTotalAPI(api_key)
+        
+        # 獲取報告
+        report = vt.get_file_report(file_hash)
+        return jsonify(report)
+    except Exception as e:
+        logging.error(f'獲取 VirusTotal 報告時發生錯誤: {e}')
+        return jsonify({'error': '無法獲取 VirusTotal 報告'}), 500
+
+@app.route('/virustotal/scan_url', methods=['POST'])
+def virustotal_scan_url():
+    """執行 URL 掃描"""
+    try:
+        data = request.get_json()
+        target_url = data.get('url')
+        if not target_url:
+            return jsonify({'error': '無效的 URL'}), 400
+
+        # 獲取 API 金鑰
+        api_key = load_config()
+        vt = VirusTotalAPI(api_key)
+        
+        # 執行 URL 掃描
+        scan_result = vt.scan_url(target_url)
+        return jsonify(scan_result)
+    except Exception as e:
+        logging.error(f'執行 URL 掃描時發生錯誤: {e}')
+        return jsonify({'error': '無法執行 URL 掃描'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
