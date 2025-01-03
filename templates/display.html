@@ -150,6 +150,116 @@
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+        .vt-button {
+            background-color: transparent;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .vt-button i {
+            margin-right: 5px;
+        }
+        .vt-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .score-display {
+            font-size: 48px;
+            color: #ff0000;
+            border: 3px solid #ff0000;
+            border-radius: 50%;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .security-analysis {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        
+        .risk-level {
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .risk-level.high {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .risk-level.medium {
+            background-color: #ffc107;
+            color: black;
+        }
+        
+        .risk-level.low {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .risk-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .risk-item {
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+        }
+        
+        .risk-item.high {
+            background-color: #ffe6e6;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .risk-item.medium {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .risk-item.low {
+            background-color: #e8f5e9;
+            border-left: 4px solid #28a745;
+        }
+        
+        .risk-type {
+            font-weight: bold;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -166,20 +276,20 @@
         <table>
             <tr>
                 <th>寄件人</th>
-                <td>{{ sender or '' }}</td>
+                <td class="sender-cell">{{ sender or '' }}</td>
             </tr>
             <tr>
                 <th>回覆收件人</th>
-                <td style="color: {% if reply_to and reply_to != sender %} red {% endif %};">
+                <td class="{% if reply_to and reply_to != sender %}danger{% else %}recipient-cell{% endif %}">
                     {{ reply_to or '' }}
                 </td>
             </tr>
             <tr>
                 <th>收件人</th>
-                <td>
+                <td class="recipient-cell">
                     {% if recipient %}
                         {% for r in recipient.split(',') %}
-                            <span class="recipient">{{ r }}</span><br> <!-- 每個收件人換行 -->
+                            <span class="recipient">{{ r }}</span><br>
                         {% endfor %}
                     {% else %}
                         <span>未知</span>
@@ -188,21 +298,19 @@
             </tr>
             <tr>
                 <th>副本收件人</th>
-                <td>
+                <td class="recipient-cell">
                     {% if cc %}
-                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
+                        <ul class="recipient-list">
                             {% for email in cc.split(',') %}
-                                <li style="text-align: left;">{{ email.strip() }}</li> <!-- 靠左對齊 -->
+                                <li>{{ email.strip() }}</li>
                             {% endfor %}
                         </ul>
-                    {% else %}
-                        <span></span>
                     {% endif %}
                 </td>
             </tr>
             <tr>
                 <th>主旨</th>
-                <td>{{ subject or '' }}</td>
+                <td class="subject-cell">{{ subject or '' }}</td>
             </tr>
             <tr>
                 <th>內文</th>
@@ -212,13 +320,20 @@
                 <th>內文網址</th>
                 <td>
                     {% if urls %}
-                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
+                        <ul class="url-list">
                             {% for url in urls %}
-                                <li style="text-align: left;">{{ url }}</li> <!-- 靠左對齊 -->
+                                <li class="url-item">
+                                    <span class="url-text">{{ url }}</span>
+                                    <div class="url-actions">
+                                        <button class="vt-button" onclick="scanUrl('{{ url }}')">
+                                            <i class="fas fa-shield-alt"></i> VT 掃描
+                                        </button>
+                                    </div>
+                                </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <span></span>
+                        <span class="no-data">無 URL</span>
                     {% endif %}
                 </td>
             </tr>
@@ -226,12 +341,12 @@
                 <th>附件</th>
                 <td>
                     {% if attachments %}
-                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
+                        <ul class="attachment-list">
                             {% for attachment in attachments %}
-                                <li style="text-align: left;">
+                                <li>
                                     {{ attachment.filename }}
-                                    <a href="#" class="download-button" style="margin-left: 10px;" onclick="confirmDownload('{{ attachment.filename }}')">
-                                        <i class="fas fa-download"></i> <!-- 使用下載圖示 -->
+                                    <a href="#" class="download-button" onclick="confirmDownload('{{ attachment.filename }}')">
+                                        <i class="fas fa-download"></i>
                                     </a>
                                 </li>
                             {% endfor %}
@@ -239,6 +354,26 @@
                     {% else %}
                         <span>無附件</span>
                     {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>安全分析</th>
+                <td>
+                    <div class="security-analysis">
+                        <div class="risk-level {{ risk_level }}">
+                            風險等級: {{ risk_level }}
+                        </div>
+                        {% if risks %}
+                            <ul class="risk-list">
+                                {% for risk in risks %}
+                                    <li class="risk-item {{ risk.severity }}">
+                                        <span class="risk-type">{{ risk.type }}</span>
+                                        <span class="risk-detail">{{ risk.detail }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
                 </td>
             </tr>
         </table>
@@ -274,7 +409,7 @@
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="5">無 Hops 資訊</td>
+                        <td colspan="4">無 Hops 資訊</td>
                     </tr>
                 {% endif %}
             </tbody>
@@ -306,31 +441,68 @@
         </table>
 
         <!-- 新增 附件檔 HASH -->
-        <table>
-            <h2>附件檔分析</h2>
-            {% if hash_values %}
-            <thead>
-                <tr>
-                    <th>檔案名稱</th>
-                    <th>HASH</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for hash in hash_values %}
+        <h2>附件檔分析</h2>
+        {% if hash_values %}
+            <table>
+                <thead>
                     <tr>
-                        <td rowspan="3">{{ hash.original_filename }}</td>
-                        <td>{{ hash.saved_filename }}</td>
-                        <td>{{ hash.md5 }}</td>
-                        <td>{{ hash.sha1 }}</td>
-                        <td>{{ hash.sha256 }}</td>
+                        <th>檔案名稱</th>
+                        <th>MD5</th>
+                        <th>SHA1</th>
+                        <th>SHA256</th>
                     </tr>
-                {% endfor %}
-            </tbody>
+                </thead>
+                <tbody>
+                    {% for hash in hash_values %}
+                        <tr>
+                            <td>{{ hash.original_filename }}</td>
+                            <td>
+                                {{ hash.md5 }}
+                                <button class="vt-button" onclick="checkVirusTotal('{{ hash.md5 }}')">
+                                    <i class="fas fa-shield-alt"></i> VT
+                                </button>
+                            </td>
+                            <td>
+                                {{ hash.sha1 }}
+                                <button class="vt-button" onclick="checkVirusTotal('{{ hash.sha1 }}')">
+                                    <i class="fas fa-shield-alt"></i> VT
+                                </button>
+                            </td>
+                            <td>
+                                {{ hash.sha256 }}
+                                <button class="vt-button" onclick="checkVirusTotal('{{ hash.sha256 }}')">
+                                    <i class="fas fa-shield-alt"></i> VT
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% else %}
             <p>無附件可供分析。</p>
         {% endif %}
-        </table>
+
+        <h2>Header Information</h2>
+        {% if headers %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Header</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for header, value in headers.items() %}
+                        <tr>
+                            <td>{{ header }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No headers available.</p>
+        {% endif %}
     </div>
 
     <div id="ip-check" class="tab-content">
@@ -340,8 +512,9 @@
 
     <div id="virustotal" class="tab-content">
         <h2>Virustotal 內容</h2>
-        <p>這裡將顯示 Virustotal 的相關資訊。</p>
-        <!-- 在這裡添加 Virustotal 的具體內容 -->
+        <div id="virustotal-result">
+            <p>這裡將顯示 Virustotal 的相關資訊。</p>
+        </div>
     </div>
 
     <button class="back-to-top" onclick="scrollToTop()">返回置頂</button>
@@ -357,22 +530,11 @@
 
     <script>
         function showTab(tabId) {
-            // 隱藏所有的 tab-content
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // 移除所有 tab 的 active 類別
-            const tabs = document.querySelectorAll('.tab');
+            const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => {
                 tab.classList.remove('active');
             });
-
-            // 顯示當前選中的 tab-content
             document.getElementById(tabId).classList.add('active');
-            // 設置當前 tab 為 active
-            event.target.classList.add('active');
         }
 
         function scrollToTop() {
@@ -385,65 +547,66 @@
         };
 
         function checkIP(ip) {
-            const match = ip.match(/\[([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)\]/);
-            if (match && match[1]) {
-                const extractedIP = match[1]; // 提取的 IP 地址
-                fetch(`/check_ip?ip=${extractedIP}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const resultDiv = document.getElementById('ip-check-result');
-                        resultDiv.innerHTML = ''; // 清空之前的結果
-
-                        if (data.error) {
-                            resultDiv.innerHTML = `<p style="color: red;">${data.message}</p>`; // 顯示錯誤消息
-                        } else {
-                            // 格式化結果
-                            const resultHTML = `
-                                <h3>IP 檢查結果: ${extractedIP}</h3>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>檢查項目</th>
-                                            <th>結果</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>IP 地址</td>
-                                            <td>${data.data.ipAddress}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ISP</td>
-                                            <td>${data.data.isp}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>國家</td>
-                                            <td>${data.data.countryCode}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>滯留時間</td>
-                                            <td>${data.data.lastReportedAt}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>風險評分</td>
-                                            <td>${data.data.abuseConfidenceScore}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>報告數量</td>
-                                            <td>${data.data.totalReports}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            `;
-                            resultDiv.innerHTML = resultHTML; // 顯示檢查結果
-                        }
-                    })
-                    .catch(error => {
-                        document.getElementById('ip-check-result').innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`; // 顯示錯誤消息
-                    });
-            } else {
-                document.getElementById('ip-check-result').innerHTML = '<p style="color: red;">未找到有效的 IP 地址</p>'; // 顯示錯誤消息
+            // 改進 IP 提取正則表達式，支援更多格式
+            const ipPattern = /\[?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\]?/;
+            const match = ip.match(ipPattern);
+            
+            if (!match || !match[1]) {
+                document.getElementById('ip-check-result').innerHTML = '<p style="color: red;">未找到有效的 IP 地址</p>';
+                // 自動切換到 IP Check 標籤
+                showTab('ip-check');
+                return;
             }
+
+            const extractedIP = match[1];
+            
+            // 添加載入中提示
+            const resultDiv = document.getElementById('ip-check-result');
+            resultDiv.innerHTML = '<p>正在檢查 IP: ' + extractedIP + '...</p>';
+            
+            // 自動切換到 IP Check 標籤
+            showTab('ip-check');
+
+            fetch(`/check_ip?ip=${extractedIP}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('網路請求失敗');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    resultDiv.innerHTML = ''; // 清空載入提示
+
+                    if (data.error) {
+                        resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+                        return;
+                    }
+
+                    // 使用表格格式化顯示結果
+                    const resultHTML = `
+                        <h3>IP 檢查結果: ${extractedIP}</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>檢查項目</th>
+                                    <th>結果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${Object.entries(data.data).map(([key, value]) => `
+                                    <tr>
+                                        <td>${key}</td>
+                                        <td>${value}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                    resultDiv.innerHTML = resultHTML;
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<p style="color: red;">檢查失敗: ${error.message}</p>`;
+                });
         }
 
         let currentFile = '';
@@ -461,6 +624,286 @@
         document.getElementById('cancel-download').onclick = function() {
             document.getElementById('download-confirmation').style.display = 'none'; // 隱藏模態框
         };
+
+        function checkVirusTotal(fileHash) {
+            const resultDiv = document.getElementById('virustotal-result');
+            resultDiv.innerHTML = '<div class="scan-result"><p>正在檢查檔案...</p></div>';
+            showTab('virustotal');
+
+            function pollAnalysis(analysisId) {
+                fetch(`/virustotal/analysis/${analysisId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'pending') {
+                            // 顯示等待訊息
+                            resultDiv.innerHTML = `
+                                <div class="scan-result">
+                                    <p>分析進行中，請稍候...</p>
+                                    <div class="progress-bar">
+                                        <div class="progress"></div>
+                                    </div>
+                                </div>`;
+                            // 3秒後重新檢查
+                            setTimeout(() => pollAnalysis(analysisId), 3000);
+                        } else {
+                            displayResults(data);
+                        }
+                    })
+                    .catch(error => {
+                        resultDiv.innerHTML = `
+                            <div class="scan-result status-danger">
+                                <p>檢查失敗: ${error.message}</p>
+                            </div>`;
+                    });
+            }
+
+            function displayResults(data) {
+                if (data.error) {
+                    resultDiv.innerHTML = `
+                        <div class="scan-result status-danger">
+                            <p>${data.error}</p>
+                        </div>`;
+                    return;
+                }
+
+                const scanResults = data.scan_results;
+                const resultHTML = `
+                    <div class="scan-result">
+                        <div class="result-header">
+                            <h3>掃描結果摘要</h3>
+                            <div class="result-stats">
+                                <div class="stat-item ${scanResults.malicious > 0 ? 'status-danger' : 'status-safe'}">
+                                    <div class="stat-value">${scanResults.malicious}</div>
+                                    <div class="stat-label">惡意</div>
+                                </div>
+                                <div class="stat-item ${scanResults.suspicious > 0 ? 'status-warning' : ''}">
+                                    <div class="stat-value">${scanResults.suspicious}</div>
+                                    <div class="stat-label">可疑</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">${scanResults.undetected}</div>
+                                    <div class="stat-label">未檢出</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-details">
+                            <h4>詳細掃描結果</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>掃描引擎</th>
+                                        <th>結果</th>
+                                        <th>類別</th>
+                                        <th>更新時間</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${data.detailed_results.map(result => `
+                                        <tr class="${result.category === 'malicious' ? 'status-danger' : 
+                                                  result.category === 'suspicious' ? 'status-warning' : ''}">
+                                            <td>${result.engine}</td>
+                                            <td>${result.result}</td>
+                                            <td>${result.category}</td>
+                                            <td>${result.update}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+                
+                resultDiv.innerHTML = resultHTML;
+            }
+
+            // 開始檢查
+            fetch(`/virustotal/${fileHash}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'pending' && data.analysis_id) {
+                        pollAnalysis(data.analysis_id);
+                    } else {
+                        displayResults(data);
+                    }
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `
+                        <div class="scan-result status-danger">
+                            <p>檢查失敗: ${error.message}</p>
+                        </div>`;
+                });
+        }
+
+        function scanUrl(url) {
+            const resultDiv = document.getElementById('virustotal-result');
+            resultDiv.innerHTML = '<div class="scan-result"><p>正在掃描 URL: ' + url + '...</p></div>';
+            showTab('virustotal');
+
+            fetch(`/virustotal/scan_url`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    resultDiv.innerHTML = `<div class="scan-result status-danger">${data.error}</div>`;
+                    return;
+                }
+
+                // 格式化掃描結果
+                const scanData = data.data || {};
+                const attributes = scanData.attributes || {};
+                const stats = attributes.stats || {};
+                const results = attributes.results || {};
+
+                const resultHTML = `
+                    <div class="scan-result">
+                        <div class="result-header">
+                            <h3>URL 掃描結果</h3>
+                            <div class="url-info">${url}</div>
+                        </div>
+                        
+                        <div class="result-summary">
+                            <div class="status-indicator ${stats.malicious > 0 ? 'status-danger' : 'status-safe'}">
+                                <div class="score-display">
+                                    ${stats.malicious || 0}/${Object.keys(results).length}
+                                </div>
+                                <div class="status-label">
+                                    ${stats.malicious > 0 ? '發現威脅' : '安全'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-details">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>掃描引擎</th>
+                                        <th>結果</th>
+                                        <th>類別</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${Object.entries(results).map(([engine, result]) => `
+                                        <tr class="${result.category === 'malicious' ? 'status-danger' : 
+                                                  result.category === 'suspicious' ? 'status-warning' : ''}">
+                                            <td>${engine}</td>
+                                            <td>${result.result || '無檢測結果'}</td>
+                                            <td>${result.category || '未分類'}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+                
+                resultDiv.innerHTML = resultHTML;
+            })
+            .catch(error => {
+                resultDiv.innerHTML = `
+                    <div class="scan-result status-danger">
+                        <p>掃描失敗: ${error.message}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function checkEmailAuth() {
+            const authTable = document.querySelector('#auth-check-table tbody');
+            const filename = currentFile;  // 假設您已經有存儲當前檔案名稱的變數
+
+            // 更新狀態為"檢查中"
+            authTable.innerHTML = `
+                <tr>
+                    <td>DomainKeys</td>
+                    <td><span class="checking">檢查中...</span></td>
+                </tr>
+                <tr>
+                    <td>SPF</td>
+                    <td><span class="checking">檢查中...</span></td>
+                </tr>
+                <tr>
+                    <td>DMARC</td>
+                    <td><span class="checking">檢查中...</span></td>
+                </tr>
+            `;
+
+            fetch(`/check_auth/${filename}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+
+                    // 更新表格內容
+                    authTable.innerHTML = `
+                        <tr>
+                            <td>DomainKeys</td>
+                            <td class="status-${data.dkim.status}">
+                                ${data.dkim.message}
+                                <div class="details-toggle" onclick="toggleDetails(this)">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div class="details-content">
+                                        ${formatDetails(data.dkim.details)}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>SPF</td>
+                            <td class="status-${data.spf.status}">
+                                ${data.spf.message}
+                                <div class="details-toggle" onclick="toggleDetails(this)">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div class="details-content">
+                                        ${formatDetails(data.spf.details)}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DMARC</td>
+                            <td class="status-${data.dmarc.status}">
+                                ${data.dmarc.message}
+                                <div class="details-toggle" onclick="toggleDetails(this)">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div class="details-content">
+                                        ${formatDetails(data.dmarc.details)}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                })
+                .catch(error => {
+                    authTable.innerHTML = `
+                        <tr>
+                            <td colspan="2" class="error">
+                                檢查失敗: ${error.message}
+                            </td>
+                        </tr>
+                    `;
+                });
+        }
+
+        function formatDetails(details) {
+            if (!details || Object.keys(details).length === 0) {
+                return '無詳細資訊';
+            }
+            return Object.entries(details)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join('<br>');
+        }
+
+        function toggleDetails(element) {
+            const content = element.querySelector('.details-content');
+            content.classList.toggle('show');
+        }
     </script>
 </body>
 </html>

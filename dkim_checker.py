@@ -127,31 +127,130 @@ class DKIMValidator:
         except Exception as e:
             return False, f"驗證過程發生錯誤: {str(e)}", validation_info
 
-def main():
-    parser = argparse.ArgumentParser(description='DKIM 簽名驗證工具 (支援 .eml 和 .msg)')
+class EmailAuthenticationChecker:
+    def __init__(self):
+        self.dkim_validator = DKIMValidator()
+        self.resolver = dns.resolver.Resolver()
+
+    def check_all(self, file_path: str) -> dict:
+        """檢查郵件的 DKIM、SPF 和 DMARC"""
+        results = {
+            'dkim': self._check_dkim(file_path),
+            'spf': self._check_spf(file_path),
+            'dmarc': self._check_dmarc(file_path)
+        }
+        return results
+
+    def _check_dkim(self, file_path: str) -> dict:
+        """檢查 DKIM"""
+        success, message, info = self.dkim_validator.validate_email(file_path)
+        return {
+            'status': 'pass' if success else 'fail',
+            'message': message,
+            'details': {
+                'domain': info['domain'],
+                'selector': info['selector'],
+                'algorithm': info['algorithm'],
+                'headers_signed': info['headers_signed']
+            }
+        }
+
+    def _check_spf(self, file_path: str) -> dict:
+        """檢查 SPF"""
+        try:
+            email_content = EmailParser.parse_email_file(file_path)
+            message = email.message_from_string(email_content)
+            
+            # 從 Received-SPF 標頭獲取 SPF 結果
+            spf_header = message.get('Received-SPF', '')
+            if spf_header:
+                result = re.search(r'^(\w+)', spf_header)
+                status = result.group(1) if result else 'unknown'
+                return {
+                    'status': status.lower(),
+                    'message': spf_header,
+                    'details': {'header': spf_header}
+                }
+            return {
+                'status': 'neutral',
+                'message': '未找到 SPF 記錄',
+                'details': {}
+            }
+        except Exception as e:
+            return {
+                'status': 'error',
+                'message': str(e),
+                'details': {}
+            }
+
+    def _check_dmarc(self, file_path: str) -> dict:
+        """檢查 DMARC"""
+        try:
+            email_content = EmailParser.parse_email_file(file_path)
+            message = email.message_from_string(email_content)
+            
+            # 從 From 標頭獲取域名
+            from_header = message.get('From', '')
+            domain_match = re.search(r'@([\w.-]+)', from_header)
+            if not domain_match:
+                return {
+                    'status': 'error',
+                    'message': '無法從 From 標頭獲取域名',
+                    'details': {}
+                }
+            
+            domain = domain_match.group(1)
+            try:
+                # 查詢 DMARC 記錄
+                dmarc_records = self.resolver.resolve(f'_dmarc.{domain}', 'TXT')
+                for record in dmarc_records:
+                    for string in record.strings:
+                        if string.startswith(b'v=DMARC1'):
+                            return {
+                                'status': 'pass',
+                                'message': '找到有效的 DMARC 記錄',
+                                'details': {'record': string.decode()}
+                            }
+            except dns.resolver.NXDOMAIN:
+                return {
+                    'status': 'fail',
+                    'message': '未找到 DMARC 記錄',
+                    'details': {'domain': domain}
+                }
+            except Exception as e:
+                return {
+                    'status': 'error',
+                    'message': f'DMARC 查詢錯誤: {str(e)}',
+                    'details': {}
+                }
+            
+            return {
+                'status': 'fail',
+                'message': '未找到有效的 DMARC 記錄',
+                'details': {}
+            }
+        except Exception as e:
+            return {
+                'status': 'error',
+                'message': str(e),
+                'details': {}
+            }
+
+# 如果直接執行腳本
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='郵件認證檢查工具')
     parser.add_argument('--file', '-f', required=True, help='郵件檔案路徑 (.eml 或 .msg)')
-    parser.add_argument('--verbose', '-v', action='store_true', help='顯示詳細驗證資訊')
-    
     args = parser.parse_args()
     
-    validator = DKIMValidator()
-    success, message, info = validator.validate_email(args.file)
+    checker = EmailAuthenticationChecker()
+    results = checker.check_all(args.file)
     
-    print(f"\n檔案類型: {info['file_type']}")
-    print("\nDKIM 驗證結果:")
-    print(f"狀態: {'成功' if success else '失敗'}")
-    print(f"訊息: {message}")
-    
-    if args.verbose:
-        print("\n詳細資訊:")
-        print(f"檔案格式: {info['file_type']}")
-        print(f"域名: {info['domain']}")
-        print(f"選擇器: {info['selector']}")
-        print(f"演算法: {info['algorithm']}")
-        print(f"簽名的標頭: {', '.join(info['headers_signed'] if info['headers_signed'] else [])}")
-        print(f"DNS 記錄: {'找到' if info['dns_record_found'] else '未找到'}")
-        print(f"公鑰狀態: {'有效' if info['public_key_valid'] else '無效'}")
-        print(f"簽名狀態: {'有效' if info['signature_valid'] else '無效'}")
-
-if __name__ == "__main__":
-    main()
+    print("\n郵件認證檢查結果:")
+    for check_type, result in results.items():
+        print(f"\n{check_type.upper()}:")
+        print(f"狀態: {result['status']}")
+        print(f"訊息: {result['message']}")
+        if result['details']:
+            print("詳細資訊:")
+            for key, value in result['details'].items():
+                print(f"  {key}: {value}")
