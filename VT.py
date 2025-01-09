@@ -5,6 +5,7 @@ import os
 from typing import Optional
 import importlib.util
 import time
+import logging
 
 def load_config():
     """Load API key from config.py"""
@@ -51,9 +52,58 @@ class VirusTotalAPI:
 
     def get_file_report(self, file_hash: str) -> dict:
         """Get file scan report by hash"""
-        url = f"{self.base_url}/files/{file_hash}"
-        response = requests.get(url, headers=self.headers)
-        return response.json()
+        try:
+            url = f"{self.base_url}/files/{file_hash}"
+            response = requests.get(url, headers=self.headers)
+            
+            # 檢查 HTTP 狀態碼
+            if response.status_code == 404:
+                return {
+                    'data': {
+                        'attributes': {
+                            'last_analysis_results': {},
+                            'size': 0,
+                            'type_tags': ['未知'],
+                            'type_extension': '未知',
+                            'names': ['未知檔案']
+                        }
+                    },
+                    'message': '在 VirusTotal 資料庫中未找到此檔案'
+                }
+            
+            response.raise_for_status()
+            return response.json()
+            
+        except requests.exceptions.RequestException as e:
+            logging.error(f"獲取檔案報告時發生錯誤: {str(e)}")
+            return {
+                'error': True,
+                'message': f'API 請求失敗: {str(e)}',
+                'data': {
+                    'attributes': {
+                        'last_analysis_results': {},
+                        'size': 0,
+                        'type_tags': ['錯誤'],
+                        'type_extension': '錯誤',
+                        'names': ['請求失敗']
+                    }
+                }
+            }
+        except Exception as e:
+            logging.error(f"處理檔案報告時發生未預期錯誤: {str(e)}")
+            return {
+                'error': True,
+                'message': f'發生未預期錯誤: {str(e)}',
+                'data': {
+                    'attributes': {
+                        'last_analysis_results': {},
+                        'size': 0,
+                        'type_tags': ['錯誤'],
+                        'type_extension': '錯誤',
+                        'names': ['處理失敗']
+                    }
+                }
+            }
 
     def scan_url(self, target_url: str, max_retries: int = 5, wait_time: int = 3) -> dict:
         """

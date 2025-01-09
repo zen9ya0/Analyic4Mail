@@ -1,0 +1,374 @@
+2025-01-09 17:21:07,267 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-09 17:21:07,268 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 17:21:07,270 - INFO -  * Restarting with stat
+2025-01-09 17:21:07,821 - WARNING -  * Debugger is active!
+2025-01-09 17:21:07,823 - INFO -  * Debugger PIN: 337-356-986
+2025-01-09 17:21:13,173 - DEBUG - 訪問首頁
+2025-01-09 17:21:13,179 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:13] "GET / HTTP/1.1" 200 -
+2025-01-09 17:21:13,297 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:13] "GET /static/styles.css HTTP/1.1" 200 -
+2025-01-09 17:21:17,561 - INFO - 檔案上傳成功: 20250109172117.eml 到 /tmp/email_analyzer_uploads/20250109172117.eml
+2025-01-09 17:21:17,583 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:21:17,583 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:21:17,584 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) ���իH Test 1
+2025-01-09 17:21:17,598 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-09 17:21:17,598 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:21:17,599 - DEBUG - 提取的 URLs: []
+2025-01-09 17:21:17,976 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:21:17,996 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:17] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:21:24,704 - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-09 17:21:25,215 - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-09 17:21:25,238 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:25] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-09 17:21:38,601 - DEBUG - 開始檢查 IP: 172.16.31.96
+2025-01-09 17:21:38,603 - DEBUG - 發送請求到 AbuseIPDB API: https://api.abuseipdb.com/api/v2/check
+2025-01-09 17:21:38,604 - DEBUG - 查詢參數: {'ipAddress': '172.16.31.96', 'maxAgeInDays': '15'}
+2025-01-09 17:21:38,607 - DEBUG - Starting new HTTPS connection (1): api.abuseipdb.com:443
+2025-01-09 17:21:39,245 - DEBUG - https://api.abuseipdb.com:443 "GET /api/v2/check?ipAddress=172.16.31.96&maxAgeInDays=15 HTTP/1.1" 200 None
+2025-01-09 17:21:39,249 - DEBUG - API 響應: {'data': {'ipAddress': '172.16.31.96', 'isPublic': False, 'ipVersion': 4, 'isWhitelisted': None, 'abuseConfidenceScore': 0, 'countryCode': None, 'usageType': 'Reserved', 'isp': None, 'domain': None, 'hostnames': [], 'isTor': False, 'totalReports': 0, 'numDistinctUsers': 0, 'lastReportedAt': None}}
+2025-01-09 17:21:39,250 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:39] "GET /check_ip?ip=172.16.31.96 HTTP/1.1" 200 -
+2025-01-09 17:21:45,135 - DEBUG - 訪問首頁
+2025-01-09 17:21:45,136 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:45] "GET / HTTP/1.1" 200 -
+2025-01-09 17:21:45,191 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:21:49,089 - INFO - 檔案上傳成功: 20250109172148.msg 到 /tmp/email_analyzer_uploads/20250109172148.msg
+2025-01-09 17:21:49,132 - DEBUG - /etc/timezone found, contents:
+ Asia/Taipei
+
+2025-01-09 17:21:49,135 - DEBUG - /etc/localtime found
+2025-01-09 17:21:49,140 - DEBUG - 2 found:
+ {'/etc/timezone': 'Asia/Taipei', '/etc/localtime is a symlink to': 'Asia/Taipei'}
+2025-01-09 17:21:49,143 - DEBUG - 清理前的 CC 列表: ['<cynet-soc@softnext.com.tw>']
+2025-01-09 17:21:49,144 - DEBUG - 清理後的 CC 列表: ['cynet-soc@softnext.com.tw']
+2025-01-09 17:21:49,144 - DEBUG - 解析郵件成功: Cynet 360 AutoXDR 於 2024 MITRE ATT&CK 評估再度脫穎而出，實現100%保護與100%檢測可視性
+2025-01-09 17:21:49,153 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/image001.png
+2025-01-09 17:21:49,216 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf
+2025-01-09 17:21:49,314 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide.pdf
+2025-01-09 17:21:49,314 - DEBUG - 生成的附件哈希值: [{'original_filename': 'image001.png', 'md5': '0664775298dc9e9b1a672b0c4fd0757c', 'sha1': 'a362d4c53f67708f7f761c220f49e29f802b1222', 'sha256': 'c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134'}, {'original_filename': 'Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf', 'md5': 'cd720500ddeb300d7a8b7bbf629e9ec8', 'sha1': '8d6f320709ba052be2916e3d2b598d6e90a779ad', 'sha256': '264a0204784864b423bcf76bff6a50724a2682ea205ac75e5fea04b7807a7239'}, {'original_filename': 'Cynet-Mitre_Att&ck_Evaluations_Guide.pdf', 'md5': '3eba5ce9bea6ed54684410757f4d1a0e', 'sha1': 'ddea2b2c4ea26d4d48c1aa7daacee62b7f8e793e', 'sha256': '45aa82080d80dfe720375c7d8a71e66d87f87400979dd442ee112a7f4701c709'}]
+2025-01-09 17:21:49,316 - DEBUG - 提取的 URLs: []
+2025-01-09 17:21:49,718 - DEBUG - hops.py 返回的結果: [{'from': 'G4.softnext.com.tw (G4.softnext.com.tw [192.168.3.202])', 'by': 'Server.softnext.com.tw (8.18.1/8.18.1)', 'time': 'Tue, 24 Dec 2024 14:41:19 +0800 (CST)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': 'N/A'}, {'from': 'ArnoChang (Arno-NB.softnext.com.tw [192.168.8.40])\r\n\t(authenticated bits=0 user=arno)', 'by': 'G4.softnext.com.tw', 'time': 'Tue, 24 Dec 2024 14:41:12 +0800 (+08)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': '7.00 seconds'}]
+2025-01-09 17:21:49,861 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:49] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:21:57,765 - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-09 17:21:58,639 - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/45aa82080d80dfe720375c7d8a71e66d87f87400979dd442ee112a7f4701c709 HTTP/1.1" 404 None
+2025-01-09 17:21:58,650 - INFO - 127.0.0.1 - - [09/Jan/2025 17:21:58] "GET /virustotal/45aa82080d80dfe720375c7d8a71e66d87f87400979dd442ee112a7f4701c709 HTTP/1.1" 200 -
+2025-01-09 17:22:04,336 - DEBUG - 訪問首頁
+2025-01-09 17:22:04,337 - INFO - 127.0.0.1 - - [09/Jan/2025 17:22:04] "GET / HTTP/1.1" 200 -
+2025-01-09 17:22:04,383 - INFO - 127.0.0.1 - - [09/Jan/2025 17:22:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:22:11,619 - INFO - 檔案上傳成功: 20250109172211.eml 到 /tmp/email_analyzer_uploads/20250109172211.eml
+2025-01-09 17:22:11,621 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:22:11,622 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:22:11,622 - DEBUG - 解析郵件成功: None
+2025-01-09 17:22:11,623 - DEBUG - 生成的附件哈希值: []
+2025-01-09 17:22:11,623 - DEBUG - 提取的 URLs: ['https://fonts.googleapis.com/css?family=3D3DUbuntu:400,700);@import', 'https://fonts.googleapis.com/css?family=3D3DCabin:400,700);</style>', 'https://555801366516733.blooms-bd.org/xowomepooorcour/ramisneis=', 'https://fonts.googleapis.com/css?=3D', 'https://storage.googleapis.=3D', 'http://www.w3.org/1999/xhtml', 'https://fonts.googleapis.com/css?family=3D3DCabin:400,700"']
+2025-01-09 17:22:11,625 - WARNING - 無附件哈希值生成，可能未解析到附件
+2025-01-09 17:22:11,987 - DEBUG - hops.py 返回的結果: [{'from': 'mail.zimbra.dplabs.com (mail.dplabs.com [94.138.215.188])', 'by': 'mta01.tiplo.com.tw', 'time': 'Wed, 18 Dec 2024 05:18:04 +0800 (+08)\t(envelope-from a_shmigelskaya@grata-adv.ru)', 'delay': 'N/A'}, {'from': 'localhost (localhost.localdomain [127.0.0.1])', 'by': 'mail.zimbra.dplabs.com (Postfix)', 'time': 'Wed, 18 Dec 2024 00:17:54 +0300 (+03)', 'delay': '10.00 seconds'}]
+2025-01-09 17:22:11,990 - INFO - 127.0.0.1 - - [09/Jan/2025 17:22:11] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:22:14,354 - DEBUG - 訪問首頁
+2025-01-09 17:22:14,355 - INFO - 127.0.0.1 - - [09/Jan/2025 17:22:14] "GET / HTTP/1.1" 200 -
+2025-01-09 17:22:14,404 - INFO - 127.0.0.1 - - [09/Jan/2025 17:22:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:28:21,443 - INFO -  * Detected change in '/mnt/d/shar/cursor/Analyzer4Mail/app.py', reloading
+2025-01-09 17:28:21,514 - INFO -  * Restarting with stat
+2025-01-09 17:28:22,062 - WARNING -  * Debugger is active!
+2025-01-09 17:28:22,063 - INFO -  * Debugger PIN: 337-356-986
+2025-01-09 17:28:33,745 - INFO - 檔案上傳成功: 20250109172833.eml 到 /tmp/email_analyzer_uploads/20250109172833.eml
+2025-01-09 17:28:33,746 - INFO - 127.0.0.1 - - [09/Jan/2025 17:28:33] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+2025-01-09 17:28:38,837 - INFO - 檔案上傳成功: 20250109172838.eml 到 /tmp/email_analyzer_uploads/20250109172838.eml
+2025-01-09 17:28:38,862 - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-09 17:28:38,864 - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-09 17:28:38,865 - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-09 17:28:38,870 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-09 17:28:38,870 - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-09 17:28:38,871 - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-09 17:28:39,233 - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-09 17:28:39,253 - INFO - 127.0.0.1 - - [09/Jan/2025 17:28:39] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:28:44,576 - DEBUG - 訪問首頁
+2025-01-09 17:28:44,579 - INFO - 127.0.0.1 - - [09/Jan/2025 17:28:44] "GET / HTTP/1.1" 200 -
+2025-01-09 17:28:44,635 - INFO - 127.0.0.1 - - [09/Jan/2025 17:28:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:28:59,066 - INFO - 檔案上傳成功: 20250109172858.msg 到 /tmp/email_analyzer_uploads/20250109172858.msg
+2025-01-09 17:28:59,093 - DEBUG - /etc/timezone found, contents:
+ Asia/Taipei
+
+2025-01-09 17:28:59,095 - DEBUG - /etc/localtime found
+2025-01-09 17:28:59,098 - DEBUG - 2 found:
+ {'/etc/timezone': 'Asia/Taipei', '/etc/localtime is a symlink to': 'Asia/Taipei'}
+2025-01-09 17:28:59,099 - DEBUG - 清理前的 CC 列表: ['<cynet-soc@softnext.com.tw>']
+2025-01-09 17:28:59,100 - DEBUG - 清理後的 CC 列表: ['cynet-soc@softnext.com.tw']
+2025-01-09 17:28:59,100 - DEBUG - 解析郵件成功: Cynet 360 AutoXDR 於 2024 MITRE ATT&CK 評估再度脫穎而出，實現100%保護與100%檢測可視性
+2025-01-09 17:28:59,106 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/image001_1.png
+2025-01-09 17:28:59,164 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12_1.pdf
+2025-01-09 17:28:59,251 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide_1.pdf
+2025-01-09 17:28:59,252 - DEBUG - 生成的附件哈希值: [{'original_filename': 'image001.png', 'md5': '0664775298dc9e9b1a672b0c4fd0757c', 'sha1': 'a362d4c53f67708f7f761c220f49e29f802b1222', 'sha256': 'c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134'}, {'original_filename': 'Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf', 'md5': 'cd720500ddeb300d7a8b7bbf629e9ec8', 'sha1': '8d6f320709ba052be2916e3d2b598d6e90a779ad', 'sha256': '264a0204784864b423bcf76bff6a50724a2682ea205ac75e5fea04b7807a7239'}, {'original_filename': 'Cynet-Mitre_Att&ck_Evaluations_Guide.pdf', 'md5': '3eba5ce9bea6ed54684410757f4d1a0e', 'sha1': 'ddea2b2c4ea26d4d48c1aa7daacee62b7f8e793e', 'sha256': '45aa82080d80dfe720375c7d8a71e66d87f87400979dd442ee112a7f4701c709'}]
+2025-01-09 17:28:59,253 - DEBUG - 提取的 URLs: []
+2025-01-09 17:28:59,646 - DEBUG - hops.py 返回的結果: [{'from': 'G4.softnext.com.tw (G4.softnext.com.tw [192.168.3.202])', 'by': 'Server.softnext.com.tw (8.18.1/8.18.1)', 'time': 'Tue, 24 Dec 2024 14:41:19 +0800 (CST)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': 'N/A'}, {'from': 'ArnoChang (Arno-NB.softnext.com.tw [192.168.8.40])\r\n\t(authenticated bits=0 user=arno)', 'by': 'G4.softnext.com.tw', 'time': 'Tue, 24 Dec 2024 14:41:12 +0800 (+08)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': '7.00 seconds'}]
+2025-01-09 17:28:59,781 - INFO - 127.0.0.1 - - [09/Jan/2025 17:28:59] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:29:21,811 - INFO - 開始下載檔案: Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf, 路徑: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf
+2025-01-09 17:29:21,812 - INFO - 127.0.0.1 - - [09/Jan/2025 17:29:21] "GET /download/Cynet%202024年MITRE%20ATT&CK%20評估實用指南%20-2024-12.pdf HTTP/1.1" 200 -
+2025-01-09 17:29:28,017 - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-09 17:29:28,415 - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134 HTTP/1.1" 404 None
+2025-01-09 17:29:28,419 - INFO - 127.0.0.1 - - [09/Jan/2025 17:29:28] "GET /virustotal/c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134 HTTP/1.1" 200 -
+2025-01-09 17:31:07,334 - INFO -  * Detected change in '/mnt/d/shar/cursor/Analyzer4Mail/app.py', reloading
+2025-01-09 17:31:07,403 - INFO -  * Restarting with stat
+2025-01-09 17:31:07,950 - WARNING -  * Debugger is active!
+2025-01-09 17:31:07,951 - INFO -  * Debugger PIN: 337-356-986
+2025-01-09 17:31:54,904 - DEBUG - 訪問首頁
+2025-01-09 17:31:54,910 - INFO - 127.0.0.1 - - [09/Jan/2025 17:31:54] "GET / HTTP/1.1" 200 -
+2025-01-09 17:31:54,962 - INFO - 127.0.0.1 - - [09/Jan/2025 17:31:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:31:58,620 - INFO - 檔案上傳成功: 20250109173158.msg 到 /tmp/email_analyzer_uploads/20250109173158.msg
+2025-01-09 17:31:58,652 - DEBUG - /etc/timezone found, contents:
+ Asia/Taipei
+
+2025-01-09 17:31:58,653 - DEBUG - /etc/localtime found
+2025-01-09 17:31:58,656 - DEBUG - 2 found:
+ {'/etc/timezone': 'Asia/Taipei', '/etc/localtime is a symlink to': 'Asia/Taipei'}
+2025-01-09 17:31:58,658 - DEBUG - 清理前的 CC 列表: ['<cynet-soc@softnext.com.tw>']
+2025-01-09 17:31:58,658 - DEBUG - 清理後的 CC 列表: ['cynet-soc@softnext.com.tw']
+2025-01-09 17:31:58,659 - DEBUG - 解析郵件成功: Cynet 360 AutoXDR 於 2024 MITRE ATT&CK 評估再度脫穎而出，實現100%保護與100%檢測可視性
+2025-01-09 17:31:58,668 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/image001_2.png
+2025-01-09 17:31:58,731 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12_2.pdf
+2025-01-09 17:31:58,832 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide_2.pdf
+2025-01-09 17:31:58,833 - DEBUG - 生成的附件哈希值: [{'original_filename': 'image001.png', 'md5': '0664775298dc9e9b1a672b0c4fd0757c', 'sha1': 'a362d4c53f67708f7f761c220f49e29f802b1222', 'sha256': 'c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134'}, {'original_filename': 'Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf', 'md5': 'cd720500ddeb300d7a8b7bbf629e9ec8', 'sha1': '8d6f320709ba052be2916e3d2b598d6e90a779ad', 'sha256': '264a0204784864b423bcf76bff6a50724a2682ea205ac75e5fea04b7807a7239'}, {'original_filename': 'Cynet-Mitre_Att&ck_Evaluations_Guide.pdf', 'md5': '3eba5ce9bea6ed54684410757f4d1a0e', 'sha1': 'ddea2b2c4ea26d4d48c1aa7daacee62b7f8e793e', 'sha256': '45aa82080d80dfe720375c7d8a71e66d87f87400979dd442ee112a7f4701c709'}]
+2025-01-09 17:31:58,834 - DEBUG - 提取的 URLs: []
+2025-01-09 17:31:59,214 - DEBUG - hops.py 返回的結果: [{'from': 'G4.softnext.com.tw (G4.softnext.com.tw [192.168.3.202])', 'by': 'Server.softnext.com.tw (8.18.1/8.18.1)', 'time': 'Tue, 24 Dec 2024 14:41:19 +0800 (CST)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': 'N/A'}, {'from': 'ArnoChang (Arno-NB.softnext.com.tw [192.168.8.40])\r\n\t(authenticated bits=0 user=arno)', 'by': 'G4.softnext.com.tw', 'time': 'Tue, 24 Dec 2024 14:41:12 +0800 (+08)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': '7.00 seconds'}]
+2025-01-09 17:31:59,368 - INFO - 127.0.0.1 - - [09/Jan/2025 17:31:59] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:32:03,728 - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-09 17:32:04,127 - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134 HTTP/1.1" 404 None
+2025-01-09 17:32:04,137 - INFO - VirusTotal API 回應: 在 VirusTotal 資料庫中未找到此檔案
+2025-01-09 17:32:04,142 - INFO - 127.0.0.1 - - [09/Jan/2025 17:32:04] "GET /virustotal/c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134 HTTP/1.1" 200 -
+2025-01-09 17:32:10,093 - DEBUG - 訪問首頁
+2025-01-09 17:32:10,094 - INFO - 127.0.0.1 - - [09/Jan/2025 17:32:10] "GET / HTTP/1.1" 200 -
+2025-01-09 17:32:10,139 - INFO - 127.0.0.1 - - [09/Jan/2025 17:32:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:32:13,623 - INFO - 檔案上傳成功: 20250109173213.eml 到 /tmp/email_analyzer_uploads/20250109173213.eml
+2025-01-09 17:32:13,644 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:32:13,644 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:32:13,645 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:32:13,654 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-09 17:32:13,654 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:32:13,655 - DEBUG - 提取的 URLs: []
+2025-01-09 17:32:14,020 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:32:14,023 - INFO - 127.0.0.1 - - [09/Jan/2025 17:32:14] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:32:16,695 - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-09 17:32:17,104 - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-09 17:32:17,110 - INFO - 127.0.0.1 - - [09/Jan/2025 17:32:17] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-09 17:32:35,236 - DEBUG - 訪問首頁
+2025-01-09 17:32:35,238 - INFO - 127.0.0.1 - - [09/Jan/2025 17:32:35] "GET / HTTP/1.1" 200 -
+2025-01-09 17:32:35,295 - INFO - 127.0.0.1 - - [09/Jan/2025 17:32:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:36:34,480 - INFO -  * Detected change in '/mnt/d/shar/cursor/Analyzer4Mail/app.py', reloading
+2025-01-09 17:36:34,540 - INFO -  * Restarting with stat
+2025-01-09 17:37:06,119 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109152858.msg
+2025-01-09 17:37:06,120 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109152904.eml
+2025-01-09 17:37:06,122 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109153334.eml
+2025-01-09 17:37:06,123 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109153348.eml
+2025-01-09 17:37:06,124 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109153400.eml
+2025-01-09 17:37:06,125 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109153706.eml
+2025-01-09 17:37:06,126 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109153723.eml
+2025-01-09 17:37:06,127 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109153739.eml
+2025-01-09 17:37:06,128 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109154919.eml
+2025-01-09 17:37:06,129 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155106.eml
+2025-01-09 17:37:06,130 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155136.eml
+2025-01-09 17:37:06,131 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-09 17:37:06,132 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155355.eml
+2025-01-09 17:37:06,132 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 17:37:06,133 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155457.eml
+2025-01-09 17:37:06,134 - INFO -  * Restarting with stat
+2025-01-09 17:37:06,134 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155716.eml
+2025-01-09 17:37:06,142 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155924.eml
+2025-01-09 17:37:06,142 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155930.eml
+2025-01-09 17:37:06,143 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155940.eml
+2025-01-09 17:37:06,144 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109155958.msg
+2025-01-09 17:37:06,145 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109160839.eml
+2025-01-09 17:37:06,146 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109161100.eml
+2025-01-09 17:37:06,147 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109161454.eml
+2025-01-09 17:37:06,148 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109161741.eml
+2025-01-09 17:37:06,149 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162001.eml
+2025-01-09 17:37:06,150 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162006.eml
+2025-01-09 17:37:06,150 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162014.eml
+2025-01-09 17:37:06,151 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162018.msg
+2025-01-09 17:37:06,152 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162627.eml
+2025-01-09 17:37:06,152 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162807.eml
+2025-01-09 17:37:06,153 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162813.msg
+2025-01-09 17:37:06,154 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162931.msg
+2025-01-09 17:37:06,155 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162935.msg
+2025-01-09 17:37:06,156 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162939.eml
+2025-01-09 17:37:06,156 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162943.eml
+2025-01-09 17:37:06,157 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109162948.eml
+2025-01-09 17:37:06,158 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109172117.eml
+2025-01-09 17:37:06,158 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109172148.msg
+2025-01-09 17:37:06,159 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109172211.eml
+2025-01-09 17:37:06,159 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109172833.eml
+2025-01-09 17:37:06,160 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109172838.eml
+2025-01-09 17:37:06,162 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109172858.msg
+2025-01-09 17:37:06,163 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109173158.msg
+2025-01-09 17:37:06,164 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109173213.eml
+2025-01-09 17:37:06,165 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf
+2025-01-09 17:37:06,167 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12_1.pdf
+2025-01-09 17:37:06,167 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12_2.pdf
+2025-01-09 17:37:06,169 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide.pdf
+2025-01-09 17:37:06,169 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide_1.pdf
+2025-01-09 17:37:06,170 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide_2.pdf
+2025-01-09 17:37:06,171 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/image001.png
+2025-01-09 17:37:06,171 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/image001_1.png
+2025-01-09 17:37:06,172 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/image001_2.png
+2025-01-09 17:37:06,173 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-09 17:37:06,173 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-09 17:37:06,175 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-09 17:37:06,629 - WARNING -  * Debugger is active!
+2025-01-09 17:37:06,631 - INFO -  * Debugger PIN: 337-356-986
+2025-01-09 17:37:21,979 - INFO - 檔案上傳成功: 20250109173721.msg 到 /tmp/email_analyzer_uploads/20250109173721.msg
+2025-01-09 17:37:22,015 - DEBUG - /etc/timezone found, contents:
+ Asia/Taipei
+
+2025-01-09 17:37:22,016 - DEBUG - /etc/localtime found
+2025-01-09 17:37:22,018 - DEBUG - 2 found:
+ {'/etc/timezone': 'Asia/Taipei', '/etc/localtime is a symlink to': 'Asia/Taipei'}
+2025-01-09 17:37:22,020 - DEBUG - 清理前的 CC 列表: ['<cynet-soc@softnext.com.tw>']
+2025-01-09 17:37:22,020 - DEBUG - 清理後的 CC 列表: ['cynet-soc@softnext.com.tw']
+2025-01-09 17:37:22,021 - DEBUG - 解析郵件成功: Cynet 360 AutoXDR 於 2024 MITRE ATT&CK 評估再度脫穎而出，實現100%保護與100%檢測可視性
+2025-01-09 17:37:22,027 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/image001.png
+2025-01-09 17:37:22,087 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf
+2025-01-09 17:37:22,174 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide.pdf
+2025-01-09 17:37:22,175 - DEBUG - 生成的附件哈希值: [{'original_filename': 'image001.png', 'md5': '0664775298dc9e9b1a672b0c4fd0757c', 'sha1': 'a362d4c53f67708f7f761c220f49e29f802b1222', 'sha256': 'c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134'}, {'original_filename': 'Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf', 'md5': 'cd720500ddeb300d7a8b7bbf629e9ec8', 'sha1': '8d6f320709ba052be2916e3d2b598d6e90a779ad', 'sha256': '264a0204784864b423bcf76bff6a50724a2682ea205ac75e5fea04b7807a7239'}, {'original_filename': 'Cynet-Mitre_Att&ck_Evaluations_Guide.pdf', 'md5': '3eba5ce9bea6ed54684410757f4d1a0e', 'sha1': 'ddea2b2c4ea26d4d48c1aa7daacee62b7f8e793e', 'sha256': '45aa82080d80dfe720375c7d8a71e66d87f87400979dd442ee112a7f4701c709'}]
+2025-01-09 17:37:22,176 - DEBUG - 提取的 URLs: []
+2025-01-09 17:37:22,554 - DEBUG - hops.py 返回的結果: [{'from': 'G4.softnext.com.tw (G4.softnext.com.tw [192.168.3.202])', 'by': 'Server.softnext.com.tw (8.18.1/8.18.1)', 'time': 'Tue, 24 Dec 2024 14:41:19 +0800 (CST)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': 'N/A'}, {'from': 'ArnoChang (Arno-NB.softnext.com.tw [192.168.8.40])\r\n\t(authenticated bits=0 user=arno)', 'by': 'G4.softnext.com.tw', 'time': 'Tue, 24 Dec 2024 14:41:12 +0800 (+08)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': '7.00 seconds'}]
+2025-01-09 17:37:22,703 - INFO - 127.0.0.1 - - [09/Jan/2025 17:37:22] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:37:30,233 - DEBUG - 訪問首頁
+2025-01-09 17:37:30,235 - INFO - 127.0.0.1 - - [09/Jan/2025 17:37:30] "GET / HTTP/1.1" 200 -
+2025-01-09 17:37:30,310 - INFO - 127.0.0.1 - - [09/Jan/2025 17:37:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:42:15,291 - INFO - 檔案上傳成功: 20250109174215.eml 到 /tmp/email_analyzer_uploads/20250109174215.eml
+2025-01-09 17:42:15,294 - INFO - 127.0.0.1 - - [09/Jan/2025 17:42:15] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+2025-01-09 17:42:16,624 - DEBUG - 訪問首頁
+2025-01-09 17:42:16,629 - INFO - 127.0.0.1 - - [09/Jan/2025 17:42:16] "GET / HTTP/1.1" 200 -
+2025-01-09 17:42:16,880 - INFO - 127.0.0.1 - - [09/Jan/2025 17:42:16] "GET /static/styles.css HTTP/1.1" 200 -
+2025-01-09 17:42:21,569 - INFO - 檔案上傳成功: 20250109174221.eml 到 /tmp/email_analyzer_uploads/20250109174221.eml
+2025-01-09 17:42:21,700 - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-09 17:42:21,738 - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-09 17:42:21,783 - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-09 17:42:21,813 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-09 17:42:21,815 - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-09 17:42:21,816 - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-09 17:42:23,378 - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-09 17:42:23,390 - INFO - 127.0.0.1 - - [09/Jan/2025 17:42:23] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:42:37,242 - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-09 17:42:37,693 - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 404 None
+2025-01-09 17:42:37,701 - INFO - VirusTotal API 回應: 在 VirusTotal 資料庫中未找到此檔案
+2025-01-09 17:42:37,706 - INFO - 127.0.0.1 - - [09/Jan/2025 17:42:37] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
+2025-01-09 17:43:06,180 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109173721.msg
+2025-01-09 17:43:06,186 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf
+2025-01-09 17:43:06,190 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide.pdf
+2025-01-09 17:43:06,194 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/image001.png
+2025-01-09 17:44:21,043 - DEBUG - 訪問首頁
+2025-01-09 17:44:21,046 - INFO - 127.0.0.1 - - [09/Jan/2025 17:44:21] "GET / HTTP/1.1" 200 -
+2025-01-09 17:44:21,161 - INFO - 127.0.0.1 - - [09/Jan/2025 17:44:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:44:25,486 - INFO - 檔案上傳成功: 20250109174425.eml 到 /tmp/email_analyzer_uploads/20250109174425.eml
+2025-01-09 17:44:25,567 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:44:25,569 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:44:25,571 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:44:25,612 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-09 17:44:25,615 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:44:25,617 - DEBUG - 提取的 URLs: []
+2025-01-09 17:44:26,824 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:44:26,965 - INFO - 127.0.0.1 - - [09/Jan/2025 17:44:26] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:45:08,876 - INFO - 檔案上傳成功: 20250109174508.msg 到 /tmp/email_analyzer_uploads/20250109174508.msg
+2025-01-09 17:45:08,943 - DEBUG - 清理前的 CC 列表: ['<cynet-soc@softnext.com.tw>']
+2025-01-09 17:45:08,945 - DEBUG - 清理後的 CC 列表: ['cynet-soc@softnext.com.tw']
+2025-01-09 17:45:08,946 - DEBUG - 解析郵件成功: Cynet 360 AutoXDR 於 2024 MITRE ATT&CK 評估再度脫穎而出，實現100%保護與100%檢測可視性
+2025-01-09 17:45:08,963 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/image001.png
+2025-01-09 17:45:09,114 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf
+2025-01-09 17:45:09,265 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide.pdf
+2025-01-09 17:45:09,266 - DEBUG - 生成的附件哈希值: [{'original_filename': 'image001.png', 'md5': '0664775298dc9e9b1a672b0c4fd0757c', 'sha1': 'a362d4c53f67708f7f761c220f49e29f802b1222', 'sha256': 'c05bff3bc712772d4884a353fd58a3161a0925ba1626cc42240f4b1539aa2134'}, {'original_filename': 'Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf', 'md5': 'cd720500ddeb300d7a8b7bbf629e9ec8', 'sha1': '8d6f320709ba052be2916e3d2b598d6e90a779ad', 'sha256': '264a0204784864b423bcf76bff6a50724a2682ea205ac75e5fea04b7807a7239'}, {'original_filename': 'Cynet-Mitre_Att&ck_Evaluations_Guide.pdf', 'md5': '3eba5ce9bea6ed54684410757f4d1a0e', 'sha1': 'ddea2b2c4ea26d4d48c1aa7daacee62b7f8e793e', 'sha256': '45aa82080d80dfe720375c7d8a71e66d87f87400979dd442ee112a7f4701c709'}]
+2025-01-09 17:45:09,269 - DEBUG - 提取的 URLs: []
+2025-01-09 17:45:10,281 - DEBUG - hops.py 返回的結果: [{'from': 'G4.softnext.com.tw (G4.softnext.com.tw [192.168.3.202])', 'by': 'Server.softnext.com.tw (8.18.1/8.18.1)', 'time': 'Tue, 24 Dec 2024 14:41:19 +0800 (CST)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': 'N/A'}, {'from': 'ArnoChang (Arno-NB.softnext.com.tw [192.168.8.40])\r\n\t(authenticated bits=0 user=arno)', 'by': 'G4.softnext.com.tw', 'time': 'Tue, 24 Dec 2024 14:41:12 +0800 (+08)\r\n\t(envelope-from arno@softnext.com.tw)', 'delay': '7.00 seconds'}]
+2025-01-09 17:45:10,503 - INFO - 127.0.0.1 - - [09/Jan/2025 17:45:10] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:45:22,432 - DEBUG - 訪問首頁
+2025-01-09 17:45:22,434 - INFO - 127.0.0.1 - - [09/Jan/2025 17:45:22] "GET / HTTP/1.1" 200 -
+2025-01-09 17:45:22,550 - INFO - 127.0.0.1 - - [09/Jan/2025 17:45:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:46:06,200 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109174215.eml
+2025-01-09 17:46:06,203 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109174221.eml
+2025-01-09 17:46:06,206 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-09 17:47:19,104 - INFO - 檔案上傳成功: 20250109174719.eml 到 /tmp/email_analyzer_uploads/20250109174719.eml
+2025-01-09 17:47:19,147 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:47:19,148 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:47:19,149 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:47:19,169 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-09 17:47:19,170 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:47:19,171 - DEBUG - 提取的 URLs: []
+2025-01-09 17:47:20,105 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:47:20,160 - INFO - 127.0.0.1 - - [09/Jan/2025 17:47:20] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:47:26,014 - DEBUG - 訪問首頁
+2025-01-09 17:47:26,018 - INFO - 127.0.0.1 - - [09/Jan/2025 17:47:26] "GET / HTTP/1.1" 200 -
+2025-01-09 17:47:26,294 - INFO - 127.0.0.1 - - [09/Jan/2025 17:47:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:48:21,411 - INFO - 檔案上傳成功: 20250109174821.eml 到 /tmp/email_analyzer_uploads/20250109174821.eml
+2025-01-09 17:48:21,498 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:48:21,500 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:48:21,504 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:48:21,548 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_2.exe
+2025-01-09 17:48:21,550 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:48:21,552 - DEBUG - 提取的 URLs: []
+2025-01-09 17:48:22,746 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:48:22,786 - INFO - 127.0.0.1 - - [09/Jan/2025 17:48:22] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:48:53,168 - DEBUG - 訪問首頁
+2025-01-09 17:48:53,172 - INFO - 127.0.0.1 - - [09/Jan/2025 17:48:53] "GET / HTTP/1.1" 200 -
+2025-01-09 17:48:53,320 - INFO - 127.0.0.1 - - [09/Jan/2025 17:48:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:48:57,914 - INFO - 檔案上傳成功: 20250109174857.eml 到 /tmp/email_analyzer_uploads/20250109174857.eml
+2025-01-09 17:48:57,966 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:48:57,967 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:48:57,969 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:48:57,995 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_3.exe
+2025-01-09 17:48:57,996 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:48:57,998 - DEBUG - 提取的 URLs: []
+2025-01-09 17:48:58,918 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:48:58,961 - INFO - 127.0.0.1 - - [09/Jan/2025 17:48:58] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:49:06,211 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109174425.eml
+2025-01-09 17:49:06,215 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109174508.msg
+2025-01-09 17:49:06,219 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet 2024年MITRE ATT&CK 評估實用指南 -2024-12.pdf
+2025-01-09 17:49:06,224 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/Cynet-Mitre_Att&ck_Evaluations_Guide.pdf
+2025-01-09 17:49:06,229 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/image001.png
+2025-01-09 17:49:06,233 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-09 17:52:06,239 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109174719.eml
+2025-01-09 17:52:06,245 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109174821.eml
+2025-01-09 17:52:06,250 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109174857.eml
+2025-01-09 17:52:06,255 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-09 17:52:06,260 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_2.exe
+2025-01-09 17:52:06,265 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_3.exe
+2025-01-09 17:53:02,500 - DEBUG - 訪問首頁
+2025-01-09 17:53:02,503 - INFO - 127.0.0.1 - - [09/Jan/2025 17:53:02] "GET / HTTP/1.1" 200 -
+2025-01-09 17:53:02,601 - INFO - 127.0.0.1 - - [09/Jan/2025 17:53:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:53:09,028 - INFO - 檔案上傳成功: 20250109175308.eml 到 /tmp/email_analyzer_uploads/20250109175308.eml
+2025-01-09 17:53:09,087 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:53:09,088 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:53:09,090 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:53:09,122 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-09 17:53:09,124 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:53:09,126 - DEBUG - 提取的 URLs: []
+2025-01-09 17:53:10,055 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:53:10,106 - INFO - 127.0.0.1 - - [09/Jan/2025 17:53:10] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:58:06,282 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250109175308.eml
+2025-01-09 17:58:06,284 - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-09 17:58:19,330 - DEBUG - 訪問首頁
+2025-01-09 17:58:19,333 - INFO - 127.0.0.1 - - [09/Jan/2025 17:58:19] "GET / HTTP/1.1" 200 -
+2025-01-09 17:58:19,576 - INFO - 127.0.0.1 - - [09/Jan/2025 17:58:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:58:24,237 - INFO - 檔案上傳成功: 20250109175824.eml 到 /tmp/email_analyzer_uploads/20250109175824.eml
+2025-01-09 17:58:24,308 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:58:24,310 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:58:24,312 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:58:24,344 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-09 17:58:24,346 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:58:24,349 - DEBUG - 提取的 URLs: []
+2025-01-09 17:58:25,294 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:58:25,338 - INFO - 127.0.0.1 - - [09/Jan/2025 17:58:25] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:59:06,562 - DEBUG - 訪問首頁
+2025-01-09 17:59:06,564 - INFO - 127.0.0.1 - - [09/Jan/2025 17:59:06] "GET / HTTP/1.1" 200 -
+2025-01-09 17:59:06,664 - INFO - 127.0.0.1 - - [09/Jan/2025 17:59:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-09 17:59:11,419 - INFO - 檔案上傳成功: 20250109175911.eml 到 /tmp/email_analyzer_uploads/20250109175911.eml
+2025-01-09 17:59:11,483 - DEBUG - 清理前的 CC 列表: []
+2025-01-09 17:59:11,484 - DEBUG - 清理後的 CC 列表: []
+2025-01-09 17:59:11,487 - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-09 17:59:11,512 - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-09 17:59:11,514 - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-09 17:59:11,516 - DEBUG - 提取的 URLs: []
+2025-01-09 17:59:13,093 - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-09 17:59:13,187 - INFO - 127.0.0.1 - - [09/Jan/2025 17:59:13] "POST /upload HTTP/1.1" 200 -
+2025-01-09 17:59:20,315 - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-09 17:59:20,861 - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-09 17:59:20,895 - INFO - 127.0.0.1 - - [09/Jan/2025 17:59:20] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-09 17:59:25,015 - DEBUG - 訪問首頁
+2025-01-09 17:59:25,017 - INFO - 127.0.0.1 - - [09/Jan/2025 17:59:25] "GET / HTTP/1.1" 200 -
+2025-01-09 17:59:25,139 - INFO - 127.0.0.1 - - [09/Jan/2025 17:59:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

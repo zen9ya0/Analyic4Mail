@@ -60,9 +60,16 @@
                     }
                 } else {
                     const result = await response.json();
-                    responseDiv.className = 'error';
-                    responseDiv.style.display = "block";
-                    responseDiv.innerText = result.error || '上傳失敗，請稍後再試！';
+                    if (result.redirect) {
+                        // 顯示警告視窗
+                        alert(result.error);
+                        // 重新導向到首頁
+                        window.location.href = '/';
+                    } else {
+                        responseDiv.className = 'error';
+                        responseDiv.style.display = "block";
+                        responseDiv.innerText = result.error || '上傳失敗，請稍後再試！';
+                    }
                 }
             } catch (error) {
                 responseDiv.className = 'error';

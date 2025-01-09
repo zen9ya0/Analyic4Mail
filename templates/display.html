@@ -216,18 +216,19 @@
     <div id="email-info" class="tab-content active">
         <table>
             <tr>
-                <th>寄件人</th>
-                <td>{{ sender or '' }}</td>
+                <th style="background-color: #007bff; color: white;">寄件人</th>
+                <td style="background-color: #f9f9f9;">{{ sender or '' }}</td>
             </tr>
             <tr>
-                <th>回覆收件人</th>
-                <td style="color: {% if reply_to and reply_to != sender %} red {% endif %};">
+                <th style="background-color: #007bff; color: white;">回覆收件人</th>
+                <td style="background-color: #f9f9f9; color: {% if reply_to and reply_to != sender %} red {% endif %};">
+        
                     {{ reply_to or '' }}
                 </td>
             </tr>
             <tr>
-                <th>收件人</th>
-                <td>
+                <th style="background-color: #007bff; color: white;">收件人</th>
+                <td style="background-color: #f9f9f9;">
                     {% if recipient %}
                         {% for r in recipient.split(',') %}
                             <span class="recipient">{{ r }}</span><br> <!-- 每個收件人換行 -->
@@ -238,8 +239,8 @@
                 </td>
             </tr>
             <tr>
-                <th>副本收件人</th>
-                <td>
+                <th style="background-color: #007bff; color: white;">副本收件人</th>
+                <td style="background-color: #f9f9f9;">
                     {% if cc %}
                         <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
                             {% for email in cc.split(',') %}
@@ -252,16 +253,16 @@
                 </td>
             </tr>
             <tr>
-                <th>主旨</th>
-                <td>{{ subject or '' }}</td>
+                <th style="background-color: #007bff; color: white;">主旨</th>
+                <td style="background-color: #f9f9f9;">{{ subject or '' }}</td>
             </tr>
             <tr>
-                <th>內文</th>
-                <td><pre>{{ body or '' }}</pre></td>
+                <th style="background-color: #007bff; color: white;">內文</th>
+                <td style="background-color: #f9f9f9;"><pre>{{ body or '' }}</pre></td>
             </tr>
             <tr>
-                <th>內文網址</th>
-                <td>
+                <th style="background-color: #007bff; color: white;">內文網址</th>
+                <td style="background-color: #f9f9f9;">
                     {% if urls %}
                         <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
                             {% for url in urls %}
@@ -279,8 +280,8 @@
                 </td>
             </tr>
             <tr>
-                <th>附件</th>
-                <td>
+                <th style="background-color: #007bff; color: white;">附件</th>
+                <td style="background-color: #f9f9f9;">
                     {% if attachments %}
                         <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
                             {% for attachment in attachments %}
@@ -302,10 +303,10 @@
         <table>
             <thead>
                 <tr>
-                    <th>來源</th>
-                    <th>目的</th>
-                    <th>時間</th>
-                    <th>延遲</th>
+                    <th style="background-color: #007bff; color: white;">來源</th>
+                    <th style="background-color: #007bff; color: white;">目的</th>
+                    <th style="background-color: #007bff; color: white;">時間</th>
+                    <th style="background-color: #007bff; color: white;">延遲</th>
                 </tr>
             </thead>
             <tbody>
@@ -531,23 +532,29 @@
                     const resultDiv = document.getElementById('virustotal-result');
                     resultDiv.innerHTML = ''; // 清空之前的內容
 
+                    if (data.message) {
+                        // 顯示 API 回應的訊息
+                        resultDiv.innerHTML = `<p style="color: orange;">${data.message}</p>`;
+                    }
+
                     if (data.error) {
-                        resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
-                    } else if (!data.data || !data.data.attributes || !data.data.attributes.last_analysis_results) {
-                        resultDiv.innerHTML = `<p>查無資料。</p>`;
-                    } else {
-                        // 提取所需信息
+                        resultDiv.innerHTML = `<p style="color: red;">${data.message}</p>`;
+                    }
+
+                    // 即使有錯誤或訊息，仍然顯示可用的資訊
+                    if (data.data && data.data.attributes) {
                         const attributes = data.data.attributes;
                         const size = attributes.size || '未知';
                         const typeTags = attributes.type_tags ? attributes.type_tags.join(', ') : '未知';
                         const typeExtension = attributes.type_extension || '未知';
-                        const names = attributes.names ? attributes.names.slice().sort().join(', ') : '未知'; // 排序檔案名稱
+                        const names = attributes.names ? attributes.names.slice().sort().join(', ') : '未知';
 
                         // 格式化並顯示結果
-                        const analysisResults = attributes.last_analysis_results;
+                        const analysisResults = attributes.last_analysis_results || {};
                         const totalEngines = Object.keys(analysisResults).length;
-                        const positiveResults = Object.values(analysisResults).filter(result => result.result && result.result !== 'clean').length;
-                        const score = `${positiveResults}/${totalEngines}`;
+                        const positiveResults = Object.values(analysisResults)
+                            .filter(result => result.result && result.result !== 'clean').length;
+                        const score = totalEngines > 0 ? `${positiveResults}/${totalEngines}` : 'N/A';
 
                         const resultHTML = `
                             <h3>分析結果</h3>
@@ -556,26 +563,28 @@
                             <p><strong>類型標籤:</strong> ${typeTags}</p>
                             <p><strong>類型擴展名:</strong> ${typeExtension}</p>
                             <p><strong>檔案名稱:</strong> ${names}</p>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>引擎</th>
-                                        <th>結果</th>
-                                        <th>更新時間</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${Object.entries(analysisResults).map(([engine, result]) => `
+                            ${totalEngines > 0 ? `
+                                <table>
+                                    <thead>
                                         <tr>
-                                            <td>${engine}</td>
-                                            <td>${result.result || '無檢測'}</td>
-                                            <td>${new Date(result.update_time).toLocaleString()}</td>
+                                            <th>引擎</th>
+                                            <th>結果</th>
+                                            <th>更新時間</th>
                                         </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        ${Object.entries(analysisResults).map(([engine, result]) => `
+                                            <tr>
+                                                <td>${engine}</td>
+                                                <td>${result.result || '無檢測'}</td>
+                                                <td>${new Date(result.update_time).toLocaleString()}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            ` : '<p>無掃描結果</p>'}
                         `;
-                        resultDiv.innerHTML = resultHTML;
+                        resultDiv.innerHTML += resultHTML;
                     }
 
                     // 自動切換到 Virustotal 標籤
@@ -583,7 +592,7 @@
                 })
                 .catch(error => {
                     const resultDiv = document.getElementById('virustotal-result');
-                    resultDiv.innerHTML = `<p style="color: red;">無法獲取 VirusTotal 報告: ${error.message}</p>`;
+                    resultDiv.innerHTML = `<p style="color: red;">系統錯誤: ${error.message}</p>`;
                     showTab('virustotal');
                 });
         }

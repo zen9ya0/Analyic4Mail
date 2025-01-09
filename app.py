@@ -16,6 +16,9 @@ from email.utils import parseaddr, getaddresses
 import datetime  # 確保導入 datetime 模組
 from AbuseIPDB import check_ip  # 導入 check_ip 函數
 from VT import VirusTotalAPI, load_config  # 確保正確導入
+import threading
+import time
+from config import CLEANUP_INTERVAL
 
 app = Flask(__name__)
 
@@ -61,11 +64,8 @@ def upload_file():
     
     file = request.files['file']
     if file and allowed_file(file.filename):
-        # 獲取當前時間並格式化為 yyyymmddhhmmss
         timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-        # 獲取檔案的擴展名
         file_extension = file.filename.rsplit('.', 1)[1].lower()
-        # 生成新的檔案名稱
         new_filename = f"{timestamp}.{file_extension}"
         file_path = os.path.join(UPLOAD_FOLDER, new_filename)
         
@@ -74,7 +74,15 @@ def upload_file():
             logging.info(f'檔案上傳成功: {new_filename} 到 {file_path}')
             
             try:
-                msg = parse_email(file_path, new_filename)  # 使用新的檔案名稱
+                msg = parse_email(file_path, new_filename)
+                
+                # 檢查是否為不合法格式
+                if isinstance(msg, dict) and msg.get('error') == 'invalid_format':
+                    return jsonify({
+                        'error': msg['message'],
+                        'redirect': True
+                    }), 400
+
                 if not msg:
                     return jsonify({'error': '無法解析郵件'}), 500
 
@@ -131,7 +139,16 @@ def parse_email(file_path, new_filename):
         attachments = []
         if new_filename.lower().endswith('.eml'):
             with open(file_path, 'rb') as f:
-                msg = BytesParser(policy=policy.default).parse(f)
+                content = f.read().decode('utf-8', errors='ignore')
+                
+                # 檢查不合法的郵件格式
+                if 'Content-Type: text/html; charset=3Dutf-8' in content:
+                    return {
+                        'error': 'invalid_format',
+                        'message': '郵件格式無法辨識'
+                    }
+                
+                msg = BytesParser(policy=policy.default).parsebytes(content.encode('utf-8'))
                 attachments = []
                 
                 # 檢查郵件是否為多部分
@@ -163,6 +180,14 @@ def parse_email(file_path, new_filename):
                 }
         elif new_filename.lower().endswith('.msg'):
             msg = extract_msg.Message(file_path)
+            
+            # 檢查 MSG 檔案的內容
+            if hasattr(msg, 'body') and 'Content-Type: text/html; charset=3Dutf-8' in msg.body:
+                return {
+                    'error': 'invalid_format',
+                    'message': '郵件格式無法辨識'
+                }
+                
             attachments = []
             for attachment in msg.attachments:
                 try:
@@ -322,10 +347,31 @@ def virustotal_report(file_hash):
         
         # 獲取報告
         report = vt.get_file_report(file_hash)
+        
+        # 檢查是否有錯誤訊息
+        if report.get('message'):
+            logging.info(f"VirusTotal API 回應: {report['message']}")
+        
+        if report.get('error'):
+            logging.error(f"VirusTotal API 錯誤: {report['message']}")
+        
         return jsonify(report)
+        
     except Exception as e:
         logging.error(f'獲取 VirusTotal 報告時發生錯誤: {e}')
-        return jsonify({'error': '無法獲取 VirusTotal 報告'}), 500
+        return jsonify({
+            'error': True,
+            'message': '無法獲取 VirusTotal 報告',
+            'data': {
+                'attributes': {
+                    'last_analysis_results': {},
+                    'size': 0,
+                    'type_tags': ['錯誤'],
+                    'type_extension': '錯誤',
+                    'names': ['系統錯誤']
+                }
+            }
+        }), 500
 
 @app.route('/virustotal/scan_url', methods=['POST'])
 def virustotal_scan_url():
@@ -346,6 +392,27 @@ def virustotal_scan_url():
     except Exception as e:
         logging.error(f'執行 URL 掃描時發生錯誤: {e}')
         return jsonify({'error': '無法執行 URL 掃描'}), 500
+
+def cleanup_upload_folder():
+    """定期清除上傳目錄中的檔案"""
+    while True:
+        try:
+            now = time.time()
+            for filename in os.listdir(UPLOAD_FOLDER):
+                file_path = os.path.join(UPLOAD_FOLDER, filename)
+                if os.path.isfile(file_path):
+                    # 檢查檔案的最後修改時間
+                    file_age = now - os.path.getmtime(file_path)
+                    if file_age > CLEANUP_INTERVAL:
+                        os.remove(file_path)
+                        logging.info(f'已刪除過期檔案: {file_path}')
+        except Exception as e:
+            logging.error(f'清除上傳目錄時發生錯誤: {e}')
+        time.sleep(CLEANUP_INTERVAL)
+
+# 在應用啟動時啟動清除線程
+cleanup_thread = threading.Thread(target=cleanup_upload_folder, daemon=True)
+cleanup_thread.start()
 
 if __name__ == '__main__':
     app.run(debug=True)
