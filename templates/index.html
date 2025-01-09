@@ -21,7 +21,6 @@
     <script>
         document.getElementById('uploadForm').onsubmit = async (e) => {
             e.preventDefault();
-
             const formData = new FormData();
             const fileInput = document.getElementById('fileInput');
             const responseDiv = document.getElementById('response');
@@ -46,18 +45,10 @@
                 });
 
                 if (response.ok) {
-                    const contentType = response.headers.get('Content-Type');
-                    if (contentType && contentType.includes('text/html')) {
-                        const html = await response.text();
-                        document.open();
-                        document.write(html);
-                        document.close();
-                    } else {
-                        const result = await response.json();
-                        responseDiv.className = 'success';
-                        responseDiv.style.display = "block";
-                        responseDiv.innerText = result.message || '檔案已成功處理！';
-                    }
+                    const result = await response.json();
+                    responseDiv.className = 'success';
+                    responseDiv.style.display = "block";
+                    responseDiv.innerText = result.message || '檔案已成功處理！';
                 } else {
                     const result = await response.json();
                     responseDiv.className = 'error';
