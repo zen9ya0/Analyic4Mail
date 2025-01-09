@@ -36,12 +36,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
 }
 
-h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
 /* 卡片容器 */
 .card {
     background-color: var(--card-background);
@@ -50,26 +44,6 @@ h1 {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* 上傳區域樣式優化 */
-.upload-area {
-    background-color: var(--card-background);
-    border: 2px dashed var(--primary-color);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.upload-area:hover {
-    border-color: var(--primary-hover);
-    background-color: #f8fafc;
 }
 
 /* 按鈕樣式統一 */
@@ -84,11 +58,6 @@ button, .button {
     transition: all 0.2s ease;
 }
 
-button:hover, .button:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
-}
-
 /* 表格樣式現代化 */
 .data-table, table {
     width: 100%;
@@ -98,210 +67,6 @@ button:hover, .button:hover {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-md);
-}
-
-/* 表頭樣式 */
-.data-table th, table th {
-    background-color: var(--primary-color);
-    color: white;
-    font-weight: 600;
-    padding: 1rem;
-    text-align: left;
-}
-
-/* 表格內容樣式 */
-.data-table td, table td {
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    background-color: var(--card-background);
-}
-
-/* 表格行交替顏色 */
-.data-table tr:nth-child(even), table tr:nth-child(even) {
-    background-color: #f8fafc;
-}
-
-/* 表格行懸停效果 */
-.data-table tr:hover, table tr:hover {
-    background-color: #edf2f7;
-}
-
-/* 特殊欄位樣式 */
-td.sender-cell {
-    background-color: #e8f5e9;  /* 淺綠色背景 */
-    font-weight: 500;
-}
-
-td.recipient-cell {
-    background-color: #e3f2fd;  /* 淺藍色背景 */
-    font-weight: 500;
-}
-
-td.subject-cell {
-    background-color: #fff3e0;  /* 淺橙色背景 */
-    font-weight: 500;
-}
-
-/* 警告狀態 */
-td.warning {
-    background-color: #fff3e0;  /* 警告色背景 */
-    color: #ed6c02;
-    font-weight: 500;
-}
-
-/* 危險狀態 */
-td.danger {
-    background-color: #fef2f2;  /* 危險色背景 */
-    color: #dc2626;
-    font-weight: 500;
-}
-
-/* URL 列表樣式 */
-.url-list {
-    list-style: none;
-    padding: 0;
-}
-
-.url-list li {
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    background-color: #f8fafc;
-    border-radius: var(--radius-md);
-    border-left: 4px solid var(--primary-color);
-}
-
-/* 附件列表樣式 */
-.attachment-list {
-    list-style: none;
-    padding: 0;
-}
-
-.attachment-list li {
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    background-color: #f8fafc;
-    border-radius: var(--radius-md);
-    border-left: 4px solid var(--warning-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* 狀態指示器優化 */
-.status-indicator {
-    padding: 1.5rem;
-    border-radius: var(--radius-lg);
-    text-align: center;
-    margin: 1rem 0;
-}
-
-.status-indicator.status-danger {
-    background-color: #fef2f2;
-    border: 2px solid var(--danger-color);
-}
-
-.status-indicator.status-safe {
-    background-color: #f0fdf4;
-    border: 2px solid var(--success-color);
-}
-
-/* 分數顯示優化 */
-.score-display {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 1rem 0;
-    color: var(--text-primary);
-}
-
-/* 標籤頁樣式優化 */
-.tabs {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    background-color: var(--card-background);
-    padding: 0.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-}
-
-.tab {
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-weight: 500;
-}
-
-.tab.active {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-    body {
-        padding: 1rem;
-    }
-
-    .tabs {
-        flex-direction: column;
-    }
-
-    .card {
-        padding: 1rem;
-    }
-
-    table {
-        display: block;
-        overflow-x: auto;
-    }
-}
-
-/* 動畫效果 */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(1rem);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-in {
-    animation: slideIn 0.3s ease-out;
-}
-
-/* 工具提示 */
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem;
-    background-color: var(--text-primary);
-    color: white;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    white-space: nowrap;
-    z-index: 10;
-}
-
-/* 掃描結果容器優化 */
-.scan-result {
-    background-color: var(--card-background);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    box-shadow: var(--shadow-md);
-    animation: slideIn 0.3s ease-out;
 }
 
 /* 進度條優化 */
@@ -327,47 +92,4 @@ td.danger {
 .status-fail {
     color: var(--danger-color);
     font-weight: 500;
-}
-
-.status-neutral {
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.status-error {
-    color: var(--warning-color);
-    font-weight: 500;
-}
-
-.checking {
-    color: var(--primary-color);
-    font-style: italic;
-}
-
-.details-toggle {
-    display: inline-block;
-    margin-left: 8px;
-    position: relative;
-    cursor: pointer;
-}
-
-.details-content {
-    display: none;
-    position: absolute;
-    background: white;
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-md);
-    z-index: 100;
-    min-width: 200px;
-    max-width: 400px;
-}
-
-.details-content.show {
-    display: block;
-}
-
-#auth-check-table td {
-    position: relative;
 }

@@ -24,52 +24,21 @@ def check_ip(ip_address, max_age_in_days=15):
     
     # API 端點
     url = 'https://api.abuseipdb.com/api/v2/check'
-
-    # 查詢參數
-    querystring = {
-        'ipAddress': ip_address,
-        'maxAgeInDays': str(max_age_in_days)
-    }
-
-    # 請求標頭
-    headers = {
-        'Accept': 'application/json',
-        'Key': ABUSEIPDB_API_KEY
-    }
+    querystring = {'ipAddress': ip_address, 'maxAgeInDays': str(max_age_in_days)}
+    headers = {'Accept': 'application/json', 'Key': ABUSEIPDB_API_KEY}
 
     try:
-        logger.debug(f"發送請求到 AbuseIPDB API: {url}")
-        logger.debug(f"查詢參數: {querystring}")
+        logger.debug(f"發送請求到 AbuseIPDB API: {url}，查詢參數: {querystring}")
+        response = requests.get(url, headers=headers, params=querystring)
+        response.raise_for_status()  # 確保響應狀態為 200
         
-        # 發送請求
-        response = requests.request(method='GET', 
-                                 url=url, 
-                                 headers=headers, 
-                                 params=querystring)
-        
-        # 檢查響應狀態
-        response.raise_for_status()
-        
-        # 解析響應
         decoded_response = response.json()
         logger.debug(f"API 響應: {decoded_response}")
-        
         return decoded_response
         
     except requests.exceptions.RequestException as e:
-        error_msg = f'API request failed: {str(e)}'
-        logger.error(error_msg)
-        return {
-            'error': True,
-            'message': error_msg
-        }
-    except Exception as e:
-        error_msg = f'Unexpected error: {str(e)}'
-        logger.error(error_msg)
-        return {
-            'error': True,
-            'message': error_msg
-        }
+        logger.error(f'API request failed: {e}')
+        return {'error': True, 'message': str(e)}
 
 # if __name__ == "__main__":
 #     # 測試 IP 地址
