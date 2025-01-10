@@ -19,6 +19,7 @@ from VT import VirusTotalAPI, load_config  # 確保正確導入
 import threading
 import time
 from config import CLEANUP_INTERVAL
+from BlacklistMaster import BlacklistChecker  # 導入 BlacklistChecker
 
 app = Flask(__name__)
 
@@ -301,8 +302,20 @@ def check_ip_route():
     if not ip:
         return jsonify({'error': 'IP 地址未提供'}), 400
 
-    result = check_ip(ip)  # 調用 AbuseIPDB 的檢查函數
-    return jsonify(result)
+    # 檢查 AbuseIPDB
+    result_abuseipdb = check_ip(ip)  # 調用 AbuseIPDB 的檢查函數
+
+    # 檢查 BlacklistMaster
+    blacklist_checker = BlacklistChecker()
+    result_blacklistmaster = blacklist_checker.check_ip(ip)  # 調用 BlacklistMaster 的檢查函數
+
+    # 合併結果
+    combined_result = {
+        'abuseipdb': result_abuseipdb,
+        'blacklistmaster': result_blacklistmaster
+    }
+
+    return jsonify(combined_result)
 
 @app.route('/download/<filename>')
 def download_file(filename):

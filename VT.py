@@ -7,8 +7,28 @@ import importlib.util
 import time
 import logging
 
+def setup_logging():
+    """Setup logging configuration"""
+    try:
+        config = load_config()
+        log_level = getattr(logging, config.LOG_LEVEL)
+        logging.basicConfig(
+            level=log_level,
+            format=config.LOG_FORMAT,
+            handlers=[
+                logging.FileHandler('vt_debug.log'),
+                logging.StreamHandler()
+            ]
+        )
+        logger = logging.getLogger(__name__)
+        logger.debug("Logging setup completed")
+        return logger
+    except Exception as e:
+        print(f"Error setting up logging: {str(e)}")
+        return logging.getLogger(__name__)
+
 def load_config():
-    """Load API key from config.py"""
+    """Load API key and settings from config.py"""
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         config_path = os.path.join(current_dir, 'config.py')
@@ -17,7 +37,7 @@ def load_config():
         config = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(config)
         
-        return config.VT_API_KEY
+        return config
     except Exception as e:
         raise Exception(f"Error loading config.py: {str(e)}")
 
@@ -29,6 +49,7 @@ class VirusTotalAPI:
             "accept": "application/json",
             "x-apikey": api_key
         }
+        self.logger = logging.getLogger(__name__)
 
     def check_ip(self, ip_address: str) -> dict:
         """Check IP address reputation"""
@@ -108,55 +129,63 @@ class VirusTotalAPI:
     def scan_url(self, target_url: str, max_retries: int = 5, wait_time: int = 3) -> dict:
         """
         Scan a URL and get the analysis results
-        
-        Args:
-            target_url: URL to scan
-            max_retries: Maximum number of retries for getting analysis results
-            wait_time: Time to wait between retries in seconds
-            
-        Returns:
-            dict: Analysis results
         """
+        self.logger.debug(f"Starting URL scan for: {target_url}")
+        
         # First request: Submit URL for scanning
         submit_url = f"{self.base_url}/urls"
         headers = {**self.headers, "content-type": "application/x-www-form-urlencoded"}
         payload = {"url": target_url}
         
-        response = requests.post(submit_url, data=payload, headers=headers)
-        submit_result = response.json()
-        
-        # Extract analysis ID from the response
         try:
-            analysis_id = submit_result['data']['id']
-            print(f"Analysis ID: {analysis_id}")
-        except KeyError:
-            raise Exception("Failed to get analysis ID from response")
-        
-        # Second request: Get analysis results with retries
-        analysis_url = f"{self.base_url}/analyses/{analysis_id}"
-        
-        for attempt in range(max_retries):
-            response = requests.get(analysis_url, headers=self.headers)
-            result = response.json()
+            self.logger.debug(f"Submitting URL to VT API: {submit_url}")
+            response = requests.post(submit_url, data=payload, headers=headers)
+            submit_result = response.json()
+            self.logger.debug(f"Submit response: {json.dumps(submit_result, indent=2)}")
             
-            # Check if analysis is completed
-            try:
+            # Extract analysis ID from the response
+            analysis_id = submit_result['data']['id']
+            self.logger.info(f"Analysis ID: {analysis_id}")
+            
+            # Second request: Get analysis results with retries
+            analysis_url = f"{self.base_url}/analyses/{analysis_id}"
+            
+            for attempt in range(max_retries):
+                self.logger.debug(f"Attempt {attempt + 1}/{max_retries} to get analysis results")
+                response = requests.get(analysis_url, headers=self.headers)
+                result = response.json()
+                
                 status = result['data']['attributes']['status']
+                self.logger.debug(f"Analysis status: {status}")
+                
                 if status == "completed":
+                    self.logger.info("Analysis completed successfully")
                     return result
                 elif status == "failed":
+                    self.logger.error("Analysis failed")
                     raise Exception("Analysis failed")
                 else:
-                    print(f"Analysis in progress (status: {status}), waiting {wait_time} seconds...")
+                    self.logger.debug(f"Analysis in progress, waiting {wait_time} seconds...")
                     time.sleep(wait_time)
-            except KeyError:
-                raise Exception("Unexpected response format")
-        
-        raise Exception(f"Analysis not completed after {max_retries} retries")
+            
+            self.logger.error(f"Analysis not completed after {max_retries} retries")
+            raise Exception(f"Analysis not completed after {max_retries} retries")
+            
+        except KeyError as e:
+            self.logger.error(f"KeyError in scan_url: {str(e)}")
+            raise Exception(f"Failed to process API response: {str(e)}")
+        except requests.exceptions.RequestException as e:
+            self.logger.error(f"Request error in scan_url: {str(e)}")
+            raise Exception(f"API request failed: {str(e)}")
+        except Exception as e:
+            self.logger.error(f"Unexpected error in scan_url: {str(e)}")
+            raise
 
 def main():
-    parser = argparse.ArgumentParser(description='VirusTotal API Integration Tool')
+    logger = setup_logging()
+    logger.debug("Starting VT.py main function")
     
+    parser = argparse.ArgumentParser(description='VirusTotal API Integration Tool')
     subparsers = parser.add_subparsers(dest='command', help='Command to execute')
     
     # IP address parser
@@ -185,8 +214,10 @@ def main():
     args = parser.parse_args()
     
     try:
-        # Load API key from config
-        api_key = load_config()
+        # Load config and API key
+        config = load_config()
+        api_key = config.VT_API_KEY
+        logger.debug("Config loaded successfully")
         
         # Initialize API
         vt = VirusTotalAPI(api_key)
@@ -201,6 +232,7 @@ def main():
         elif args.command == 'report':
             result = vt.get_file_report(args.file_hash)
         elif args.command == 'url':
+            logger.info(f"Scanning URL: {args.url}")
             result = vt.scan_url(args.url, args.retries, args.wait)
         else:
             parser.print_help()
@@ -208,8 +240,10 @@ def main():
         
         # Print result in pretty format
         print(json.dumps(result, indent=2))
+        logger.debug("Command executed successfully")
         
     except Exception as e:
+        logger.error(f"Error in main: {str(e)}")
         print(f"Error: {str(e)}")
 
 if __name__ == "__main__":

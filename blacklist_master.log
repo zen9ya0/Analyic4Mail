@@ -1,0 +1,178 @@
+2025-01-10 10:24:24,061 - BlacklistMaster - INFO - Initializing BlacklistChecker
+2025-01-10 10:24:24,064 - BlacklistMaster - DEBUG - Base URL: https://www.blacklistmaster.com/restapi/v1
+2025-01-10 10:24:24,066 - BlacklistMaster - DEBUG - API Key: ********************************
+2025-01-10 10:24:24,067 - BlacklistMaster - INFO - Testing with IP: 8.8.8.8
+2025-01-10 10:24:24,069 - BlacklistMaster - INFO - Starting IP check for: 8.8.8.8
+2025-01-10 10:24:24,071 - BlacklistMaster - DEBUG - Constructed endpoint: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8?apikey=********************************
+2025-01-10 10:24:24,073 - BlacklistMaster - DEBUG - Making API request
+2025-01-10 10:24:24,089 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.blacklistmaster.com:443
+2025-01-10 10:24:25,230 - urllib3.connectionpool - DEBUG - https://www.blacklistmaster.com:443 "GET /restapi/v1/ip/8.8.8.8?apikey=rV3PJXApDpn9KRTJSo8Yd2f5VTYIvD8x HTTP/1.1" 204 0
+2025-01-10 10:24:25,235 - BlacklistMaster - DEBUG - Response status code: 204
+2025-01-10 10:24:25,236 - BlacklistMaster - INFO - Target is clean (status code 204)
+2025-01-10 10:24:25,238 - BlacklistMaster - INFO - Test result: {
+  "status": "clean",
+  "message": "\u76ee\u6a19\u672a\u88ab\u5217\u5165\u4efb\u4f55\u9ed1\u540d\u55ae",
+  "response_code": 204
+}
+2025-01-10 10:27:12,656 - BlacklistMaster - INFO - Initializing BlacklistChecker
+2025-01-10 10:27:12,657 - BlacklistMaster - DEBUG - Base URL: https://www.blacklistmaster.com/restapi/v1
+2025-01-10 10:27:12,658 - BlacklistMaster - DEBUG - API Key: ********************************
+2025-01-10 10:27:12,658 - BlacklistMaster - INFO - Testing with IP: 8.8.8.8
+2025-01-10 10:27:12,659 - BlacklistMaster - INFO - Starting IP check for: 8.8.8.8
+2025-01-10 10:27:12,660 - BlacklistMaster - DEBUG - Constructed endpoint: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8?apikey=********************************
+2025-01-10 10:27:12,660 - BlacklistMaster - DEBUG - Making API request
+2025-01-10 10:27:12,666 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.blacklistmaster.com:443
+2025-01-10 10:27:13,763 - urllib3.connectionpool - DEBUG - https://www.blacklistmaster.com:443 "GET /restapi/v1/ip/8.8.8.8?apikey=rV3PJXApDpn9KRTJSo8Yd2f5VTYIvD8x HTTP/1.1" 204 0
+2025-01-10 10:27:13,772 - BlacklistMaster - DEBUG - Response status code: 204
+2025-01-10 10:27:13,775 - BlacklistMaster - INFO - Target is clean (status code 204)
+2025-01-10 10:27:13,777 - BlacklistMaster - INFO - Test result: {
+  "status": "clean",
+  "message": "\u76ee\u6a19\u672a\u88ab\u5217\u5165\u4efb\u4f55\u9ed1\u540d\u55ae",
+  "response_code": 204
+}
+2025-01-10 10:27:37,852 - BlacklistMaster - INFO - Initializing BlacklistChecker
+2025-01-10 10:27:37,855 - BlacklistMaster - DEBUG - Base URL: https://www.blacklistmaster.com/restapi/v1
+2025-01-10 10:27:37,857 - BlacklistMaster - DEBUG - API Key: ********************************
+2025-01-10 10:27:37,858 - BlacklistMaster - INFO - Testing with IP: 8.8.8.8
+2025-01-10 10:27:37,860 - BlacklistMaster - INFO - Starting IP check for: 8.8.8.8
+2025-01-10 10:27:37,862 - BlacklistMaster - DEBUG - Constructed endpoint: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8?apikey=********************************
+2025-01-10 10:27:37,865 - BlacklistMaster - DEBUG - Making API request
+2025-01-10 10:27:37,879 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.blacklistmaster.com:443
+2025-01-10 10:27:38,910 - urllib3.connectionpool - DEBUG - https://www.blacklistmaster.com:443 "GET /restapi/v1/ip/8.8.8.8?apikey=rV3PJXApDpn9KRTJSo8Yd2f5VTYIvD8x HTTP/1.1" 204 0
+2025-01-10 10:27:38,918 - BlacklistMaster - DEBUG - Response status code: 204
+2025-01-10 10:27:38,921 - BlacklistMaster - INFO - Target is clean (status code 204)
+2025-01-10 10:27:38,923 - BlacklistMaster - INFO - Test result: {
+  "status": "clean",
+  "message": "\u76ee\u6a19\u672a\u88ab\u5217\u5165\u4efb\u4f55\u9ed1\u540d\u55ae",
+  "response_code": 204
+}
+2025-01-10 10:29:42,073 - BlacklistMaster - INFO - Initializing BlacklistChecker
+2025-01-10 10:29:42,074 - BlacklistMaster - DEBUG - Base URL: https://www.blacklistmaster.com/restapi/v1
+2025-01-10 10:29:42,075 - BlacklistMaster - DEBUG - API Key: ********************************
+2025-01-10 10:29:42,075 - BlacklistMaster - INFO - Checking IP: 159.183.224.104
+2025-01-10 10:29:42,076 - BlacklistMaster - INFO - Starting IP check for: 159.183.224.104
+2025-01-10 10:29:42,077 - BlacklistMaster - DEBUG - Constructed endpoint: https://www.blacklistmaster.com/restapi/v1/ip/159.183.224.104?apikey=********************************
+2025-01-10 10:29:42,077 - BlacklistMaster - DEBUG - Making API request
+2025-01-10 10:29:42,081 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.blacklistmaster.com:443
+2025-01-10 10:29:43,385 - urllib3.connectionpool - DEBUG - https://www.blacklistmaster.com:443 "GET /restapi/v1/ip/159.183.224.104?apikey=rV3PJXApDpn9KRTJSo8Yd2f5VTYIvD8x HTTP/1.1" 200 None
+2025-01-10 10:29:43,395 - BlacklistMaster - DEBUG - Response status code: 200
+2025-01-10 10:29:43,398 - BlacklistMaster - INFO - Received successful response
+2025-01-10 10:29:43,401 - BlacklistMaster - DEBUG - Response content: {
+  "status": "SUCCESS",
+  "API_calls_remaining": 282,
+  "response": "OK",
+  "IPs": [
+    {
+      "ip": "159.183.224.104",
+      "group_name": "",
+      "ip_description": "s.wfbtzhsv.outbound-mail.sendgrid.net",
+      "last_test_date_UTC": "2025-01-10 02:21:56",
+      "blacklist_cnt": "6",
+      "new_blacklist_cnt": "0",
+      "reputationscore": ""
+    }
+  ],
+  "blacklists": [
+    {
+      "blacklist": "bl.0spam.org",
+      "blacklist_name": "0spam Project",
+      "blacklist_url": "https://0spam.org",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "rbl.abuse.ro",
+      "blacklist_name": "Abuse.ro RBL",
+      "blacklist_url": "http://www.abuse.ro",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "bl.blocklist.de",
+      "blacklist_name": "Blocklist.de",
+      "blacklist_url": "http://www.blocklist.de",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "ProjectHoneyPot",
+      "blacklist_name": "Project Honey Pot",
+      "blacklist_url": "https://www.projecthoneypot.org/",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "all.s5h.net",
+      "blacklist_name": "all.s5h.net",
+      "blacklist_url": "http://www.usenix.org.uk/wiki/RBL",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "all.spamrats.com",
+      "blacklist_name": "SpamRATS! all",
+      "blacklist_url": "http://www.spamrats.com",
+      "is_new": "0"
+    }
+  ]
+}
+2025-01-10 10:31:23,578 - BlacklistMaster - INFO - Initializing BlacklistChecker
+2025-01-10 10:31:23,581 - BlacklistMaster - DEBUG - Base URL: https://www.blacklistmaster.com/restapi/v1
+2025-01-10 10:31:23,583 - BlacklistMaster - DEBUG - API Key: ********************************
+2025-01-10 10:31:23,584 - BlacklistMaster - INFO - Checking IP: 159.183.224.104
+2025-01-10 10:31:23,586 - BlacklistMaster - INFO - Starting IP check for: 159.183.224.104
+2025-01-10 10:31:23,588 - BlacklistMaster - DEBUG - Constructed endpoint: https://www.blacklistmaster.com/restapi/v1/ip/159.183.224.104?apikey=********************************
+2025-01-10 10:31:23,591 - BlacklistMaster - DEBUG - Making API request
+2025-01-10 10:31:23,608 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.blacklistmaster.com:443
+2025-01-10 10:31:24,680 - urllib3.connectionpool - DEBUG - https://www.blacklistmaster.com:443 "GET /restapi/v1/ip/159.183.224.104?apikey=rV3PJXApDpn9KRTJSo8Yd2f5VTYIvD8x HTTP/1.1" 200 None
+2025-01-10 10:31:24,689 - BlacklistMaster - DEBUG - Response status code: 200
+2025-01-10 10:31:24,692 - BlacklistMaster - INFO - Received successful response
+2025-01-10 10:31:24,694 - BlacklistMaster - DEBUG - Response content: {
+  "status": "SUCCESS",
+  "API_calls_remaining": 281,
+  "response": "OK",
+  "IPs": [
+    {
+      "ip": "159.183.224.104",
+      "group_name": "",
+      "ip_description": "s.wfbtzhsv.outbound-mail.sendgrid.net",
+      "last_test_date_UTC": "2025-01-10 02:21:56",
+      "blacklist_cnt": "6",
+      "new_blacklist_cnt": "0",
+      "reputationscore": ""
+    }
+  ],
+  "blacklists": [
+    {
+      "blacklist": "bl.0spam.org",
+      "blacklist_name": "0spam Project",
+      "blacklist_url": "https://0spam.org",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "rbl.abuse.ro",
+      "blacklist_name": "Abuse.ro RBL",
+      "blacklist_url": "http://www.abuse.ro",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "bl.blocklist.de",
+      "blacklist_name": "Blocklist.de",
+      "blacklist_url": "http://www.blocklist.de",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "ProjectHoneyPot",
+      "blacklist_name": "Project Honey Pot",
+      "blacklist_url": "https://www.projecthoneypot.org/",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "all.s5h.net",
+      "blacklist_name": "all.s5h.net",
+      "blacklist_url": "http://www.usenix.org.uk/wiki/RBL",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "all.spamrats.com",
+      "blacklist_name": "SpamRATS! all",
+      "blacklist_url": "http://www.spamrats.com",
+      "is_new": "0"
+    }
+  ]
+}
