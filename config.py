@@ -14,4 +14,4 @@ LOG_FILE = 'abuseipdb_debug.log'  # debug log 檔案名稱
 CLEANUP_INTERVAL = 180  # 每小時清除一次
 
 # Logging 設定
-VT_LOG_FILE = 'vt_debug.log'  # VirusTotal debug log 檔案名稱
+#VT_LOG_FILE = 'vt_debug.log'  # VirusTotal debug log 檔案名稱

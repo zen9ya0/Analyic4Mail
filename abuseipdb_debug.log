@@ -2108,3 +2108,81 @@
 2025-01-10 17:59:43,123 - werkzeug - INFO - 127.0.0.1 - - [10/Jan/2025 17:59:43] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
 2025-01-10 18:00:12,278 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250110175634.eml
 2025-01-10 18:00:12,282 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-13 06:21:18,457 - root - INFO - 創建上傳目錄: /tmp/email_analyzer_uploads
+2025-01-13 06:21:18,496 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-13 06:21:18,497 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-13 06:21:18,498 - werkzeug - INFO -  * Restarting with stat
+2025-01-13 06:21:18,907 - werkzeug - WARNING -  * Debugger is active!
+2025-01-13 06:21:18,908 - werkzeug - INFO -  * Debugger PIN: 552-055-279
+2025-01-13 06:21:40,143 - root - DEBUG - 訪問首頁
+2025-01-13 06:21:40,149 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:21:40] "GET / HTTP/1.1" 200 -
+2025-01-13 06:21:40,252 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:21:40] "GET /static/styles.css HTTP/1.1" 200 -
+2025-01-13 06:21:40,441 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:21:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-13 06:21:46,167 - root - INFO - 檔案上傳成功: 20250113062146.eml 到 /tmp/email_analyzer_uploads/20250113062146.eml
+2025-01-13 06:21:46,205 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-13 06:21:46,205 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-13 06:21:46,206 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-13 06:21:46,208 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-13 06:21:46,208 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-13 06:21:46,208 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-13 06:21:46,684 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-13 06:21:46,699 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:21:46] "POST /upload HTTP/1.1" 200 -
+2025-01-13 06:21:53,289 - root - INFO - 開始下載檔案: NOI-5000089027-014.DOC, 路徑: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-13 06:21:53,290 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:21:53] "GET /download/NOI-5000089027-014.DOC HTTP/1.1" 200 -
+2025-01-13 06:22:12,330 - root - ERROR - 獲取檔案報告時發生錯誤: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:22:12,330 - root - INFO - VirusTotal API 回應: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:22:12,330 - root - ERROR - VirusTotal API 錯誤: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:22:12,331 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:22:12] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
+2025-01-13 06:23:54,478 - werkzeug - INFO -  * Detected change in '/workspaces/Analyzer4Mail/VT.py', reloading
+2025-01-13 06:23:54,531 - werkzeug - INFO -  * Restarting with stat
+2025-01-13 06:23:54,919 - werkzeug - WARNING -  * Debugger is active!
+2025-01-13 06:23:54,919 - werkzeug - INFO -  * Debugger PIN: 552-055-279
+2025-01-13 06:24:10,931 - root - DEBUG - 訪問首頁
+2025-01-13 06:24:10,935 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:24:10] "GET / HTTP/1.1" 200 -
+2025-01-13 06:24:11,044 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:24:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-13 06:24:19,372 - root - INFO - 檔案上傳成功: 20250113062419.eml 到 /tmp/email_analyzer_uploads/20250113062419.eml
+2025-01-13 06:24:19,403 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-13 06:24:19,403 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-13 06:24:19,404 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-13 06:24:19,405 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014_1.doc
+2025-01-13 06:24:19,405 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-13 06:24:19,405 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-13 06:24:19,692 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-13 06:24:19,707 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:24:19] "POST /upload HTTP/1.1" 200 -
+2025-01-13 06:24:22,800 - root - ERROR - 獲取檔案報告時發生錯誤: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:24:22,801 - root - INFO - VirusTotal API 回應: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:24:22,801 - root - ERROR - VirusTotal API 錯誤: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:24:22,801 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:24:22] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
+2025-01-13 06:26:54,903 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250113062146.eml
+2025-01-13 06:26:54,903 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-13 06:28:12,102 - werkzeug - INFO -  * Detected change in '/workspaces/Analyzer4Mail/config.py', reloading
+2025-01-13 06:28:12,174 - werkzeug - INFO -  * Restarting with stat
+2025-01-13 06:28:12,595 - werkzeug - WARNING -  * Debugger is active!
+2025-01-13 06:28:12,596 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014_1.doc
+2025-01-13 06:28:12,596 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250113062419.eml
+2025-01-13 06:28:12,597 - werkzeug - INFO -  * Debugger PIN: 552-055-279
+2025-01-13 06:29:04,822 - werkzeug - INFO -  * Detected change in '/workspaces/Analyzer4Mail/config.py', reloading
+2025-01-13 06:29:04,870 - werkzeug - INFO -  * Restarting with stat
+2025-01-13 06:29:37,194 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-13 06:29:37,194 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-13 06:29:37,195 - werkzeug - INFO -  * Restarting with stat
+2025-01-13 06:29:37,563 - werkzeug - WARNING -  * Debugger is active!
+2025-01-13 06:29:37,564 - werkzeug - INFO -  * Debugger PIN: 552-055-279
+2025-01-13 06:29:41,147 - root - DEBUG - 訪問首頁
+2025-01-13 06:29:41,151 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:29:41] "GET / HTTP/1.1" 200 -
+2025-01-13 06:29:41,251 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:29:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-13 06:29:47,065 - root - INFO - 檔案上傳成功: 20250113062947.eml 到 /tmp/email_analyzer_uploads/20250113062947.eml
+2025-01-13 06:29:47,099 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-13 06:29:47,100 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-13 06:29:47,100 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-13 06:29:47,102 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-13 06:29:47,102 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-13 06:29:47,103 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-13 06:29:47,536 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-13 06:29:47,550 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:29:47] "POST /upload HTTP/1.1" 200 -
+2025-01-13 06:29:54,224 - root - ERROR - 獲取檔案報告時發生錯誤: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:29:54,224 - root - INFO - VirusTotal API 回應: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:29:54,224 - root - ERROR - VirusTotal API 錯誤: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-13 06:29:54,225 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:29:54] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -

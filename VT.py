@@ -6,6 +6,7 @@ from typing import Optional
 import importlib.util
 import time
 import logging
+from config import VT_API_KEY
 
 def setup_logging():
     """Setup logging configuration"""

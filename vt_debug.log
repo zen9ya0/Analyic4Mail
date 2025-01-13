@@ -37,3 +37,25 @@
 2025-01-10 17:52:56,464 - __main__ - DEBUG - Analysis status: completed
 2025-01-10 17:52:56,466 - __main__ - INFO - Analysis completed successfully
 2025-01-10 17:52:56,565 - __main__ - DEBUG - Command executed successfully
+2025-01-13 06:26:01,305 - __main__ - DEBUG - Logging setup completed
+2025-01-13 06:26:01,305 - __main__ - DEBUG - Starting VT.py main function
+2025-01-13 06:26:01,307 - __main__ - DEBUG - Config loaded successfully
+2025-01-13 06:26:11,685 - __main__ - DEBUG - Logging setup completed
+2025-01-13 06:26:11,686 - __main__ - DEBUG - Starting VT.py main function
+2025-01-13 06:26:23,763 - __main__ - DEBUG - Logging setup completed
+2025-01-13 06:26:23,763 - __main__ - DEBUG - Starting VT.py main function
+2025-01-13 06:26:23,766 - __main__ - DEBUG - Config loaded successfully
+2025-01-13 06:26:23,767 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-13 06:26:24,153 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/11" 404 None
+2025-01-13 06:26:24,154 - __main__ - DEBUG - Command executed successfully
+2025-01-13 06:26:43,227 - __main__ - DEBUG - Logging setup completed
+2025-01-13 06:26:43,235 - __main__ - DEBUG - Starting VT.py main function
+2025-01-13 06:26:47,043 - __main__ - DEBUG - Logging setup completed
+2025-01-13 06:26:47,043 - __main__ - DEBUG - Starting VT.py main function
+2025-01-13 06:26:47,045 - __main__ - DEBUG - Config loaded successfully
+2025-01-13 06:26:55,622 - __main__ - DEBUG - Logging setup completed
+2025-01-13 06:26:55,623 - __main__ - DEBUG - Starting VT.py main function
+2025-01-13 06:26:55,624 - __main__ - DEBUG - Config loaded successfully
+2025-01-13 06:26:55,626 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-13 06:26:55,949 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/ip_addresses/8.8.8.8 HTTP/11" 200 None
+2025-01-13 06:26:55,953 - __main__ - DEBUG - Command executed successfully
