@@ -1,111 +1,128 @@
+:root {
+    /* 顏色變量 */
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --background-color: #f4f4f9;
+    --text-color: #333;
+    --border-color: #ddd;
+    --table-stripe: #f9f9f9;
+    --table-hover: #f1f1f1;
+    --upload-area-bg: #e9f7fe;
+    
+    /* 間距變量 */
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    
+    /* 陰影變量 */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    /* 圓角變量 */
+    --border-radius: 5px;
+    --border-radius-lg: 10px;
+}
+
+/* 基礎樣式 */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
-    padding: 20px;
+    padding: var(--spacing-lg);
     line-height: 1.6;
 }
+
 h1 {
-    color: #007bff;
+    color: var(--primary-color);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-lg);
 }
+
+/* 表格樣式 */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
 }
+
 th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-md);
     text-align: left;
     vertical-align: middle;
 }
+
 th {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     font-weight: bold;
 }
+
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--table-stripe);
 }
+
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--table-hover);
 }
+
+/* 連結和按鈕共用樣式 */
+.button-style {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-style:hover {
+    background-color: var(--primary-hover);
+}
+
+/* 應用按鈕樣式到具體元素 */
+a, button, .back-to-top, .back-to-home {
+    composes: button-style;
+}
+
+/* 上傳區域樣式 */
+.upload-area {
+    background-color: var(--upload-area-bg);
+    border: 2px dashed var(--primary-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.upload-area input[type="file"] {
+    margin: var(--spacing-sm) 0;
+}
+
+/* 固定位置按鈕 */
+.fixed-button {
+    position: fixed;
+    right: var(--spacing-lg);
+}
+
+.back-to-home {
+    composes: fixed-button;
+    top: var(--spacing-lg);
+}
+
+.back-to-top {
+    composes: fixed-button;
+    bottom: 80px;
+    display: none;
+}
+
+/* 輔助類 */
 .attachment, .recipient {
     display: block;
-}
-a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-a:hover {
-    background-color: #0056b3;
-}
-.upload-area {
-    background-color: #e9f7fe;
-    border: 2px dashed #007bff;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-.upload-area input[type="file"] {
-    margin: 10px 0;
-}
-.upload-area button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.upload-area button:hover {
-    background-color: #0056b3;
-}
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-button:hover {
-    background-color: #0056b3;
-}
-.back-to-top, .back-to-home {
-    position: fixed;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.back-to-top:hover, .back-to-home:hover {
-    background-color: #0056b3;
-}
-.back-to-home {
-    top: 20px;
-    right: 20px;
-}
-.back-to-top {
-    bottom: 80px;
-    right: 20px;
-    display: none;
 } 

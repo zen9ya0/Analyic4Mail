@@ -2186,3 +2186,656 @@
 2025-01-13 06:29:54,224 - root - INFO - VirusTotal API 回應: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
 2025-01-13 06:29:54,224 - root - ERROR - VirusTotal API 錯誤: API 請求失敗: Header part (<module 'config' from '/workspaces/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/workspaces/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
 2025-01-13 06:29:54,225 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 06:29:54] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
+2025-01-14 02:39:15,971 - root - INFO - 創建上傳目錄: /tmp/email_analyzer_uploads
+2025-01-14 02:39:15,981 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-14 02:39:15,982 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-14 02:39:15,982 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 02:39:16,284 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 02:39:16,287 - werkzeug - INFO -  * Debugger PIN: 248-831-845
+2025-01-14 02:39:24,386 - root - DEBUG - 訪問首頁
+2025-01-14 02:39:24,392 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:39:24] "GET / HTTP/1.1" 200 -
+2025-01-14 02:39:24,486 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:39:24] "GET /static/styles.css HTTP/1.1" 200 -
+2025-01-14 02:39:29,723 - root - INFO - 檔案上傳成功: 20250114023929.eml 到 /tmp/email_analyzer_uploads/20250114023929.eml
+2025-01-14 02:39:29,756 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 02:39:29,756 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 02:39:29,756 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 02:39:29,759 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 02:39:29,759 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 02:39:29,759 - root - DEBUG - 提取的 URLs: []
+2025-01-14 02:39:29,953 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 02:39:29,964 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:39:29] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:39:32,361 - root - ERROR - 獲取檔案報告時發生錯誤: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:39:32,361 - root - INFO - VirusTotal API 回應: API 請求失敗: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:39:32,361 - root - ERROR - VirusTotal API 錯誤: API 請求失敗: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:39:32,362 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:39:32] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:42:57,859 - werkzeug - INFO -  * Detected change in '/opt/proj/Analyzer4Mail/VT.py', reloading
+2025-01-14 02:42:57,948 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 02:42:58,149 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114023929.eml
+2025-01-14 02:42:58,150 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 02:42:58,153 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 02:42:58,155 - werkzeug - INFO -  * Debugger PIN: 248-831-845
+2025-01-14 02:43:23,745 - root - DEBUG - 訪問首頁
+2025-01-14 02:43:23,753 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:43:23] "GET / HTTP/1.1" 200 -
+2025-01-14 02:43:23,815 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:43:23] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:43:27,525 - root - INFO - 檔案上傳成功: 20250114024327.eml 到 /tmp/email_analyzer_uploads/20250114024327.eml
+2025-01-14 02:43:27,555 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 02:43:27,555 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 02:43:27,556 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 02:43:27,558 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 02:43:27,558 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 02:43:27,558 - root - DEBUG - 提取的 URLs: []
+2025-01-14 02:43:27,713 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 02:43:27,722 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:43:27] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:43:30,303 - root - ERROR - 獲取檔案報告時發生錯誤: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:43:30,303 - root - INFO - VirusTotal API 回應: API 請求失敗: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:43:30,303 - root - ERROR - VirusTotal API 錯誤: API 請求失敗: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:43:30,303 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:43:30] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:43:31,244 - root - ERROR - 獲取檔案報告時發生錯誤: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:43:31,245 - root - INFO - VirusTotal API 回應: API 請求失敗: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:43:31,245 - root - ERROR - VirusTotal API 錯誤: API 請求失敗: Header part (<module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) from ('x-apikey', <module 'config' from '/opt/proj/Analyzer4Mail/config.py'>) must be of type str or bytes, not <class 'module'>
+2025-01-14 02:43:31,246 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:43:31] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:45:44,117 - werkzeug - INFO -  * Detected change in '/opt/proj/Analyzer4Mail/app.py', reloading
+2025-01-14 02:45:44,207 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 02:45:44,404 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 02:45:44,406 - werkzeug - INFO -  * Debugger PIN: 248-831-845
+2025-01-14 02:46:49,167 - root - DEBUG - 訪問首頁
+2025-01-14 02:46:49,181 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:46:49] "GET / HTTP/1.1" 200 -
+2025-01-14 02:46:49,317 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:46:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:46:53,818 - root - INFO - 檔案上傳成功: 20250114024653.eml 到 /tmp/email_analyzer_uploads/20250114024653.eml
+2025-01-14 02:46:53,879 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-14 02:46:53,880 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-14 02:46:53,880 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-14 02:46:53,881 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 02:46:53,881 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-14 02:46:53,881 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-14 02:46:54,042 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-14 02:46:54,049 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:46:54] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:46:57,469 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:46:57,905 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 404 None
+2025-01-14 02:46:57,908 - root - INFO - VirusTotal API 回應: 在 VirusTotal 資料庫中未找到此檔案
+2025-01-14 02:46:57,910 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:46:57] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
+2025-01-14 02:47:02,599 - root - DEBUG - 訪問首頁
+2025-01-14 02:47:02,600 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:47:02] "GET / HTTP/1.1" 200 -
+2025-01-14 02:47:02,637 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:47:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:47:06,144 - root - INFO - 檔案上傳成功: 20250114024706.eml 到 /tmp/email_analyzer_uploads/20250114024706.eml
+2025-01-14 02:47:06,169 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 02:47:06,169 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 02:47:06,169 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 02:47:06,172 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 02:47:06,172 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 02:47:06,172 - root - DEBUG - 提取的 URLs: []
+2025-01-14 02:47:06,323 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 02:47:06,324 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:47:06] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:47:08,307 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:47:08,705 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:47:08,719 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:47:08] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:47:41,475 - AbuseIPDB - DEBUG - 從輸入中提取到 IP: 172.16.31.96
+2025-01-14 02:47:41,476 - AbuseIPDB - DEBUG - 開始檢查 IP: 172.16.31.96
+2025-01-14 02:47:41,476 - AbuseIPDB - DEBUG - 發送請求到 AbuseIPDB API: https://api.abuseipdb.com/api/v2/check
+2025-01-14 02:47:41,476 - AbuseIPDB - DEBUG - 查詢參數: {'ipAddress': '172.16.31.96', 'maxAgeInDays': '15'}
+2025-01-14 02:47:41,481 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.abuseipdb.com:443
+2025-01-14 02:47:42,291 - urllib3.connectionpool - DEBUG - https://api.abuseipdb.com:443 "GET /api/v2/check?ipAddress=172.16.31.96&maxAgeInDays=15 HTTP/1.1" 200 None
+2025-01-14 02:47:42,292 - AbuseIPDB - DEBUG - 收到響應狀態碼: 200
+2025-01-14 02:47:42,292 - AbuseIPDB - DEBUG - API 響應: {
+  "data": {
+    "ipAddress": "172.16.31.96",
+    "isPublic": false,
+    "ipVersion": 4,
+    "isWhitelisted": null,
+    "abuseConfidenceScore": 0,
+    "countryCode": null,
+    "usageType": "Reserved",
+    "isp": null,
+    "domain": null,
+    "hostnames": [],
+    "isTor": false,
+    "totalReports": 0,
+    "numDistinctUsers": 0,
+    "lastReportedAt": null
+  }
+}
+2025-01-14 02:47:42,293 - BlacklistMaster - INFO - Initializing BlacklistChecker
+2025-01-14 02:47:42,294 - BlacklistMaster - DEBUG - Base URL: https://www.blacklistmaster.com/restapi/v1
+2025-01-14 02:47:42,294 - BlacklistMaster - DEBUG - API Key: ********************************
+2025-01-14 02:47:42,294 - BlacklistMaster - INFO - Starting IP check for: usera ([172.16.31.96])
+2025-01-14 02:47:42,294 - BlacklistMaster - DEBUG - 從輸入中提取到 IP: 172.16.31.96
+2025-01-14 02:47:42,294 - BlacklistMaster - DEBUG - Constructed endpoint: https://www.blacklistmaster.com/restapi/v1/ip/172.16.31.96?apikey=********************************
+2025-01-14 02:47:42,295 - BlacklistMaster - DEBUG - Making API request
+2025-01-14 02:47:42,296 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.blacklistmaster.com:443
+2025-01-14 02:47:43,345 - urllib3.connectionpool - DEBUG - https://www.blacklistmaster.com:443 "GET /restapi/v1/ip/172.16.31.96?apikey=rV3PJXApDpn9KRTJSo8Yd2f5VTYIvD8x HTTP/1.1" 204 0
+2025-01-14 02:47:43,348 - BlacklistMaster - DEBUG - Response status code: 204
+2025-01-14 02:47:43,348 - BlacklistMaster - INFO - Target is clean (status code 204)
+2025-01-14 02:47:43,351 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:47:43] "GET /check_ip?ip=usera%20([172.16.31.96]) HTTP/1.1" 200 -
+2025-01-14 02:48:15,986 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114024327.eml
+2025-01-14 02:48:15,989 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 02:51:15,997 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 02:51:16,002 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114024706.eml
+2025-01-14 02:51:16,005 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114024653.eml
+2025-01-14 02:51:16,006 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 02:51:17,789 - root - DEBUG - 訪問首頁
+2025-01-14 02:51:17,794 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:51:17] "GET / HTTP/1.1" 200 -
+2025-01-14 02:51:17,855 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:51:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:51:21,781 - root - INFO - 檔案上傳成功: 20250114025121.eml 到 /tmp/email_analyzer_uploads/20250114025121.eml
+2025-01-14 02:51:21,814 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 02:51:21,814 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 02:51:21,814 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 02:51:21,817 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 02:51:21,817 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 02:51:21,817 - root - DEBUG - 提取的 URLs: []
+2025-01-14 02:51:21,980 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 02:51:21,991 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:51:21] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:51:24,407 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:51:24,952 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:51:24,958 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:51:24] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:54:44,116 - root - DEBUG - 訪問首頁
+2025-01-14 02:54:44,120 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:54:44] "GET / HTTP/1.1" 200 -
+2025-01-14 02:54:44,172 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:54:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:54:44,406 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114025121.eml
+2025-01-14 02:54:44,407 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 02:54:47,508 - root - INFO - 檔案上傳成功: 20250114025447.eml 到 /tmp/email_analyzer_uploads/20250114025447.eml
+2025-01-14 02:54:47,537 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 02:54:47,537 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 02:54:47,537 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 02:54:47,541 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 02:54:47,541 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 02:54:47,541 - root - DEBUG - 提取的 URLs: []
+2025-01-14 02:54:47,707 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 02:54:47,716 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:54:47] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:54:49,499 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:54:50,913 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:54:50,921 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:54:50] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:57:26,251 - root - DEBUG - 訪問首頁
+2025-01-14 02:57:26,257 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:26] "GET / HTTP/1.1" 200 -
+2025-01-14 02:57:26,314 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:57:29,206 - root - INFO - 檔案上傳成功: 20250114025729.eml 到 /tmp/email_analyzer_uploads/20250114025729.eml
+2025-01-14 02:57:29,235 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 02:57:29,236 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 02:57:29,236 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 02:57:29,239 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 02:57:29,239 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 02:57:29,239 - root - DEBUG - 提取的 URLs: []
+2025-01-14 02:57:29,417 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 02:57:29,427 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:29] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:57:31,870 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:57:32,342 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:57:32,349 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:32] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:57:37,216 - root - DEBUG - 訪問首頁
+2025-01-14 02:57:37,216 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:37] "GET / HTTP/1.1" 200 -
+2025-01-14 02:57:37,254 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:57:43,438 - root - INFO - 檔案上傳成功: 20250114025743.eml 到 /tmp/email_analyzer_uploads/20250114025743.eml
+2025-01-14 02:57:43,466 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-14 02:57:43,467 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-14 02:57:43,467 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-14 02:57:43,469 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 02:57:43,469 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-14 02:57:43,469 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-14 02:57:43,639 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-14 02:57:43,640 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:43] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:57:46,574 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:57:47,108 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 404 None
+2025-01-14 02:57:47,111 - root - INFO - VirusTotal API 回應: 在 VirusTotal 資料庫中未找到此檔案
+2025-01-14 02:57:47,112 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:47] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
+2025-01-14 02:57:57,519 - root - DEBUG - 訪問首頁
+2025-01-14 02:57:57,520 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:57] "GET / HTTP/1.1" 200 -
+2025-01-14 02:57:57,561 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:57:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 02:58:05,306 - root - INFO - 檔案上傳成功: 20250114025805.eml 到 /tmp/email_analyzer_uploads/20250114025805.eml
+2025-01-14 02:58:05,337 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 02:58:05,337 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 02:58:05,338 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 02:58:05,343 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_2.exe
+2025-01-14 02:58:05,343 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 02:58:05,343 - root - DEBUG - 提取的 URLs: []
+2025-01-14 02:58:05,511 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 02:58:05,512 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:58:05] "POST /upload HTTP/1.1" 200 -
+2025-01-14 02:58:07,736 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:58:08,248 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:58:08,255 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:58:08] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 02:58:08,422 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:58:08,885 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:58:08,894 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 02:58:08] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 03:00:10,160 - root - DEBUG - 訪問首頁
+2025-01-14 03:00:10,164 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:00:10] "GET / HTTP/1.1" 200 -
+2025-01-14 03:00:10,217 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:00:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:00:14,347 - root - INFO - 檔案上傳成功: 20250114030014.eml 到 /tmp/email_analyzer_uploads/20250114030014.eml
+2025-01-14 03:00:14,378 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 03:00:14,378 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 03:00:14,378 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 03:00:14,381 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_3.exe
+2025-01-14 03:00:14,382 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 03:00:14,382 - root - DEBUG - 提取的 URLs: []
+2025-01-14 03:00:14,541 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 03:00:14,550 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:00:14] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:00:16,018 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 03:00:16,022 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114025447.eml
+2025-01-14 03:00:16,747 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:00:17,521 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 03:00:17,532 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:00:17] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 03:00:44,414 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114025743.eml
+2025-01-14 03:00:44,420 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 03:00:44,424 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114025729.eml
+2025-01-14 03:00:44,425 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:03:16,027 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_3.exe
+2025-01-14 03:03:16,032 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114025805.eml
+2025-01-14 03:03:16,032 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_2.exe
+2025-01-14 03:03:16,033 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114030014.eml
+2025-01-14 03:08:28,840 - root - DEBUG - 訪問首頁
+2025-01-14 03:08:28,846 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:08:28] "GET / HTTP/1.1" 200 -
+2025-01-14 03:08:28,901 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:08:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:08:32,113 - root - INFO - 檔案上傳成功: 20250114030832.eml 到 /tmp/email_analyzer_uploads/20250114030832.eml
+2025-01-14 03:08:32,143 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 03:08:32,144 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 03:08:32,144 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 03:08:32,146 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 03:08:32,146 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 03:08:32,147 - root - DEBUG - 提取的 URLs: []
+2025-01-14 03:08:32,314 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 03:08:32,323 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:08:32] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:08:36,397 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:08:37,114 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 03:08:37,123 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:08:37] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 03:10:37,312 - root - DEBUG - 訪問首頁
+2025-01-14 03:10:37,315 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:10:37] "GET / HTTP/1.1" 200 -
+2025-01-14 03:10:37,375 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:10:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:10:43,064 - root - INFO - 檔案上傳成功: 20250114031043.eml 到 /tmp/email_analyzer_uploads/20250114031043.eml
+2025-01-14 03:10:43,092 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 03:10:43,093 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 03:10:43,093 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 03:10:43,095 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 03:10:43,096 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 03:10:43,096 - root - DEBUG - 提取的 URLs: []
+2025-01-14 03:10:43,264 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 03:10:43,276 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:10:43] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:10:45,030 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:10:45,605 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 03:10:45,613 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:10:45] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 03:12:16,045 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 03:12:16,049 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114030832.eml
+2025-01-14 03:14:55,269 - root - DEBUG - 訪問首頁
+2025-01-14 03:14:55,277 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:14:55] "GET / HTTP/1.1" 200 -
+2025-01-14 03:14:55,327 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:14:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:14:58,712 - root - INFO - 檔案上傳成功: 20250114031458.eml 到 /tmp/email_analyzer_uploads/20250114031458.eml
+2025-01-14 03:14:58,754 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 03:14:58,754 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 03:14:58,754 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 03:14:58,757 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 03:14:58,757 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 03:14:58,758 - root - DEBUG - 提取的 URLs: []
+2025-01-14 03:14:58,938 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 03:14:58,948 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:14:58] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:15:04,618 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:15:05,574 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 03:15:05,585 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:15:05] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 03:15:16,055 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114031043.eml
+2025-01-14 03:15:16,058 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 03:18:16,065 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 03:18:16,071 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114031458.eml
+2025-01-14 03:18:56,140 - root - DEBUG - 訪問首頁
+2025-01-14 03:18:56,144 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:18:56] "GET / HTTP/1.1" 200 -
+2025-01-14 03:18:56,223 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:18:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:18:59,998 - root - INFO - 檔案上傳成功: 20250114031859.eml 到 /tmp/email_analyzer_uploads/20250114031859.eml
+2025-01-14 03:19:00,019 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 03:19:00,019 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 03:19:00,019 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 03:19:00,021 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 03:19:00,021 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 03:19:00,021 - root - DEBUG - 提取的 URLs: []
+2025-01-14 03:19:00,190 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 03:19:00,203 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:19:00] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:19:04,231 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:19:05,285 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 03:19:05,297 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:19:05] "GET /virustotal/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 -
+2025-01-14 03:19:42,894 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:19:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:21:24,564 - root - DEBUG - 訪問首頁
+2025-01-14 03:21:24,570 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:21:24] "GET / HTTP/1.1" 200 -
+2025-01-14 03:21:24,628 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:21:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:21:28,377 - root - INFO - 檔案上傳成功: 20250114032128.eml 到 /tmp/email_analyzer_uploads/20250114032128.eml
+2025-01-14 03:21:28,412 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 03:21:28,412 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 03:21:28,412 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 03:21:28,414 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 03:21:28,414 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 03:21:28,415 - root - DEBUG - 提取的 URLs: []
+2025-01-14 03:21:28,581 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 03:21:28,591 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:21:28] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:21:30,610 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:21:31,175 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 None
+2025-01-14 03:21:31,186 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:21:31] "GET /virustotal/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 -
+2025-01-14 03:21:31,923 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:21:32,402 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 None
+2025-01-14 03:21:32,408 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:21:32] "GET /virustotal/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 -
+2025-01-14 03:21:37,996 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:21:38,577 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 None
+2025-01-14 03:21:38,587 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:21:38] "GET /virustotal/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 -
+2025-01-14 03:23:25,311 - root - DEBUG - 訪問首頁
+2025-01-14 03:23:25,317 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:25] "GET / HTTP/1.1" 200 -
+2025-01-14 03:23:25,386 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:23:29,583 - root - INFO - 檔案上傳成功: 20250114032329.eml 到 /tmp/email_analyzer_uploads/20250114032329.eml
+2025-01-14 03:23:29,611 - root - DEBUG - 清理前的 CC 列表: []
+2025-01-14 03:23:29,611 - root - DEBUG - 清理後的 CC 列表: []
+2025-01-14 03:23:29,611 - root - DEBUG - 解析郵件成功: [1] (2025-01-02 3:56:10 PM) իH Test 1
+2025-01-14 03:23:29,613 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/ldp_2.exe
+2025-01-14 03:23:29,613 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'ldp.exe', 'md5': 'ee02141e868fd135f33542e9cae90b94', 'sha1': '3086d0485a80ce7e69f5c68242bb72a5c8cb793f', 'sha256': '582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866'}]
+2025-01-14 03:23:29,613 - root - DEBUG - 提取的 URLs: []
+2025-01-14 03:23:29,778 - root - DEBUG - hops.py 返回的結果: [{'from': 'usera ([172.16.31.96])', 'by': 'ya137.softnext.com.tw', 'time': 'Thu, 2 Jan 2025 15:56:11 +0800 (+08)\t(envelope-from 77002@sec9.com)', 'delay': 'N/A'}]
+2025-01-14 03:23:29,790 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:29] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:23:31,287 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:23:31,829 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 None
+2025-01-14 03:23:31,839 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:31] "GET /virustotal/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 -
+2025-01-14 03:23:32,245 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:23:32,636 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 None
+2025-01-14 03:23:32,644 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:32] "GET /virustotal/3086d0485a80ce7e69f5c68242bb72a5c8cb793f HTTP/1.1" 200 -
+2025-01-14 03:23:41,281 - root - DEBUG - 訪問首頁
+2025-01-14 03:23:41,282 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:41] "GET / HTTP/1.1" 200 -
+2025-01-14 03:23:41,331 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:23:44,801 - root - INFO - 檔案上傳成功: 20250114032344.eml 到 /tmp/email_analyzer_uploads/20250114032344.eml
+2025-01-14 03:23:44,836 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-14 03:23:44,837 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-14 03:23:44,838 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-14 03:23:44,839 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:23:44,839 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-14 03:23:44,839 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-14 03:23:45,109 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-14 03:23:45,113 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:23:45] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:24:16,080 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp.exe
+2025-01-14 03:24:16,083 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114031859.eml
+2025-01-14 03:24:44,440 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114032128.eml
+2025-01-14 03:24:44,442 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_1.exe
+2025-01-14 03:27:16,089 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114032344.eml
+2025-01-14 03:27:16,091 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/ldp_2.exe
+2025-01-14 03:27:16,091 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114032329.eml
+2025-01-14 03:27:16,091 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:29:48,847 - werkzeug - INFO -  * Detected change in '/opt/proj/Analyzer4Mail/app.py', reloading
+2025-01-14 03:29:48,960 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 03:29:49,246 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 03:29:49,248 - werkzeug - INFO -  * Debugger PIN: 248-831-845
+2025-01-14 03:29:56,964 - root - DEBUG - 訪問首頁
+2025-01-14 03:29:56,977 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:29:56] "GET / HTTP/1.1" 200 -
+2025-01-14 03:29:57,057 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:29:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:29:59,986 - root - INFO - 檔案上傳成功: 20250114032959.eml 到 /tmp/email_analyzer_uploads/20250114032959.eml
+2025-01-14 03:30:00,031 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-14 03:30:00,031 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-14 03:30:00,032 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-14 03:30:00,033 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:30:00,033 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-14 03:30:00,033 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-14 03:30:00,181 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-14 03:30:00,189 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:30:00] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:30:24,124 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:30:24] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:33:16,100 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114032959.eml
+2025-01-14 03:33:16,103 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:35:48,576 - root - ERROR - 執行 URL 掃描時發生錯誤: Expecting value: line 1 column 1 (char 0)
+2025-01-14 03:35:48,578 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:35:48] "[35m[1mPOST /virustotal/scan_url HTTP/1.1[0m" 500 -
+2025-01-14 03:39:13,135 - root - DEBUG - 訪問首頁
+2025-01-14 03:39:13,140 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:39:13] "GET / HTTP/1.1" 200 -
+2025-01-14 03:39:13,193 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:39:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:39:21,643 - root - INFO - 檔案上傳成功: 20250114033921.eml 到 /tmp/email_analyzer_uploads/20250114033921.eml
+2025-01-14 03:39:21,676 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-14 03:39:21,677 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-14 03:39:21,677 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-14 03:39:21,680 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:39:21,680 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-14 03:39:21,680 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-14 03:39:21,964 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-14 03:39:21,965 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:39:21] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:39:30,465 - root - ERROR - 執行 URL 掃描時發生錯誤: Expecting value: line 1 column 1 (char 0)
+2025-01-14 03:39:30,466 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:39:30] "[35m[1mPOST /virustotal/scan_url HTTP/1.1[0m" 500 -
+2025-01-14 03:40:58,935 - werkzeug - INFO -  * Detected change in '/opt/proj/Analyzer4Mail/VT.py', reloading
+2025-01-14 03:40:59,042 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 03:40:59,254 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 03:40:59,256 - werkzeug - INFO -  * Debugger PIN: 248-831-845
+2025-01-14 03:41:21,063 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:41:21] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:42:53,553 - werkzeug - INFO -  * Detected change in '/opt/proj/Analyzer4Mail/VT.py', reloading
+2025-01-14 03:42:53,665 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 03:42:53,872 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114033921.eml
+2025-01-14 03:42:53,872 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:42:53,877 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 03:42:53,879 - werkzeug - INFO -  * Debugger PIN: 248-831-845
+2025-01-14 03:43:12,494 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:43:12] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:48:53,834 - root - DEBUG - 訪問首頁
+2025-01-14 03:48:53,854 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:48:53] "GET / HTTP/1.1" 200 -
+2025-01-14 03:48:53,944 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:48:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:48:57,782 - root - INFO - 檔案上傳成功: 20250114034857.eml 到 /tmp/email_analyzer_uploads/20250114034857.eml
+2025-01-14 03:48:57,847 - root - DEBUG - 清理前的 CC 列表: ['\'Frank Chang/???/CTCI-PROP\' <shihcheng.chang@ctci.com>, \'Winai Patto/CTCIT-ENG\' <winai.patto@ctci.com>, "\'Carbone.oilgasinspection@outlook.it\'" <Carbone.oilgasinspection@outlook.it>, \'Connor Hu/???/CTCI-PPM\' <connor.hu@ctci.com>, \'Phattarapoom Armatmontree/CTCIT-ENG\' <phattarapoom.armatmontree@ctci.com>, \'Jason Weichih Hsieh/???/CTCI-EQ\' <jasonhsieh@ctci.com>, Mariani Marco <m.mariani@3v-tech.com>, De Mattia Rocco <r.demattia@3v-tech.com>, FL EXT <fl.ext@3v-tech.com>, \'Josiane Chen/???/CTCI-PPM\' <josianechen@ctci.com>, \'Michelle Chen/???/CTCI-HPJ3\' <michellechen@ctci.com>, "\'Kuo, Claire-tw (Kaohsiung City)\'" <Claire-tw.Kuo@sgs.com>, P23103V <P23103V@3v-tech.com>, \'Min-Sen Gao/???/CTCI-QMD\' <msgao@ctci.com>, Roberto Ballerini <inspections@inoxfucine.it>, Laura Calabretta <documentation@inoxfucine.it>']
+2025-01-14 03:48:57,849 - root - DEBUG - 清理後的 CC 列表: ['shihcheng.chang@ctci.com', 'winai.patto@ctci.com', 'Carbone.oilgasinspection@outlook.it', 'connor.hu@ctci.com', 'phattarapoom.armatmontree@ctci.com', 'jasonhsieh@ctci.com', 'm.mariani@3v-tech.com', 'r.demattia@3v-tech.com', 'fl.ext@3v-tech.com', 'josianechen@ctci.com', 'michellechen@ctci.com', 'Claire-tw.Kuo@sgs.com', 'P23103V@3v-tech.com', 'msgao@ctci.com', 'inspections@inoxfucine.it', 'documentation@inoxfucine.it']
+2025-01-14 03:48:57,849 - root - DEBUG - 解析郵件成功: RE: BENZENE WASTEWATER INDUCED GAS FLOTATION (IGF) PACKAGE (FZ9A.01) - NOTIFICATION OF INSPECTION AND TEST - 5000089027-014
+2025-01-14 03:48:57,850 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:48:57,850 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'NOI-5000089027-014.DOC', 'md5': '176df4610ad3c03ee12c7c8dc82de0c8', 'sha1': '2c48e47f21bd951cf996b029438b6fd966258c63', 'sha256': 'a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896'}]
+2025-01-14 03:48:57,850 - root - DEBUG - 提取的 URLs: ['https://www.3v-tech.com/>']
+2025-01-14 03:48:58,015 - root - DEBUG - hops.py 返回的結果: [{'from': 'EUR02-VI1-obe.outbound.protection.outlook.com (mail-vi1eur02on2119.outbound.protection.outlook.com [40.107.241.119])', 'by': 'post1.ctci.com', 'time': 'Tue, 12 Nov 2024 18:35:44 +0800 (+08)', 'delay': 'N/A'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM (2603:10a6:10:29a::6)', 'by': 'AM0P195MB0562.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:16c::9)', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '5.00 seconds'}, {'from': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365])', 'by': 'DB9P195MB1244.EURP195.PROD.OUTLOOK.COM ([fe80::173f:1bf2:f41:a365%4])', 'time': 'Tue, 12 Nov 2024 10:35:39 +0000', 'delay': '0.00 seconds'}]
+2025-01-14 03:48:58,022 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:48:58] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:49:01,161 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:49:01,708 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 404 None
+2025-01-14 03:49:01,710 - root - INFO - VirusTotal API 回應: 在 VirusTotal 資料庫中未找到此檔案
+2025-01-14 03:49:01,711 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:49:01] "GET /virustotal/a163964895c32a69cfbe03cf6331326fd4f1532f0f7aa033d5eb606056b65896 HTTP/1.1" 200 -
+2025-01-14 03:51:34,292 - werkzeug - INFO -  * Detected change in '/opt/proj/Analyzer4Mail/VT.py', reloading
+2025-01-14 03:51:34,406 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 03:51:34,615 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 03:51:34,617 - werkzeug - INFO -  * Debugger PIN: 248-831-845
+2025-01-14 03:51:45,613 - root - DEBUG - 訪問首頁
+2025-01-14 03:51:45,622 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:51:45] "GET / HTTP/1.1" 200 -
+2025-01-14 03:51:45,760 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:51:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-01-14 03:51:46,674 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:51:46] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:51:46,912 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:51:46] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:51:50,665 - root - INFO - 檔案上傳成功: 20250114035150.msg 到 /tmp/email_analyzer_uploads/20250114035150.msg
+2025-01-14 03:51:50,689 - tzlocal - DEBUG - /etc/timezone found, contents:
+ Etc/UTC
+
+2025-01-14 03:51:50,689 - tzlocal - DEBUG - /etc/localtime found
+2025-01-14 03:51:50,696 - tzlocal - DEBUG - 2 found:
+ {'/etc/timezone': 'Etc/UTC', '/etc/localtime is a symlink to': 'Etc/UTC'}
+2025-01-14 03:51:50,700 - root - DEBUG - 清理前的 CC 列表: ['林良安 <gt09828@greattree.com.tw>; 許晉嘉 <gt06442@greattree.com.tw>; dannychang@softnext.com.tw; cynet-soc@softnext.com.tw']
+2025-01-14 03:51:50,700 - root - DEBUG - 清理後的 CC 列表: ['gt09828@greattree.com.tw']
+2025-01-14 03:51:50,701 - root - DEBUG - 解析郵件成功: High Risk - Detection Engine - Malicious Binary - Malicious File Found on Disk - CS2416327
+2025-01-14 03:51:50,703 - root - INFO - 附件保存成功: /tmp/email_analyzer_uploads/crm_mail_theme_2_tw_2017.jpg
+2025-01-14 03:51:50,704 - root - DEBUG - 生成的附件哈希值: [{'original_filename': 'crm_mail_theme_2_tw_2017.jpg', 'md5': '56bbad1a26364ba1f239c25dd4a60c9a', 'sha1': 'fdb40fc69c6befc78357b0c681dc4c833a58bb9b', 'sha256': '94723ca82efad07825800f3d96760567ba2fc7a2c6aea464aff99a9a0fa42a60'}]
+2025-01-14 03:51:50,705 - root - DEBUG - 提取的 URLs: ['http://www.softnext-inc.com']
+2025-01-14 03:51:50,910 - root - DEBUG - hops.py 返回的結果: [{'from': 'G4.softnext.com.tw (G4.softnext.com.tw [192.168.3.202])', 'by': 'Server.softnext.com.tw (8.18.1/8.18.1)', 'time': 'Tue, 31 Dec 2024 09:45:15 +0800 (CST)\r\n\t(envelope-from service@softnext.com.tw)', 'delay': 'N/A'}, {'from': 'ERP.softnext.com.tw (crm.softnext.com.tw [192.168.1.231])', 'by': 'G4.softnext.com.tw', 'time': 'Tue, 31 Dec 2024 09:45:12 +0800 (+08)\r\n\t(envelope-from service@softnext.com.tw)', 'delay': '3.00 seconds'}, {'from': 'ERP.softnext.com.tw (localhost [127.0.0.1])', 'by': 'ERP.softnext.com.tw (8.16.1/8.16.1)', 'time': 'Tue, 31 Dec 2024 09:45:13 +0800 (+08)\r\n\t(envelope-from service@softnext.com.tw)', 'delay': '-1.00 seconds'}, {'from': 'www@localhost)', 'by': 'ERP.softnext.com.tw (8.16.1/8.16.1/Submit) id 4BV1jDLI041601', 'time': 'Tue, 31 Dec 2024 09:45:13 +0800 (+08)\r\n\t(envelope-from service@softnext.com.tw)', 'delay': '0.00 seconds'}]
+2025-01-14 03:51:50,922 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:51:50] "POST /upload HTTP/1.1" 200 -
+2025-01-14 03:52:08,526 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:52:08] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:52:45,394 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:52:45] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:52:46,008 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 03:52:46] "POST /virustotal/scan_url HTTP/1.1" 200 -
+2025-01-14 03:54:16,119 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114034857.eml
+2025-01-14 03:54:16,121 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/NOI-5000089027-014.DOC
+2025-01-14 03:57:16,127 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/crm_mail_theme_2_tw_2017.jpg
+2025-01-14 03:57:16,132 - root - INFO - 已刪除過期檔案: /tmp/email_analyzer_uploads/20250114035150.msg
+2025-01-14 05:40:23,890 - werkzeug - INFO -  * Detected change in '/opt/proj/Analyzer4Mail/config.py', reloading
+2025-01-14 05:40:24,046 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 05:55:28,179 - AbuseIPDB - INFO - 執行 IP 檢查: 8.8.8.8
+2025-01-14 05:55:28,179 - AbuseIPDB - DEBUG - 從輸入中提取到 IP: 8.8.8.8
+2025-01-14 05:55:28,179 - AbuseIPDB - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 05:55:28,179 - AbuseIPDB - DEBUG - 發送請求到 AbuseIPDB API: https://api.abuseipdb.com/api/v2/check
+2025-01-14 05:55:28,179 - AbuseIPDB - DEBUG - 查詢參數: {'ipAddress': '8.8.8.8', 'maxAgeInDays': '15'}
+2025-01-14 05:55:28,180 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.abuseipdb.com:443
+2025-01-14 05:55:28,947 - urllib3.connectionpool - DEBUG - https://api.abuseipdb.com:443 "GET /api/v2/check?ipAddress=8.8.8.8&maxAgeInDays=15 HTTP/1.1" 200 None
+2025-01-14 05:55:28,948 - AbuseIPDB - DEBUG - 收到響應狀態碼: 200
+2025-01-14 05:55:28,949 - AbuseIPDB - DEBUG - API 響應: {
+  "data": {
+    "ipAddress": "8.8.8.8",
+    "isPublic": true,
+    "ipVersion": 4,
+    "isWhitelisted": true,
+    "abuseConfidenceScore": 0,
+    "countryCode": "US",
+    "usageType": "Content Delivery Network",
+    "isp": "Google LLC",
+    "domain": "google.com",
+    "hostnames": [
+      "dns.google"
+    ],
+    "isTor": false,
+    "totalReports": 23,
+    "numDistinctUsers": 12,
+    "lastReportedAt": "2025-01-14T01:38:21+00:00"
+  }
+}
+2025-01-14 05:59:26,084 - __main__ - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 05:59:26,084 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 05:59:26,678 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://api.abuseipdb.com/api/v2/check?ipAddress=8.8.8.8&maxAgeInDays=15
+2025-01-14 05:59:26,682 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://api.abuseipdb.com/api/v2/check?ipAddress=8.8.8.8&maxAgeInDays=15"
+}
+2025-01-14 06:00:24,598 - __main__ - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 06:00:24,598 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:00:25,233 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://api.abuseipdb.com/api/v2/check?ipAddress=168.95.1.1&maxAgeInDays=15
+2025-01-14 06:00:25,237 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://api.abuseipdb.com/api/v2/check?ipAddress=168.95.1.1&maxAgeInDays=15"
+}
+2025-01-14 06:01:13,693 - __main__ - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 06:01:13,693 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:01:13,693 - __main__ - DEBUG - 發送請求到: https://api.abuseipdb.com/api/v2/check
+2025-01-14 06:01:13,694 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:01:13,694 - __main__ - DEBUG - 請求參數: {'ipAddress': '168.95.1.1', 'maxAgeInDays': '15'}
+2025-01-14 06:01:13,694 - __main__ - DEBUG - 請求頭: {"Key": "492daa8168563815136f7953a5228e4606bbd59c248f3610bc6e88473a324c4df4b34c61d235a325", "Accept": "application/json"}
+2025-01-14 06:01:14,567 - __main__ - DEBUG - 響應狀態碼: 200
+2025-01-14 06:01:14,571 - __main__ - DEBUG - IP 檢查響應: {
+  "data": {
+    "ipAddress": "168.95.1.1",
+    "isPublic": true,
+    "ipVersion": 4,
+    "isWhitelisted": false,
+    "abuseConfidenceScore": 0,
+    "countryCode": "TW",
+    "usageType": "Fixed Line ISP",
+    "isp": "Chunghwa Telecom Co.,Ltd.",
+    "domain": "cht.com.tw",
+    "hostnames": [
+      "dns.hinet.net"
+    ],
+    "isTor": false,
+    "totalReports": 0,
+    "numDistinctUsers": 0,
+    "lastReportedAt": "2024-08-19T00:07:43+00:00"
+  }
+}
+2025-01-14 06:08:00,316 - __main__ - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 06:08:00,316 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:08:00,316 - __main__ - DEBUG - 發送請求到: https://api.abuseipdb.com/api/v2/check
+2025-01-14 06:08:00,316 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:08:00,317 - __main__ - DEBUG - 請求參數: {"ipAddress": "168.95.1.1", "maxAgeInDays": "15"}
+2025-01-14 06:08:00,317 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:08:01,173 - __main__ - DEBUG - 響應狀態碼: 200
+2025-01-14 06:08:01,177 - __main__ - DEBUG - IP 檢查響應: {
+  "data": {
+    "ipAddress": "168.95.1.1",
+    "isPublic": true,
+    "ipVersion": 4,
+    "isWhitelisted": false,
+    "abuseConfidenceScore": 0,
+    "countryCode": "TW",
+    "usageType": "Fixed Line ISP",
+    "isp": "Chunghwa Telecom Co.,Ltd.",
+    "domain": "cht.com.tw",
+    "hostnames": [
+      "dns.hinet.net"
+    ],
+    "isTor": false,
+    "totalReports": 0,
+    "numDistinctUsers": 0,
+    "lastReportedAt": "2024-08-19T00:07:43+00:00"
+  }
+}
+2025-01-14 06:28:08,828 - AbuseIPDB - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 06:28:08,830 - AbuseIPDB - DEBUG - 開始檢查 IP: 172.16.31.96
+2025-01-14 06:28:08,830 - AbuseIPDB - DEBUG - 發送請求到: https://api.abuseipdb.com/api/v2/check
+2025-01-14 06:28:08,830 - AbuseIPDB - DEBUG - 請求方法: GET
+2025-01-14 06:28:08,830 - AbuseIPDB - DEBUG - 請求參數: {"ipAddress": "172.16.31.96", "maxAgeInDays": "15"}
+2025-01-14 06:28:08,830 - AbuseIPDB - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:28:09,646 - AbuseIPDB - DEBUG - 響應狀態碼: 200
+2025-01-14 06:28:09,648 - AbuseIPDB - DEBUG - IP 檢查響應: {
+  "data": {
+    "ipAddress": "172.16.31.96",
+    "isPublic": false,
+    "ipVersion": 4,
+    "isWhitelisted": null,
+    "abuseConfidenceScore": 0,
+    "countryCode": null,
+    "usageType": "Reserved",
+    "isp": null,
+    "domain": null,
+    "hostnames": [],
+    "isTor": false,
+    "totalReports": 0,
+    "numDistinctUsers": 0,
+    "lastReportedAt": null
+  }
+}
+2025-01-14 06:28:10,587 - AbuseIPDB - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 06:28:10,588 - AbuseIPDB - DEBUG - 開始檢查 IP: 172.16.31.96
+2025-01-14 06:28:10,588 - AbuseIPDB - DEBUG - 發送請求到: https://api.abuseipdb.com/api/v2/check
+2025-01-14 06:28:10,588 - AbuseIPDB - DEBUG - 請求方法: GET
+2025-01-14 06:28:10,588 - AbuseIPDB - DEBUG - 請求參數: {"ipAddress": "172.16.31.96", "maxAgeInDays": "15"}
+2025-01-14 06:28:10,588 - AbuseIPDB - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:28:11,336 - AbuseIPDB - DEBUG - 響應狀態碼: 200
+2025-01-14 06:28:11,337 - AbuseIPDB - DEBUG - IP 檢查響應: {
+  "data": {
+    "ipAddress": "172.16.31.96",
+    "isPublic": false,
+    "ipVersion": 4,
+    "isWhitelisted": null,
+    "abuseConfidenceScore": 0,
+    "countryCode": null,
+    "usageType": "Reserved",
+    "isp": null,
+    "domain": null,
+    "hostnames": [],
+    "isTor": false,
+    "totalReports": 0,
+    "numDistinctUsers": 0,
+    "lastReportedAt": null
+  }
+}
+2025-01-14 06:48:09,842 - AbuseIPDB - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 06:48:09,845 - AbuseIPDB - DEBUG - 開始檢查 IP: 172.16.31.96
+2025-01-14 06:48:09,845 - AbuseIPDB - DEBUG - 發送請求到: https://api.abuseipdb.com/api/v2/check
+2025-01-14 06:48:09,845 - AbuseIPDB - DEBUG - 請求方法: GET
+2025-01-14 06:48:09,845 - AbuseIPDB - DEBUG - 請求參數: {"ipAddress": "172.16.31.96", "maxAgeInDays": "15"}
+2025-01-14 06:48:09,846 - AbuseIPDB - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:48:10,593 - AbuseIPDB - DEBUG - 響應狀態碼: 200
+2025-01-14 06:48:10,594 - AbuseIPDB - DEBUG - IP 檢查響應: {
+  "data": {
+    "ipAddress": "172.16.31.96",
+    "isPublic": false,
+    "ipVersion": 4,
+    "isWhitelisted": null,
+    "abuseConfidenceScore": 0,
+    "countryCode": null,
+    "usageType": "Reserved",
+    "isp": null,
+    "domain": null,
+    "hostnames": [],
+    "isTor": false,
+    "totalReports": 0,
+    "numDistinctUsers": 0,
+    "lastReportedAt": null
+  }
+}
+2025-01-14 08:06:22,244 - AbuseIPDB - DEBUG - AbuseIPDB API 初始化完成
+2025-01-14 08:06:22,246 - AbuseIPDB - DEBUG - 開始檢查 IP: 115.124.28.135
+2025-01-14 08:06:22,246 - AbuseIPDB - DEBUG - 發送請求到: https://api.abuseipdb.com/api/v2/check
+2025-01-14 08:06:22,246 - AbuseIPDB - DEBUG - 請求方法: GET
+2025-01-14 08:06:22,246 - AbuseIPDB - DEBUG - 請求參數: {"ipAddress": "115.124.28.135", "maxAgeInDays": "15"}
+2025-01-14 08:06:22,247 - AbuseIPDB - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 08:06:23,213 - AbuseIPDB - DEBUG - 響應狀態碼: 200
+2025-01-14 08:06:23,214 - AbuseIPDB - DEBUG - IP 檢查響應: {
+  "data": {
+    "ipAddress": "115.124.28.135",
+    "isPublic": true,
+    "ipVersion": 4,
+    "isWhitelisted": false,
+    "abuseConfidenceScore": 11,
+    "countryCode": "CN",
+    "usageType": "Commercial",
+    "isp": "Zhejiang Taobao Network Co.,Ltd",
+    "domain": "taobao.com",
+    "hostnames": [
+      "out28-135.mail.aliyun.com"
+    ],
+    "isTor": false,
+    "totalReports": 1,
+    "numDistinctUsers": 1,
+    "lastReportedAt": "2024-12-31T18:50:15+00:00"
+  }
+}

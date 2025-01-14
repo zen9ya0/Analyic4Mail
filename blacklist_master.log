@@ -176,3 +176,280 @@
     }
   ]
 }
+2025-01-14 05:56:32,232 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 05:56:38,267 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 05:56:38,267 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 05:56:39,207 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8
+2025-01-14 05:56:39,208 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8"
+}
+2025-01-14 05:57:01,641 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 05:57:01,642 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 05:57:02,628 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1
+2025-01-14 05:57:02,631 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1"
+}
+2025-01-14 05:59:17,188 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 05:59:17,188 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 05:59:18,155 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8
+2025-01-14 05:59:18,156 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8"
+}
+2025-01-14 05:59:42,651 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 05:59:42,651 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 05:59:43,605 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8
+2025-01-14 05:59:43,606 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8"
+}
+2025-01-14 05:59:50,093 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 05:59:58,953 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 05:59:58,953 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 05:59:59,887 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1
+2025-01-14 05:59:59,888 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1"
+}
+2025-01-14 06:01:20,113 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:01:20,113 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:01:20,113 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1
+2025-01-14 06:01:20,114 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:01:20,114 - __main__ - DEBUG - 請求參數: None
+2025-01-14 06:01:20,114 - __main__ - DEBUG - 請求頭: {"accept": "application/json"}
+2025-01-14 06:01:21,028 - __main__ - DEBUG - 響應狀態碼: 401
+2025-01-14 06:01:21,028 - __main__ - ERROR - API 請求失敗: 401 - {"status":"ERROR","response":"Authorization Required"}
+2025-01-14 06:01:21,032 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 - {\"status\":\"ERROR\",\"response\":\"Authorization Required\"}",
+  "status_code": 401
+}
+2025-01-14 06:02:52,413 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:02:52,413 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:02:52,413 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1
+2025-01-14 06:02:52,413 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:02:52,413 - __main__ - DEBUG - 請求參數: None
+2025-01-14 06:02:52,413 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:02:52,413 - __main__ - ERROR - 未預期的錯誤: name 'COMMON' is not defined
+2025-01-14 06:02:52,413 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "\u672a\u9810\u671f\u7684\u932f\u8aa4: name 'COMMON' is not defined"
+}
+2025-01-14 06:03:02,751 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:03:07,140 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:03:07,140 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:03:07,140 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1
+2025-01-14 06:03:07,140 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:03:07,140 - __main__ - DEBUG - 請求參數: None
+2025-01-14 06:03:07,140 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:03:07,140 - __main__ - ERROR - 未預期的錯誤: name 'COMMON' is not defined
+2025-01-14 06:03:07,140 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "\u672a\u9810\u671f\u7684\u932f\u8aa4: name 'COMMON' is not defined"
+}
+2025-01-14 06:03:53,338 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:03:53,338 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:03:53,338 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1
+2025-01-14 06:03:53,338 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:03:53,338 - __main__ - DEBUG - 請求參數: None
+2025-01-14 06:03:53,338 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:03:54,326 - __main__ - DEBUG - 響應狀態碼: 401
+2025-01-14 06:03:54,326 - __main__ - ERROR - API 請求失敗: 401 - {'status': 'ERROR', 'response': 'Authorization Required'}
+2025-01-14 06:03:54,329 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 - {'status': 'ERROR', 'response': 'Authorization Required'}",
+  "status_code": 401
+}
+2025-01-14 06:05:05,035 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:05:05,035 - __main__ - DEBUG - 開始檢查 IP: 168.95.1.1
+2025-01-14 06:05:05,035 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/168.95.1.1
+2025-01-14 06:05:05,035 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:05:05,035 - __main__ - DEBUG - 請求參數: None
+2025-01-14 06:05:05,036 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:05:05,933 - __main__ - DEBUG - 響應狀態碼: 401
+2025-01-14 06:05:05,934 - __main__ - ERROR - API 請求失敗: 401 - {'status': 'ERROR', 'response': 'Authorization Required'}
+2025-01-14 06:05:05,938 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 - {'status': 'ERROR', 'response': 'Authorization Required'}",
+  "status_code": 401
+}
+2025-01-14 06:05:13,308 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:05:13,308 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 06:05:13,308 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8
+2025-01-14 06:05:13,308 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:05:13,308 - __main__ - DEBUG - 請求參數: None
+2025-01-14 06:05:13,308 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:05:14,206 - __main__ - DEBUG - 響應狀態碼: 401
+2025-01-14 06:05:14,207 - __main__ - ERROR - API 請求失敗: 401 - {'status': 'ERROR', 'response': 'Authorization Required'}
+2025-01-14 06:05:14,211 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 - {'status': 'ERROR', 'response': 'Authorization Required'}",
+  "status_code": 401
+}
+2025-01-14 06:06:28,779 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:06:28,780 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 06:06:28,780 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8
+2025-01-14 06:06:28,780 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:06:28,780 - __main__ - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 06:06:28,780 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:06:29,905 - __main__ - DEBUG - 響應狀態碼: 204
+2025-01-14 06:06:29,906 - __main__ - ERROR - API 請求失敗: 204 - {'text': ''}
+2025-01-14 06:06:29,909 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 204 - {'text': ''}",
+  "status_code": 204
+}
+2025-01-14 06:08:18,010 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:08:18,010 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 06:08:18,010 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8
+2025-01-14 06:08:18,010 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:08:18,010 - __main__ - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 06:08:18,010 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:08:19,117 - __main__ - DEBUG - 響應狀態碼: 204
+2025-01-14 06:08:19,117 - __main__ - ERROR - API 請求失敗: 204 - {'text': ''}
+2025-01-14 06:08:19,121 - __main__ - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 204 - {'text': ''}",
+  "status_code": 204
+}
+2025-01-14 06:19:09,805 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:19:09,805 - __main__ - DEBUG - 開始檢查 IP: 8.8.8.8
+2025-01-14 06:19:09,805 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/8.8.8.8
+2025-01-14 06:19:09,805 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:19:09,805 - __main__ - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 06:19:09,805 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:19:10,947 - __main__ - DEBUG - 響應狀態碼: 204
+2025-01-14 06:19:10,948 - __main__ - DEBUG - IP 檢查響應: {
+  "status": "clean",
+  "message": "IP \u672a\u88ab\u5217\u5165\u9ed1\u540d\u55ae",
+  "found": false
+}
+2025-01-14 06:19:59,500 - __main__ - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:19:59,500 - __main__ - DEBUG - 開始檢查 IP: 159.183.224.104
+2025-01-14 06:19:59,501 - __main__ - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/159.183.224.104
+2025-01-14 06:19:59,501 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:19:59,501 - __main__ - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 06:19:59,501 - __main__ - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:20:00,638 - __main__ - DEBUG - 響應狀態碼: 200
+2025-01-14 06:20:00,642 - __main__ - DEBUG - IP 檢查響應: {
+  "status": "SUCCESS",
+  "API_calls_remaining": 261,
+  "response": "OK",
+  "IPs": [
+    {
+      "ip": "159.183.224.104",
+      "group_name": "",
+      "ip_description": "s.wfbtzhsv.outbound-mail.sendgrid.net",
+      "last_test_date_UTC": "2025-01-14 06:02:54",
+      "blacklist_cnt": "5",
+      "new_blacklist_cnt": "0",
+      "reputationscore": ""
+    }
+  ],
+  "blacklists": [
+    {
+      "blacklist": "bl.0spam.org",
+      "blacklist_name": "0spam Project",
+      "blacklist_url": "https://0spam.org",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "rbl.abuse.ro",
+      "blacklist_name": "Abuse.ro RBL",
+      "blacklist_url": "http://www.abuse.ro",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "ProjectHoneyPot",
+      "blacklist_name": "Project Honey Pot",
+      "blacklist_url": "https://www.projecthoneypot.org/",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "all.s5h.net",
+      "blacklist_name": "all.s5h.net",
+      "blacklist_url": "http://www.usenix.org.uk/wiki/RBL",
+      "is_new": "0"
+    },
+    {
+      "blacklist": "all.spamrats.com",
+      "blacklist_name": "SpamRATS! all",
+      "blacklist_url": "http://www.spamrats.com",
+      "is_new": "0"
+    }
+  ]
+}
+2025-01-14 06:28:09,649 - BlacklistMaster - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:28:09,649 - BlacklistMaster - DEBUG - 開始檢查 IP: usera ([172.16.31.96])
+2025-01-14 06:28:09,650 - BlacklistMaster - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/usera ([172.16.31.96])
+2025-01-14 06:28:09,650 - BlacklistMaster - DEBUG - 請求方法: GET
+2025-01-14 06:28:09,650 - BlacklistMaster - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 06:28:09,650 - BlacklistMaster - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:28:10,555 - BlacklistMaster - DEBUG - 響應狀態碼: 403
+2025-01-14 06:28:10,557 - BlacklistMaster - ERROR - 無效的 JSON 響應: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+</body></html>
+
+2025-01-14 06:28:10,558 - BlacklistMaster - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "\u7121\u6548\u7684 JSON \u97ff\u61c9: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>403 Forbidden</title>\n</head><body>\n<h1>Forbidden</h1>\n<p>You don't have permission to access this resource.</p>\n</body></html>\n",
+  "status_code": 403
+}
+2025-01-14 06:28:11,338 - BlacklistMaster - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:28:11,339 - BlacklistMaster - DEBUG - 開始檢查 IP: usera ([172.16.31.96])
+2025-01-14 06:28:11,339 - BlacklistMaster - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/usera ([172.16.31.96])
+2025-01-14 06:28:11,340 - BlacklistMaster - DEBUG - 請求方法: GET
+2025-01-14 06:28:11,340 - BlacklistMaster - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 06:28:11,341 - BlacklistMaster - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:28:12,143 - BlacklistMaster - DEBUG - 響應狀態碼: 403
+2025-01-14 06:28:12,143 - BlacklistMaster - ERROR - 無效的 JSON 響應: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+</body></html>
+
+2025-01-14 06:28:12,144 - BlacklistMaster - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "\u7121\u6548\u7684 JSON \u97ff\u61c9: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>403 Forbidden</title>\n</head><body>\n<h1>Forbidden</h1>\n<p>You don't have permission to access this resource.</p>\n</body></html>\n",
+  "status_code": 403
+}
+2025-01-14 06:48:10,595 - BlacklistMaster - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 06:48:10,595 - BlacklistMaster - DEBUG - 開始檢查 IP: usera ([172.16.31.96])
+2025-01-14 06:48:10,595 - BlacklistMaster - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/usera ([172.16.31.96])
+2025-01-14 06:48:10,595 - BlacklistMaster - DEBUG - 請求方法: GET
+2025-01-14 06:48:10,596 - BlacklistMaster - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 06:48:10,596 - BlacklistMaster - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 06:48:11,464 - BlacklistMaster - DEBUG - 響應狀態碼: 403
+2025-01-14 06:48:11,465 - BlacklistMaster - ERROR - 無效的 JSON 響應: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+</body></html>
+
+2025-01-14 06:48:11,465 - BlacklistMaster - DEBUG - IP 檢查響應: {
+  "error": true,
+  "message": "\u7121\u6548\u7684 JSON \u97ff\u61c9: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>403 Forbidden</title>\n</head><body>\n<h1>Forbidden</h1>\n<p>You don't have permission to access this resource.</p>\n</body></html>\n",
+  "status_code": 403
+}
+2025-01-14 08:06:23,215 - BlacklistMaster - DEBUG - BlacklistMasterAPI 初始化完成
+2025-01-14 08:06:23,215 - BlacklistMaster - DEBUG - 開始檢查 IP: 115.124.28.135
+2025-01-14 08:06:23,215 - BlacklistMaster - DEBUG - 發送請求到: https://www.blacklistmaster.com/restapi/v1/ip/115.124.28.135
+2025-01-14 08:06:23,215 - BlacklistMaster - DEBUG - 請求方法: GET
+2025-01-14 08:06:23,215 - BlacklistMaster - DEBUG - 請求參數: {"apikey": "***"}
+2025-01-14 08:06:23,216 - BlacklistMaster - DEBUG - 請求頭: {"Accept": "application/json"}
+2025-01-14 08:06:24,213 - BlacklistMaster - DEBUG - 響應狀態碼: 204
+2025-01-14 08:06:24,213 - BlacklistMaster - DEBUG - IP 檢查響應: {
+  "status": "clean",
+  "message": "IP \u672a\u88ab\u5217\u5165\u9ed1\u540d\u55ae",
+  "found": false
+}
