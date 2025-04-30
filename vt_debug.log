@@ -59,3 +59,480 @@
 2025-01-13 06:26:55,626 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
 2025-01-13 06:26:55,949 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/ip_addresses/8.8.8.8 HTTP/11" 200 None
 2025-01-13 06:26:55,953 - __main__ - DEBUG - Command executed successfully
+2025-01-14 02:39:56,636 - __main__ - DEBUG - Logging setup completed
+2025-01-14 02:39:56,636 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 02:39:56,637 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 02:40:01,791 - __main__ - DEBUG - Logging setup completed
+2025-01-14 02:40:01,791 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 02:40:07,794 - __main__ - DEBUG - Logging setup completed
+2025-01-14 02:40:07,794 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 02:40:07,795 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 02:40:07,796 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:40:08,404 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:40:08,426 - __main__ - DEBUG - Command executed successfully
+2025-01-14 02:58:52,468 - __main__ - DEBUG - Logging setup completed
+2025-01-14 02:58:52,469 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 02:58:52,470 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 02:58:52,471 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 02:58:53,006 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/582e257d10470969fa7232ba247df741a656d48409905a4453fdcd77afe5d866 HTTP/1.1" 200 None
+2025-01-14 02:58:53,020 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:25:54,740 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:25:54,740 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:25:54,742 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:27:07,469 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:27:07,469 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:27:07,470 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:27:07,470 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:27:07,470 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:27:07,470 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:27:07,471 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:27:07,936 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 200 None
+2025-01-14 03:27:07,938 - __main__ - DEBUG - Submit response: {
+  "data": {
+    "type": "analysis",
+    "id": "u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227"
+    }
+  }
+}
+2025-01-14 03:27:07,939 - __main__ - INFO - Analysis ID: u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227
+2025-01-14 03:27:07,939 - __main__ - DEBUG - Attempt 1/5 to get analysis results
+2025-01-14 03:27:07,942 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:27:08,430 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227 HTTP/1.1" 200 None
+2025-01-14 03:27:08,433 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 03:27:08,433 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 03:27:11,434 - __main__ - DEBUG - Attempt 2/5 to get analysis results
+2025-01-14 03:27:11,437 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:27:12,052 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227 HTTP/1.1" 200 None
+2025-01-14 03:27:12,058 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 03:27:12,058 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 03:27:15,059 - __main__ - DEBUG - Attempt 3/5 to get analysis results
+2025-01-14 03:27:15,059 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:27:15,580 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227 HTTP/1.1" 200 None
+2025-01-14 03:27:15,586 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 03:27:15,586 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 03:27:18,588 - __main__ - DEBUG - Attempt 4/5 to get analysis results
+2025-01-14 03:27:18,590 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:27:19,062 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227 HTTP/1.1" 200 None
+2025-01-14 03:27:19,066 - __main__ - DEBUG - Analysis status: completed
+2025-01-14 03:27:19,066 - __main__ - INFO - Analysis completed successfully
+2025-01-14 03:27:19,069 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:30:23,182 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:30:23,182 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:30:23,184 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:30:23,184 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:30:23,184 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:30:23,184 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:30:23,184 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:30:23,685 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 200 None
+2025-01-14 03:30:23,686 - __main__ - DEBUG - Submit response: {
+  "data": {
+    "type": "analysis",
+    "id": "u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227"
+    }
+  }
+}
+2025-01-14 03:30:23,686 - __main__ - INFO - Analysis ID: u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227
+2025-01-14 03:30:23,686 - __main__ - DEBUG - Attempt 1/5 to get analysis results
+2025-01-14 03:30:23,688 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:30:24,072 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac-1736825227 HTTP/1.1" 200 None
+2025-01-14 03:30:24,075 - __main__ - DEBUG - Analysis status: completed
+2025-01-14 03:30:24,075 - __main__ - INFO - Analysis completed successfully
+2025-01-14 03:30:24,077 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:35:42,869 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:35:42,869 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:35:42,870 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:35:42,870 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:35:42,870 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:35:42,870 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:35:42,871 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:35:48,530 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 03:35:48,532 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac"
+  }
+}
+2025-01-14 03:35:48,532 - __main__ - ERROR - KeyError in scan_url: 'data'
+2025-01-14 03:35:48,532 - __main__ - ERROR - Error in main: Failed to process API response: 'data'
+2025-01-14 03:39:24,767 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:39:24,767 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:39:24,768 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:39:24,768 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:39:24,768 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:39:24,768 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:39:24,768 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:39:30,420 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 03:39:30,422 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac"
+  }
+}
+2025-01-14 03:39:30,422 - __main__ - ERROR - KeyError in scan_url: 'data'
+2025-01-14 03:39:30,422 - __main__ - ERROR - Error in main: Failed to process API response: 'data'
+2025-01-14 03:41:15,259 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:41:15,260 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:41:15,261 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:41:15,261 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:41:15,261 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:41:15,261 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:41:15,262 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:41:21,011 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 03:41:21,012 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac"
+  }
+}
+2025-01-14 03:41:21,013 - __main__ - ERROR - Error submitting URL: Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac
+2025-01-14 03:41:21,014 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:43:06,319 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:43:06,319 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:43:06,321 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:43:06,321 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:43:06,321 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:43:06,321 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:43:06,321 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:43:11,909 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 03:43:11,912 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac"
+  }
+}
+2025-01-14 03:43:11,912 - __main__ - ERROR - Error submitting URL: Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac
+2025-01-14 03:43:11,913 - __main__ - INFO - Conflict detected, retrieving existing analysis: 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac
+2025-01-14 03:43:11,913 - __main__ - DEBUG - Attempt 1/5 to get analysis results
+2025-01-14 03:43:11,915 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:43:12,447 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac HTTP/1.1" 400 72
+2025-01-14 03:43:12,448 - __main__ - ERROR - KeyError in scan_url: 'data'
+2025-01-14 03:43:12,450 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:51:40,877 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:51:40,877 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:51:40,878 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:51:40,878 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:51:40,878 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:51:40,878 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:51:40,878 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:51:41,365 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:51:41,365 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:51:41,366 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:51:41,366 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/>
+2025-01-14 03:51:41,366 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/>
+2025-01-14 03:51:41,366 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:51:41,367 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:51:46,640 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 03:51:46,640 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac"
+  }
+}
+2025-01-14 03:51:46,643 - __main__ - ERROR - Error submitting URL: Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac
+2025-01-14 03:51:46,644 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:51:46,885 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 03:51:46,886 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac"
+  }
+}
+2025-01-14 03:51:46,886 - __main__ - ERROR - Error submitting URL: Deadline exceeded retrieving concurrent execution result for 2cd3cc626105ed74702dc71a20644c560d91ca20d82afdd58a96580bee89e7ac
+2025-01-14 03:51:46,886 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:51:53,953 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:51:53,953 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:51:53,954 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:51:53,954 - __main__ - INFO - Scanning URL: http://www.softnext-inc.com
+2025-01-14 03:51:53,954 - __main__ - DEBUG - Starting URL scan for: http://www.softnext-inc.com
+2025-01-14 03:51:53,954 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:51:53,955 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:51:54,342 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 200 None
+2025-01-14 03:51:54,345 - __main__ - DEBUG - Submit response: {
+  "data": {
+    "type": "analysis",
+    "id": "u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714"
+    }
+  }
+}
+2025-01-14 03:51:54,345 - __main__ - INFO - Analysis ID: u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714
+2025-01-14 03:51:54,345 - __main__ - DEBUG - Attempt 1/5 to get analysis results
+2025-01-14 03:51:54,348 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:51:54,785 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 200 None
+2025-01-14 03:51:54,786 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 03:51:54,786 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 03:51:57,787 - __main__ - DEBUG - Attempt 2/5 to get analysis results
+2025-01-14 03:51:57,790 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:51:58,203 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 200 None
+2025-01-14 03:51:58,205 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 03:51:58,205 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 03:52:01,207 - __main__ - DEBUG - Attempt 3/5 to get analysis results
+2025-01-14 03:52:01,213 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:52:01,636 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 200 None
+2025-01-14 03:52:01,638 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 03:52:01,638 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 03:52:04,641 - __main__ - DEBUG - Attempt 4/5 to get analysis results
+2025-01-14 03:52:04,645 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:52:05,049 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 200 None
+2025-01-14 03:52:05,052 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 03:52:05,052 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 03:52:08,053 - __main__ - DEBUG - Attempt 5/5 to get analysis results
+2025-01-14 03:52:08,054 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:52:08,499 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 200 None
+2025-01-14 03:52:08,500 - __main__ - DEBUG - Analysis status: completed
+2025-01-14 03:52:08,500 - __main__ - INFO - Analysis completed successfully
+2025-01-14 03:52:08,502 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:52:44,494 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:52:44,494 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:52:44,495 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:52:44,495 - __main__ - INFO - Scanning URL: http://www.softnext-inc.com
+2025-01-14 03:52:44,495 - __main__ - DEBUG - Starting URL scan for: http://www.softnext-inc.com
+2025-01-14 03:52:44,495 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:52:44,496 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:52:44,907 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 200 None
+2025-01-14 03:52:44,908 - __main__ - DEBUG - Submit response: {
+  "data": {
+    "type": "analysis",
+    "id": "u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714"
+    }
+  }
+}
+2025-01-14 03:52:44,908 - __main__ - INFO - Analysis ID: u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714
+2025-01-14 03:52:44,908 - __main__ - DEBUG - Attempt 1/5 to get analysis results
+2025-01-14 03:52:44,908 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:52:44,989 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:52:44,989 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:52:44,990 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:52:44,990 - __main__ - INFO - Scanning URL: http://www.softnext-inc.com
+2025-01-14 03:52:44,990 - __main__ - DEBUG - Starting URL scan for: http://www.softnext-inc.com
+2025-01-14 03:52:44,990 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 03:52:44,990 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:52:45,342 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 200 None
+2025-01-14 03:52:45,344 - __main__ - DEBUG - Analysis status: completed
+2025-01-14 03:52:45,344 - __main__ - INFO - Analysis completed successfully
+2025-01-14 03:52:45,348 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:52:45,355 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 200 None
+2025-01-14 03:52:45,357 - __main__ - DEBUG - Submit response: {
+  "data": {
+    "type": "analysis",
+    "id": "u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714"
+    }
+  }
+}
+2025-01-14 03:52:45,357 - __main__ - INFO - Analysis ID: u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714
+2025-01-14 03:52:45,357 - __main__ - DEBUG - Attempt 1/5 to get analysis results
+2025-01-14 03:52:45,360 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:52:45,963 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 200 None
+2025-01-14 03:52:45,964 - __main__ - DEBUG - Analysis status: completed
+2025-01-14 03:52:45,964 - __main__ - INFO - Analysis completed successfully
+2025-01-14 03:52:45,967 - __main__ - DEBUG - Command executed successfully
+2025-01-14 03:53:41,225 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:53:41,225 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:53:51,034 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:53:51,034 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:54:05,734 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:54:05,734 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:59:07,296 - __main__ - DEBUG - Logging setup completed
+2025-01-14 03:59:07,297 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 03:59:07,298 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 03:59:07,299 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 03:59:07,700 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/files/u-225d99ef4e9734f711361c7091bb97771e86a596949ac87933f31e77717b5a03-1736826714 HTTP/1.1" 404 None
+2025-01-14 03:59:07,706 - __main__ - DEBUG - Command executed successfully
+2025-01-14 04:00:44,166 - __main__ - DEBUG - Logging setup completed
+2025-01-14 04:00:44,166 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 04:00:44,167 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 04:00:44,167 - __main__ - INFO - Scanning URL: https://www.3v-tech.com/
+2025-01-14 04:00:44,167 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com/
+2025-01-14 04:00:44,167 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 04:00:44,168 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:00:44,734 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 200 None
+2025-01-14 04:00:44,736 - __main__ - DEBUG - Submit response: {
+  "data": {
+    "type": "analysis",
+    "id": "u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244"
+    }
+  }
+}
+2025-01-14 04:00:44,736 - __main__ - INFO - Analysis ID: u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244
+2025-01-14 04:00:44,736 - __main__ - DEBUG - Attempt 1/5 to get analysis results
+2025-01-14 04:00:44,738 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:00:45,247 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244 HTTP/1.1" 200 None
+2025-01-14 04:00:45,248 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 04:00:45,248 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 04:00:48,249 - __main__ - DEBUG - Attempt 2/5 to get analysis results
+2025-01-14 04:00:48,251 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:00:48,664 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244 HTTP/1.1" 200 None
+2025-01-14 04:00:48,667 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 04:00:48,668 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 04:00:51,668 - __main__ - DEBUG - Attempt 3/5 to get analysis results
+2025-01-14 04:00:51,669 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:00:52,124 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244 HTTP/1.1" 200 None
+2025-01-14 04:00:52,125 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 04:00:52,125 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 04:00:55,127 - __main__ - DEBUG - Attempt 4/5 to get analysis results
+2025-01-14 04:00:55,129 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:00:55,556 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244 HTTP/1.1" 200 None
+2025-01-14 04:00:55,560 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 04:00:55,560 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 04:00:58,561 - __main__ - DEBUG - Attempt 5/5 to get analysis results
+2025-01-14 04:00:58,566 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:00:59,110 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "GET /api/v3/analyses/u-2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a-1736827244 HTTP/1.1" 200 None
+2025-01-14 04:00:59,114 - __main__ - DEBUG - Analysis status: queued
+2025-01-14 04:00:59,114 - __main__ - DEBUG - Analysis in progress, waiting 3 seconds...
+2025-01-14 04:01:02,114 - __main__ - ERROR - Analysis not completed after 5 retries
+2025-01-14 04:01:02,114 - __main__ - ERROR - Unexpected error in scan_url: Analysis not completed after 5 retries
+2025-01-14 04:01:02,116 - __main__ - DEBUG - Command executed successfully
+2025-01-14 04:01:15,634 - __main__ - DEBUG - Logging setup completed
+2025-01-14 04:01:15,635 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 04:01:15,636 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 04:01:15,636 - __main__ - INFO - Scanning URL: https://www.3v-tech.com
+2025-01-14 04:01:15,636 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com
+2025-01-14 04:01:15,636 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 04:01:15,637 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:01:21,210 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 04:01:21,212 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a"
+  }
+}
+2025-01-14 04:01:21,212 - __main__ - ERROR - Error submitting URL: Deadline exceeded retrieving concurrent execution result for 2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a
+2025-01-14 04:01:21,216 - __main__ - DEBUG - Command executed successfully
+2025-01-14 04:01:33,156 - __main__ - DEBUG - Logging setup completed
+2025-01-14 04:01:33,156 - __main__ - DEBUG - Starting VT.py main function
+2025-01-14 04:01:33,157 - __main__ - DEBUG - Config loaded successfully
+2025-01-14 04:01:33,157 - __main__ - INFO - Scanning URL: https://www.3v-tech.com
+2025-01-14 04:01:33,157 - __main__ - DEBUG - Starting URL scan for: https://www.3v-tech.com
+2025-01-14 04:01:33,157 - __main__ - DEBUG - Submitting URL to VT API: https://www.virustotal.com/api/v3/urls
+2025-01-14 04:01:33,158 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.virustotal.com:443
+2025-01-14 04:01:38,576 - urllib3.connectionpool - DEBUG - https://www.virustotal.com:443 "POST /api/v3/urls HTTP/1.1" 409 176
+2025-01-14 04:01:38,578 - __main__ - DEBUG - Submit response: {
+  "error": {
+    "code": "ConflictError",
+    "message": "Deadline exceeded retrieving concurrent execution result for 2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a"
+  }
+}
+2025-01-14 04:01:38,578 - __main__ - ERROR - Error submitting URL: Deadline exceeded retrieving concurrent execution result for 2ae37a1a8f18ae508bf0ef2c68582b9b01c2a75a8ba6c59f37a00749aad8fc4a
+2025-01-14 04:01:38,582 - __main__ - DEBUG - Command executed successfully
+2025-01-14 05:50:36,831 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:51:07,412 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:52:35,863 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 05:52:35,864 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 05:52:35,864 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 05:52:35,864 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 05:52:35,864 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:52:48,350 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 05:52:48,350 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 05:52:48,350 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 05:52:48,350 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 05:52:48,350 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:52:48,350 - __main__ - DEBUG - 開始掃描 URL: https://www.3v-tech.com
+2025-01-14 05:52:48,350 - __main__ - DEBUG - 提交 URL 掃描請求: https://www.3v-tech.com
+2025-01-14 05:52:48,749 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls
+2025-01-14 05:52:48,752 - __main__ - DEBUG - URL 掃描響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls"
+}
+2025-01-14 05:52:48,753 - __main__ - ERROR - 掃描 URL 時發生錯誤: 'bool' object has no attribute 'get'
+2025-01-14 05:52:59,453 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 05:52:59,453 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 05:52:59,453 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 05:52:59,453 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 05:52:59,453 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:53:13,381 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 05:53:13,381 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 05:53:13,381 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 05:53:13,381 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 05:53:13,381 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:53:13,381 - __main__ - DEBUG - 開始掃描 URL: softnext.com.tw
+2025-01-14 05:53:13,382 - __main__ - DEBUG - 提交 URL 掃描請求: softnext.com.tw
+2025-01-14 05:53:13,701 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls
+2025-01-14 05:53:13,704 - __main__ - DEBUG - URL 掃描響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls"
+}
+2025-01-14 05:53:13,705 - __main__ - ERROR - 掃描 URL 時發生錯誤: 'bool' object has no attribute 'get'
+2025-01-14 05:53:21,483 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 05:53:21,483 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 05:53:21,483 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 05:53:21,483 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 05:53:21,483 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:53:21,483 - __main__ - DEBUG - 開始掃描 URL: softnext.com.tw
+2025-01-14 05:53:21,483 - __main__ - DEBUG - 提交 URL 掃描請求: softnext.com.tw
+2025-01-14 05:53:21,881 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls
+2025-01-14 05:53:21,885 - __main__ - DEBUG - URL 掃描響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls"
+}
+2025-01-14 05:53:21,885 - __main__ - ERROR - 掃描 URL 時發生錯誤: 'bool' object has no attribute 'get'
+2025-01-14 05:53:28,596 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 05:53:28,596 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 05:53:28,596 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 05:53:28,596 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 05:53:28,596 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:53:28,596 - __main__ - DEBUG - 開始掃描 URL: https://www.softnext.com.tw
+2025-01-14 05:53:28,596 - __main__ - DEBUG - 提交 URL 掃描請求: https://www.softnext.com.tw
+2025-01-14 05:53:28,994 - __main__ - ERROR - API 請求失敗: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls
+2025-01-14 05:53:28,996 - __main__ - DEBUG - URL 掃描響應: {
+  "error": true,
+  "message": "API \u8acb\u6c42\u5931\u6557: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/urls"
+}
+2025-01-14 05:53:28,996 - __main__ - ERROR - 掃描 URL 時發生錯誤: 'bool' object has no attribute 'get'
+2025-01-14 05:54:52,826 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 05:54:52,826 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 05:54:52,826 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 05:54:52,826 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 05:54:52,826 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 05:54:52,826 - __main__ - DEBUG - 開始掃描 URL: https://www.softnext.com.tw
+2025-01-14 05:54:52,826 - __main__ - DEBUG - 提交 URL 掃描請求: https://www.softnext.com.tw
+2025-01-14 05:54:53,575 - __main__ - DEBUG - URL 掃描響應: {
+  "data": {
+    "type": "analysis",
+    "id": "u-57bdc1e63b2c3dcc7e37beaa42c446d6aa327c9b14d885f399e1b0858cb924ad-1736834093",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-57bdc1e63b2c3dcc7e37beaa42c446d6aa327c9b14d885f399e1b0858cb924ad-1736834093"
+    }
+  }
+}
+2025-01-14 05:54:53,576 - __main__ - DEBUG - 獲取到分析 ID: u-57bdc1e63b2c3dcc7e37beaa42c446d6aa327c9b14d885f399e1b0858cb924ad-1736834093
+2025-01-14 05:54:53,576 - __main__ - DEBUG - 嘗試 1/3
+2025-01-14 05:55:03,999 - __main__ - DEBUG - 嘗試 2/3
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 開始初始化 VirusTotalAPI
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 找到 API 金鑰: d39ac249...
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 找到 API URL: https://www.virustotal.com/api/v3
+2025-01-14 06:08:12,808 - __main__ - DEBUG - APIHandler 初始化完成
+2025-01-14 06:08:12,808 - __main__ - DEBUG - VirusTotalAPI 初始化完成
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 開始掃描 URL: https://www.softnext.com.tw
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 提交 URL 掃描請求: https://www.softnext.com.tw
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 發送請求到: https://www.virustotal.com/api/v3/urls
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 請求方法: POST
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 請求參數: {}
+2025-01-14 06:08:12,808 - __main__ - DEBUG - 請求頭: {"x-apikey": "d39ac249f32882e8a0e2fb75ead00136a08c2eaa368d577acf7830c9d9998509", "accept": "application/json", "content-type": "application/x-www-form-urlencoded"}
+2025-01-14 06:08:13,348 - __main__ - DEBUG - 響應狀態碼: 200
+2025-01-14 06:08:13,353 - __main__ - DEBUG - URL 掃描響應: {
+  "data": {
+    "type": "analysis",
+    "id": "u-57bdc1e63b2c3dcc7e37beaa42c446d6aa327c9b14d885f399e1b0858cb924ad-1736834093",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/analyses/u-57bdc1e63b2c3dcc7e37beaa42c446d6aa327c9b14d885f399e1b0858cb924ad-1736834093"
+    }
+  }
+}
+2025-01-14 06:08:13,354 - __main__ - DEBUG - 獲取到分析 ID: u-57bdc1e63b2c3dcc7e37beaa42c446d6aa327c9b14d885f399e1b0858cb924ad-1736834093
+2025-01-14 06:08:13,354 - __main__ - DEBUG - 嘗試 1/3
+2025-01-14 06:08:13,354 - __main__ - DEBUG - 發送請求到: https://www.virustotal.com/api/v3/analyses/u-57bdc1e63b2c3dcc7e37beaa42c446d6aa327c9b14d885f399e1b0858cb924ad-1736834093
+2025-01-14 06:08:13,354 - __main__ - DEBUG - 請求方法: GET
+2025-01-14 06:08:13,354 - __main__ - DEBUG - 請求參數: {}
+2025-01-14 06:08:13,355 - __main__ - DEBUG - 請求頭: {"x-apikey": "d39ac249f32882e8a0e2fb75ead00136a08c2eaa368d577acf7830c9d9998509", "accept": "application/json"}
+2025-01-14 06:08:13,915 - __main__ - DEBUG - 響應狀態碼: 200

@@ -2,84 +2,104 @@ import requests
 import argparse
 import json
 import os
-from typing import Optional
-import importlib.util
+from typing import Optional, Dict, Any
 import time
-import logging
-from config import VT_API_KEY
-
-def setup_logging():
-    """Setup logging configuration"""
-    try:
-        config = load_config()
-        log_level = getattr(logging, config.LOG_LEVEL)
-        logging.basicConfig(
-            level=log_level,
-            format=config.LOG_FORMAT,
-            handlers=[
-                logging.FileHandler('vt_debug.log'),
-                logging.StreamHandler()
-            ]
-        )
-        logger = logging.getLogger(__name__)
-        logger.debug("Logging setup completed")
-        return logger
-    except Exception as e:
-        print(f"Error setting up logging: {str(e)}")
-        return logging.getLogger(__name__)
-
-def load_config():
-    """Load API key and settings from config.py"""
-    try:
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        config_path = os.path.join(current_dir, 'config.py')
-        
-        spec = importlib.util.spec_from_file_location("config", config_path)
-        config = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(config)
-        
-        return config
-    except Exception as e:
-        raise Exception(f"Error loading config.py: {str(e)}")
+from utils.logger import setup_logger
+from utils.api_handler import APIHandler
+from config import (
+    API_KEYS,
+    API_URLS,
+    COMMON,
+    LOGGING
+)
 
 class VirusTotalAPI:
-    def __init__(self, api_key: str):
-        self.api_key = api_key
-        self.base_url = "https://www.virustotal.com/api/v3"
-        self.headers = {
-            "accept": "application/json",
-            "x-apikey": api_key
-        }
-        self.logger = logging.getLogger(__name__)
-
-    def check_ip(self, ip_address: str) -> dict:
-        """Check IP address reputation"""
-        url = f"{self.base_url}/ip_addresses/{ip_address}"
-        response = requests.get(url, headers=self.headers)
-        return response.json()
-
-    def check_domain(self, domain: str) -> dict:
-        """Check domain reputation"""
-        url = f"{self.base_url}/domains/{domain}"
-        response = requests.get(url, headers=self.headers)
-        return response.json()
-
-    def upload_file(self, file_path: str, password: Optional[str] = None) -> dict:
-        """Upload file for scanning"""
-        url = f"{self.base_url}/files"
-        files = {"file": (os.path.basename(file_path), open(file_path, "rb"), "application/octet-stream")}
-        payload = {"password": password} if password else {}
-        response = requests.post(url, data=payload, files=files, headers=self.headers)
-        return response.json()
-
-    def get_file_report(self, file_hash: str) -> dict:
-        """Get file scan report by hash"""
-        try:
-            url = f"{self.base_url}/files/{file_hash}"
-            response = requests.get(url, headers=self.headers)
+    def __init__(self):
+        self.logger = setup_logger(__name__, LOGGING['LOG_FILES']['VIRUSTOTAL'])
+        
+        self.logger.debug("開始初始化 VirusTotalAPI")
+        
+        # 檢查 API 金鑰是否存在
+        if 'VIRUSTOTAL' not in API_KEYS:
+            error_msg = "找不到 VirusTotal API 金鑰"
+            self.logger.error(error_msg)
+            raise ValueError(error_msg)
+        self.logger.debug(f"找到 API 金鑰: {API_KEYS['VIRUSTOTAL'][:8]}...")
             
-            # 檢查 HTTP 狀態碼
-            if response.status_code == 404:
+        # 檢查 API URL 是否存在
+        if 'VIRUSTOTAL' not in API_URLS:
+            error_msg = "找不到 VirusTotal API URL"
+            self.logger.error(error_msg)
+            raise ValueError(error_msg)
+        self.logger.debug(f"找到 API URL: {API_URLS['VIRUSTOTAL']}")
+            
+        self.api_handler = APIHandler(
+            base_url=API_URLS['VIRUSTOTAL'],
+            api_key=API_KEYS['VIRUSTOTAL'],
+            logger=self.logger
+        )
+        self.logger.debug("APIHandler 初始化完成")
+        self.logger.debug("VirusTotalAPI 初始化完成")
+
+    def check_ip(self, ip_address: str) -> Dict[str, Any]:
+        """檢查 IP 信譽"""
+        self.logger.debug(f"開始檢查 IP: {ip_address}")
+        try:
+            response = self.api_handler.make_request(
+                'GET',
+                f'/ip_addresses/{ip_address}'
+            )
+            self.logger.debug(f"IP 檢查響應: {json.dumps(response, indent=2)}")
+            return response
+        except Exception as e:
+            self.logger.error(f"檢查 IP 時發生錯誤: {str(e)}")
+            return {"error": str(e)}
+
+    def check_domain(self, domain: str) -> Dict[str, Any]:
+        """檢查域名信譽"""
+        self.logger.debug(f"開始檢查域名: {domain}")
+        try:
+            response = self.api_handler.make_request(
+                'GET',
+                f'/domains/{domain}'
+            )
+            self.logger.debug(f"域名檢查響應: {json.dumps(response, indent=2)}")
+            return response
+        except Exception as e:
+            self.logger.error(f"檢查域名時發生錯誤: {str(e)}")
+            return {"error": str(e)}
+
+    def upload_file(self, file_path: str, password: Optional[str] = None) -> Dict[str, Any]:
+        """上傳文件進行掃描"""
+        try:
+            files = {
+                "file": (
+                    os.path.basename(file_path),
+                    open(file_path, "rb"),
+                    "application/octet-stream"
+                )
+            }
+            data = {"password": password} if password else {}
+            
+            return self.api_handler.make_request(
+                'POST',
+                '/files',
+                data=data,
+                files=files
+            )
+        except Exception as e:
+            self.logger.error(f"上傳文件時發生錯誤: {str(e)}")
+            return {"error": str(e)}
+
+    def get_file_report(self, file_hash: str) -> Dict[str, Any]:
+        """獲取文件掃描報告"""
+        try:
+            response = self.api_handler.make_request(
+                'GET',
+                f'/files/{file_hash}'
+            )
+            
+            if response.get('error'):
                 return {
                     'data': {
                         'attributes': {
@@ -93,137 +113,107 @@ class VirusTotalAPI:
                     'message': '在 VirusTotal 資料庫中未找到此檔案'
                 }
             
-            response.raise_for_status()
-            return response.json()
+            return response
             
-        except requests.exceptions.RequestException as e:
-            logging.error(f"獲取檔案報告時發生錯誤: {str(e)}")
-            return {
-                'error': True,
-                'message': f'API 請求失敗: {str(e)}',
-                'data': {
-                    'attributes': {
-                        'last_analysis_results': {},
-                        'size': 0,
-                        'type_tags': ['錯誤'],
-                        'type_extension': '錯誤',
-                        'names': ['請求失敗']
-                    }
-                }
-            }
         except Exception as e:
-            logging.error(f"處理檔案報告時發生未預期錯誤: {str(e)}")
+            self.logger.error(f"獲取文件報告時發生錯誤: {str(e)}")
+            return {"error": str(e)}
+
+    def scan_url(self, url: str) -> Dict[str, Any]:
+        """掃描 URL"""
+        self.logger.debug(f"開始掃描 URL: {url}")
+        try:
+            # 修改請求格式
+            data = {"url": url}
+            headers = {
+                "x-apikey": API_KEYS['VIRUSTOTAL'],
+                "accept": "application/json",
+                "content-type": "application/x-www-form-urlencoded"
+            }
+            
+            self.logger.debug(f"提交 URL 掃描請求: {url}")
+            response = self.api_handler.make_request(
+                'POST',
+                '/urls',
+                data=data,
+                headers=headers
+            )
+            self.logger.debug(f"URL 掃描響應: {json.dumps(response, indent=2)}")
+            
+            # 改進錯誤處理邏輯
+            if isinstance(response, dict) and response.get('error'):
+                error_msg = response.get('message', '未知錯誤')
+                self.logger.error(f"URL 掃描錯誤: {error_msg}")
+                return {
+                    'error': True,
+                    'message': error_msg
+                }
+            
+            # 檢查響應格式
+            if not isinstance(response, dict) or 'data' not in response:
+                error_msg = "無效的 API 響應格式"
+                self.logger.error(error_msg)
+                return {
+                    'error': True,
+                    'message': error_msg
+                }
+            
+            analysis_id = response['data']['id']
+            self.logger.debug(f"獲取到分析 ID: {analysis_id}")
+            
+            # 獲取分析結果
+            return self.get_analysis_results(
+                analysis_id,
+                COMMON['MAX_RETRIES'],
+                COMMON['REQUEST_TIMEOUT']
+            )
+            
+        except Exception as e:
+            self.logger.error(f"掃描 URL 時發生錯誤: {str(e)}")
             return {
                 'error': True,
-                'message': f'發生未預期錯誤: {str(e)}',
-                'data': {
-                    'attributes': {
-                        'last_analysis_results': {},
-                        'size': 0,
-                        'type_tags': ['錯誤'],
-                        'type_extension': '錯誤',
-                        'names': ['處理失敗']
-                    }
-                }
+                'message': str(e)
             }
 
-    def scan_url(self, target_url: str, max_retries: int = 5, wait_time: int = 3) -> dict:
-        """
-        Scan a URL and get the analysis results
-        """
-        self.logger.debug(f"Starting URL scan for: {target_url}")
-        
-        # First request: Submit URL for scanning
-        submit_url = f"{self.base_url}/urls"
-        headers = {**self.headers, "content-type": "application/x-www-form-urlencoded"}
-        payload = {"url": target_url}
-        
-        try:
-            self.logger.debug(f"Submitting URL to VT API: {submit_url}")
-            response = requests.post(submit_url, data=payload, headers=headers)
-            submit_result = response.json()
-            self.logger.debug(f"Submit response: {json.dumps(submit_result, indent=2)}")
+    def get_analysis_results(self, analysis_id: str, max_retries: int, wait_time: int) -> Dict[str, Any]:
+        """獲取分析結果"""
+        for attempt in range(max_retries):
+            self.logger.debug(f"嘗試 {attempt + 1}/{max_retries}")
             
-            # Extract analysis ID from the response
-            analysis_id = submit_result['data']['id']
-            self.logger.info(f"Analysis ID: {analysis_id}")
+            response = self.api_handler.make_request(
+                'GET',
+                f'/analyses/{analysis_id}'
+            )
             
-            # Second request: Get analysis results with retries
-            analysis_url = f"{self.base_url}/analyses/{analysis_id}"
-            
-            for attempt in range(max_retries):
-                self.logger.debug(f"Attempt {attempt + 1}/{max_retries} to get analysis results")
-                response = requests.get(analysis_url, headers=self.headers)
-                result = response.json()
+            status = response['data']['attributes']['status']
+            if status == "completed":
+                return response
+            elif status == "failed":
+                return {"error": "分析失敗"}
                 
-                status = result['data']['attributes']['status']
-                self.logger.debug(f"Analysis status: {status}")
-                
-                if status == "completed":
-                    self.logger.info("Analysis completed successfully")
-                    return result
-                elif status == "failed":
-                    self.logger.error("Analysis failed")
-                    raise Exception("Analysis failed")
-                else:
-                    self.logger.debug(f"Analysis in progress, waiting {wait_time} seconds...")
-                    time.sleep(wait_time)
+            time.sleep(wait_time)
             
-            self.logger.error(f"Analysis not completed after {max_retries} retries")
-            raise Exception(f"Analysis not completed after {max_retries} retries")
-            
-        except KeyError as e:
-            self.logger.error(f"KeyError in scan_url: {str(e)}")
-            raise Exception(f"Failed to process API response: {str(e)}")
-        except requests.exceptions.RequestException as e:
-            self.logger.error(f"Request error in scan_url: {str(e)}")
-            raise Exception(f"API request failed: {str(e)}")
-        except Exception as e:
-            self.logger.error(f"Unexpected error in scan_url: {str(e)}")
-            raise
+        return {"error": f"分析在 {max_retries} 次重試後仍未完成"}
 
 def main():
-    logger = setup_logging()
-    logger.debug("Starting VT.py main function")
+    parser = argparse.ArgumentParser(description='VirusTotal API 工具')
+    subparsers = parser.add_subparsers(dest='command', help='要執行的命令')
     
-    parser = argparse.ArgumentParser(description='VirusTotal API Integration Tool')
-    subparsers = parser.add_subparsers(dest='command', help='Command to execute')
-    
-    # IP address parser
-    ip_parser = subparsers.add_parser('ip', help='Check IP address')
-    ip_parser.add_argument('ip_address', help='IP address to check')
-    
-    # Domain parser
-    domain_parser = subparsers.add_parser('domain', help='Check domain')
-    domain_parser.add_argument('domain', help='Domain to check')
-    
-    # File upload parser
-    upload_parser = subparsers.add_parser('upload', help='Upload file')
-    upload_parser.add_argument('file_path', help='Path to file')
-    upload_parser.add_argument('--password', help='Password for encrypted file')
-    
-    # File report parser
-    report_parser = subparsers.add_parser('report', help='Get file report')
-    report_parser.add_argument('file_hash', help='File hash (SHA-256)')
-    
-    # URL scan parser
-    url_parser = subparsers.add_parser('url', help='Scan URL')
-    url_parser.add_argument('url', help='URL to scan')
-    url_parser.add_argument('--retries', type=int, default=5, help='Maximum number of retries')
-    url_parser.add_argument('--wait', type=int, default=3, help='Seconds to wait between retries')
+    # 添加子命令
+    subparsers.add_parser('ip', help='檢查 IP').add_argument('ip_address')
+    subparsers.add_parser('domain', help='檢查域名').add_argument('domain')
+    upload_parser = subparsers.add_parser('upload', help='上傳文件')
+    upload_parser.add_argument('file_path')
+    upload_parser.add_argument('--password', help='加密文件密碼')
+    subparsers.add_parser('report', help='獲取文件報告').add_argument('file_hash')
+    url_parser = subparsers.add_parser('url', help='掃描 URL')
+    url_parser.add_argument('url')
     
     args = parser.parse_args()
+    vt = VirusTotalAPI()
     
     try:
-        # Load config and API key
-        config = load_config()
-        api_key = config.VT_API_KEY
-        logger.debug("Config loaded successfully")
-        
-        # Initialize API
-        vt = VirusTotalAPI(api_key)
-        
-        # Execute command based on argument
+        result = None
         if args.command == 'ip':
             result = vt.check_ip(args.ip_address)
         elif args.command == 'domain':
@@ -233,19 +223,13 @@ def main():
         elif args.command == 'report':
             result = vt.get_file_report(args.file_hash)
         elif args.command == 'url':
-            logger.info(f"Scanning URL: {args.url}")
-            result = vt.scan_url(args.url, args.retries, args.wait)
-        else:
-            parser.print_help()
-            return
+            result = vt.scan_url(args.url)
         
-        # Print result in pretty format
-        print(json.dumps(result, indent=2))
-        logger.debug("Command executed successfully")
-        
+        if result:
+            print(json.dumps(result, indent=2))
+            
     except Exception as e:
-        logger.error(f"Error in main: {str(e)}")
-        print(f"Error: {str(e)}")
+        print(f"錯誤: {str(e)}")
 
 if __name__ == "__main__":
     main()

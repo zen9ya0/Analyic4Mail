@@ -81,8 +81,9 @@ def parse_received_headers(file_path):
             if len(parts) < 2:
                 continue
 
-            # 解析時間
+            # 解析時間，忽略 envelope-from
             time_str = parts[-1].strip()
+            time_str = re.sub(r'\(envelope-from.*?\)', '', time_str).strip()
             current_time = parse_time(time_str)
 
             # 使用正則表達式提取 from 和 by 信息
@@ -111,6 +112,26 @@ def parse_received_headers(file_path):
     except Exception as e:
         logging.error(f'解析郵件時發生錯誤: {e}')
         return []
+
+def extract_email_info_from_msg(msg_path):
+    """從 MSG 檔案中提取基本信息"""
+    try:
+        msg = extract_msg.Message(msg_path)
+        sender = msg.sender or '未知'
+        recipient = msg.to or '未知'
+        reply_to = msg.header.get('Reply-To', '無')  # 使用 header 獲取 reply-to
+        subject = msg.subject or '未知'
+        body = msg.body or '無內容'
+        
+        # 提取所有標頭
+        headers = {}
+        for key, value in msg.header.items():
+            headers[key] = value
+        
+        return sender, recipient, reply_to, subject, body, headers
+    except Exception as e:
+        logging.error(f'提取 MSG 檔案信息時發生錯誤: {e}')
+        return '未知', '未知', '無', '未知', '無內容', {}
 
 def main(eml_file_path):
     try:

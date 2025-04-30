@@ -1,499 +1,101 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>郵件威脅分析</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #007bff;
-            --hover-color: #0056b3;
-            --text-color: white;
-            --border-color: #ddd;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2em;
-        }
-
-        .tabs {
-            display: flex;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .tab {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            border: 1px solid var(--primary-color);
-            border-bottom: none;
-        }
-
-        .tab:hover {
-            background-color: var(--hover-color);
-        }
-
-        .tab.active {
-            background-color: var(--text-color);
-            color: var(--primary-color);
-            border-bottom: 1px solid var(--text-color);
-        }
-
-        .tab-content {
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            table-layout: auto;
-        }
-
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            text-align: left;
-            word-wrap: break-word;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            white-space: nowrap;
-            height: 50px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .back-to-top, .back-to-home {
-            position: fixed;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .back-to-top:hover, .back-to-home:hover {
-            background-color: var(--hover-color);
-        }
-
-        .back-to-home {
-            top: 20px;
-            right: 20px;
-        }
-
-        .back-to-top {
-            bottom: 80px;
-            right: 20px;
-            display: none;
-        }
-
-        .content {
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em;
-            }
-            th, td {
-                padding: 8px;
-            }
-        }
-
-        button i {
-            color: var(--primary-color);
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-
-        button:hover i {
-            color: var(--hover-color);
-        }
-
-        .download-button {
-            display: inline-block;
-            background: none;
-            color: var(--primary-color);
-            border: none;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .download-button:hover {
-            color: var(--hover-color);
-        }
-
-        .download-button i {
-            font-size: 1.5em;
-        }
-
-        .modal {
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            display: none;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .vt-button {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            border-radius: 5px;
-            padding: 5px 10px;
-            margin-left: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .vt-button i {
-            margin-right: 5px;
-        }
-
-        .vt-button:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .score-display {
-            font-size: 48px;
-            color: #ff0000;
-            border: 3px solid #ff0000;
-            border-radius: 50%;
-            display: inline-block;
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .check-section {
-            margin-bottom: 30px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-        }
-
-        .check-section h3 {
-            color: #007bff;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
-        }
-
-        .result-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        .result-table th, .result-table td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        .result-table th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-
-        .status-badge {
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        .status-safe {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .status-warning {
-            background-color: #ffc107;
-            color: black;
-        }
-
-        .status-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .search-container {
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-            margin-bottom: 20px;
-        }
-
-        .search-box {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            background-color: white;
-            border: 1px solid #ced4da;
-            border-radius: 24px;
-            padding: 8px 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .search-input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 8px;
-            font-size: 16px;
-            background: transparent;
-        }
-
-        .search-button {
-            background: none;
-            border: none;
-            padding: 8px;
-            cursor: pointer;
-            color: #6c757d;
-            transition: color 0.3s;
-        }
-
-        .search-button:hover {
-            color: #007bff;
-        }
-
-        .vt-search-container {
-            width: 100%;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        .vt-search-box {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .vt-search-input {
-            flex: 1;
-            padding: 12px 20px;
-            font-size: 16px;
-            border: 1px solid #ced4da;
-            border-radius: 24px;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .vt-search-input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-        }
-
-        .vt-search-button {
-            padding: 12px 24px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 24px;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.3s;
-        }
-
-        .vt-search-button:hover {
-            background-color: #0056b3;
-        }
-
-        .vt-search-button i {
-            font-size: 14px;
-        }
-
-        /* 確保 Font Awesome 圖標正確顯示 */
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-
-        /* 新增結果顯示相關樣式 */
-        .vt-result-container {
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
-
-        .vt-section {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-        }
-
-        .loading-text {
-            text-align: center;
-            color: #6c757d;
-            padding: 20px;
-        }
-
-        .score-display {
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-
-        .result-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        .result-table th,
-        .result-table td {
-            padding: 12px;
-            border: 1px solid #dee2e6;
-            text-align: left;
-        }
-
-        .result-table th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-
-        .status-badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .status-clean {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .status-malicious {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .status-suspicious {
-            background-color: #ffc107;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <button class="back-to-home" onclick="window.location.href='/'">回到首頁</button>
-    <h1>郵件分析</h1>
-    
+{% extends "base.html" %}
+
+{% block title %}郵件威脅分析{% endblock %}
+
+{% block extra_css %}
+<style>
+    .tab-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .tabs {
+        display: flex;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        border-bottom: none;
+        background-color: var(--background-primary);
+        color: var(--primary-text);
+        margin-right: 5px;
+    }
+
+    .tab.active {
+        background-color: var(--heading-color);
+        color: white;
+    }
+
+    .tab-content {
+        display: none;
+        padding: 20px;
+        border: 1px solid var(--border-color);
+        background-color: var(--background-secondary);
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .attachment-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .attachment-list li {
+        margin-bottom: 10px;
+    }
+
+    .email-info-table, .hops-info-table, .headers-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .email-info-table th, .hops-info-table th, .headers-table th,
+    .email-info-table td, .hops-info-table td, .headers-table td {
+        border: 1px solid var(--border-color);
+        padding: 8px;
+        text-align: left;
+    }
+
+    .hops-info-table th, .headers-table th {
+        background-color: var(--heading-color);
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<a href="/" class="back-home">返回首頁</a>
+
+<div class="tab-container">
     <div class="tabs">
-        <div class="tab active" onclick="showTab('email-info')">郵件資訊</div>
-        <div class="tab" onclick="showTab('ip-check')">IP Check</div>
-        <div class="tab" onclick="showTab('virustotal')">Virustotal</div>
+        <div class="tab active" data-tab="email-info">郵件資訊</div>
+        <div class="tab" data-tab="attachments">附件與哈希值</div>
+        <div class="tab" data-tab="urls">提取的 URL</div>
+        <div class="tab" data-tab="check-ip">IP 檢查</div>
+        <div class="tab" data-tab="virustotal">VirusTotal</div>
     </div>
 
-    <div id="email-info" class="tab-content active">
-        <table>
+    <div class="tab-content active" id="email-info">
+        <h3>郵件基本資訊</h3>
+        <table class="email-info-table">
             <tr>
-                <th style="background-color: #007bff; color: white;">寄件人</th>
-                <td style="background-color: #f9f9f9;">{{ sender or '' }}</td>
+                <th>寄件人</th>
+                <td>{{ sender or '未知' }}</td>
             </tr>
             <tr>
-                <th style="background-color: #007bff; color: white;">回覆收件人</th>
-                <td style="background-color: #f9f9f9; color: {% if reply_to and reply_to != sender %} red {% endif %};">
-        
-                    {{ reply_to or '' }}
-                </td>
-            </tr>
-            <tr>
-                <th style="background-color: #007bff; color: white;">收件人</th>
-                <td style="background-color: #f9f9f9;">
+                <th>收件人</th>
+                <td>
                     {% if recipient %}
                         {% for r in recipient.split(',') %}
-                            <span class="recipient">{{ r }}</span><br> <!-- 每個收件人換行 -->
+                            <span>{{ r }}</span><br>
                         {% endfor %}
                     {% else %}
                         <span>未知</span>
@@ -501,530 +103,156 @@
                 </td>
             </tr>
             <tr>
-                <th style="background-color: #007bff; color: white;">副本收件人</th>
-                <td style="background-color: #f9f9f9;">
-                    {% if cc %}
-                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
-                            {% for email in cc.split(',') %}
-                                <li style="text-align: left;">{{ email.strip() }}</li> <!-- 靠左對齊 -->
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <span></span>
-                    {% endif %}
-                </td>
+                <th>回覆至</th>
+                <td>{{ reply_to or '無' }}</td>
             </tr>
             <tr>
-                <th style="background-color: #007bff; color: white;">主旨</th>
-                <td style="background-color: #f9f9f9;">{{ subject or '' }}</td>
+                <th>主旨</th>
+                <td>{{ subject or '未知' }}</td>
             </tr>
             <tr>
-                <th style="background-color: #007bff; color: white;">內文</th>
-                <td style="background-color: #f9f9f9;"><pre>{{ body or '' }}</pre></td>
-            </tr>
-            <tr>
-                <th style="background-color: #007bff; color: white;">內文網址</th>
-                <td style="background-color: #f9f9f9;">
-                    {% if urls %}
-                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
-                            {% for url in urls %}
-                                <li style="text-align: left;">
-                                    {{ url }}
-                                    <button class="vt-button" onclick="scanUrl('{{ url }}')">
-                                        <i class="fas fa-shield-alt"></i> VT
-                                    </button>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <span></span>
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th style="background-color: #007bff; color: white;">附件</th>
-                <td style="background-color: #f9f9f9;">
-                    {% if attachments %}
-                        <ul style="list-style-type: none; padding-left: 0;"> <!-- 移除點和內邊距 -->
-                            {% for attachment in attachments %}
-                                <li style="text-align: left;">
-                                    {{ attachment.filename }}
-                                    <a href="#" class="download-button" style="margin-left: 10px;" onclick="confirmDownload('{{ attachment.filename }}')">
-                                        <i class="fas fa-download"></i> <!-- 使用下載圖示 -->
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <span>無附件</span>
-                    {% endif %}
-                </td>
+                <th>內容</th>
+                <td class="email-content">{{ body or '無內容' }}</td>
             </tr>
         </table>
-        <h2>Hops 節點資訊</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="background-color: #007bff; color: white;">來源</th>
-                    <th style="background-color: #007bff; color: white;">目的</th>
-                    <th style="background-color: #007bff; color: white;">時間</th>
-                    <th style="background-color: #007bff; color: white;">延遲</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% if hops_info %}
-                    {% for hop in hops_info %}
-                        <tr>
-                            <td>
-                                {{ hop.from }}
-                                <button onclick="checkIp('{{ hop.from }}')" style="border: none; background: none; cursor: pointer;">
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </td>
-                            <td>
-                                {{ hop.by }}
-                                <button onclick="checkIp('{{ hop.by }}')" style="border: none; background: none; cursor: pointer;">
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </td>
-                            <td>{{ hop.time }}</td>
-                            <td>{{ hop.delay }}</td>
-                        </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td colspan="4">無 Hops 資訊</td>
-                    </tr>
-                {% endif %}
-            </tbody>
+
+        <h3>郵件節點資訊</h3>
+        <table class="hops-info-table">
+            <tr>
+                <th>From</th>
+                <th>By</th>
+                <th>Time</th>
+                <th>Delay</th>
+            </tr>
+            {% for hop in hops_info %}
+            <tr>
+                <td>{{ hop.from }}</td>
+                <td>{{ hop.by }}</td>
+                <td>{{ hop.time }}</td>
+                <td>{{ hop.delay }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">無節點資訊</td>
+            </tr>
+            {% endfor %}
         </table>
 
-        <!-- 新增 DomainKeys、SPF、DMARC 檢查 -->
-        <h2>檢查 DomainKeys、SPF、DMARC</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="background-color: #007bff; color: white;">檢查項目</th>
-                    <th style="background-color: #007bff; color: white;">結果</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="background-color: #007bff; color: white;">DomainKeys</td>
-                    <td style="background-color: #f9f9f9; color: {% if domainkeys_result %} green {% else %} red {% endif %};">
-                        {{ domainkeys_result or '待檢查' }}
-                    </td> <!-- 這裡可以根據實際檢查結果更新 -->
-                </tr>
-                <tr>
-                    <td style="background-color: #007bff; color: white;">SPF</td>
-                    <td style="background-color: #f9f9f9; color: {% if spf_result %} green {% else %} red {% endif %};">
-                        {{ spf_result or '待檢查' }}
-                    </td> <!-- 這裡可以根據實際檢查結果更新 -->
-                </tr>
-                <tr>
-                    <td style="background-color: #007bff; color: white;">DMARC</td>
-                    <td style="background-color: #f9f9f9; color: {% if dmarc_result %} green {% else %} red {% endif %};">
-                        {{ dmarc_result or '待檢查' }}
-                    </td> <!-- 這裡可以根據實際檢查結果更新 -->
-                </tr>
-            </tbody>
+        <h3>郵件標頭</h3>
+        <table class="headers-table">
+            <tr>
+                <th>Header</th>
+                <th>Value</th>
+            </tr>
+            {% for header, value in headers.items() %}
+            <tr>
+                <td>{{ header }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="2">無標頭資訊</td>
+            </tr>
+            {% endfor %}
         </table>
-
-        <!-- 新增 附件檔 HASH -->
-        <h2>附件檔分析</h2>
-        {% if hash_values %}
-            <table>
-                <thead>
-                    <tr>
-                        <th style="background-color: #007bff; color: white;">檔案名稱</th>
-                        <th style="background-color: #007bff; color: white;">MD5</th>
-                        <th style="background-color: #007bff; color: white;">SHA1</th>
-                        <th style="background-color: #007bff; color: white;">SHA256</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for hash in hash_values %}
-                        <tr>
-                            <td>{{ hash.original_filename }}</td>
-                            <td>
-                                {{ hash.md5 }}
-                                <button class="vt-button" onclick="checkVirusTotal('{{ hash.md5 }}')">
-                                    <i class="fas fa-shield-alt"></i> VT
-                                </button>
-                            </td>
-                            <td>
-                                {{ hash.sha1 }}
-                                <button class="vt-button" onclick="checkVirusTotal('{{ hash.sha1 }}')">
-                                    <i class="fas fa-shield-alt"></i> VT
-                                </button>
-                            </td>
-                            <td>
-                                {{ hash.sha256 }}
-                                <button class="vt-button" onclick="checkVirusTotal('{{ hash.sha256 }}')">
-                                    <i class="fas fa-shield-alt"></i> VT
-                                </button>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>無附件可供分析。</p>
-        {% endif %}
     </div>
 
-    <div id="ip-check" class="tab-content">
-        <h2>IP 檢查結果</h2>
-        <div id="ip-check-result">
-            <div id="abuseipdb-result" class="check-section">
-                <h3>AbuseIPDB 檢查結果</h3>
-                <table class="result-table">
-                    <thead>
-                        <tr>
-                            <th style="background-color: #007bff; color: white;">檢查項目</th>
-                            <th style="background-color: #007bff; color: white;">結果</th>
-                        </tr>
-                    </thead>
-                    <tbody id="abuseipdb-details">
-                        <!-- 將由 JavaScript 填充 -->
-                    </tbody>
-                </table>
-            </div>
+    <div class="tab-content" id="attachments">
+        <h3>附件</h3>
+        <ul class="attachment-list">
+            {% for attachment in attachments %}
+                <li>{{ attachment.filename }} - {{ attachment.size }} bytes</li>
+            {% else %}
+                <li>無附件</li>
+            {% endfor %}
+        </ul>
 
-            <div id="blacklistmaster-result" class="check-section">
-                <h3>BlacklistMaster 檢查結果</h3>
-                <table class="result-table">
-                    <thead>
-                        <tr>
-                            <th style="background-color: #007bff; color: white;">檢查項目</th>
-                            <th style="background-color: #007bff; color: white;">結果</th>
-                        </tr>
-                    </thead>
-                    <tbody id="blacklistmaster-details">
-                        <!-- 將由 JavaScript 填充 -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <h3>附件哈希值</h3>
+        <table class="email-info-table">
+            <tr>
+                <th>檔案名稱</th>
+                <th>MD5</th>
+                <th>SHA1</th>
+                <th>SHA256</th>
+            </tr>
+            {% for hash in hash_values %}
+            <tr>
+                <td>{{ hash.filename }}</td>
+                <td>{{ hash.md5 }}</td>
+                <td>{{ hash.sha1 }}</td>
+                <td>{{ hash.sha256 }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">無哈希值</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 
-    <div id="virustotal" class="tab-content" style="display: none;">
-        
-        <!-- 分析結果區域 -->
-        <div id="virustotal-result" class="vt-result-container">
-            <!-- 載入指示器 -->
-            <div id="vt-loading" style="display: none;">
-                <p class="loading-text">正在分析中，請稍候...</p>
-            </div>
-
-            <!-- 結果顯示區域 -->
-            <div id="vt-result-content">
-                <!-- 基本信息 -->
-                <div id="vt-basic-info" class="vt-section"></div>
-                
-                <!-- 掃描結果 -->
-                <div id="vt-scan-results" class="vt-section"></div>
-            </div>
-        </div>
+    <div class="tab-content" id="urls">
+        <h3>提取的 URL</h3>
+        <ul>
+            {% for url in urls %}
+                <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+            {% else %}
+                <li>無 URL</li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <button class="back-to-top" onclick="scrollToTop()">返回置頂</button>
-
-    <div id="download-confirmation" class="modal" style="display: none;">
-        <div class="modal-content">
-            <h3>提示</h3>
-            <p>下載功能不會檢查檔案是否含有惡意行為!!!，請確認後再下載。</p>
-            <button id="confirm-download" style="margin-right: 10px;">確認</button>
-            <button id="cancel-download">取消</button>
-        </div>
+    <div class="tab-content" id="check-ip">
+        <h3>IP 檢查</h3>
+        <form id="ip-check-form">
+            <input type="text" id="ip-address" placeholder="輸入 IP 地址">
+            <button type="button" onclick="checkIP()">檢查</button>
+        </form>
+        <div id="ip-check-result"></div>
     </div>
 
-    <script>
-        function showTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => {
-                tab.style.display = 'none'; // 隱藏所有頁籤
-            });
-            document.getElementById(tabId).style.display = 'block'; // 顯示選中的頁籤
-        }
+    <div class="tab-content" id="virustotal">
+        <h3>VirusTotal</h3>
+        <form id="virustotal-form">
+            <input type="text" id="file-hash" placeholder="輸入檔案哈希值">
+            <button type="button" onclick="checkVirusTotal()">檢查</button>
+        </form>
+        <div id="virustotal-result"></div>
+    </div>
+</div>
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+<script>
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
 
-        window.onscroll = function() {
-            const backToTopButton = document.querySelector('.back-to-top');
-            backToTopButton.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? 'block' : 'none';
-        };
-
-        function checkIp(ip) {
-            fetch(`/check_ip?ip=${ip}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        document.getElementById('ip-check-result').innerHTML = 
-                            `<p class="error-message">${data.error}</p>`;
-                        return;
-                    }
-
-                    // 處理 AbuseIPDB 結果
-                    const abuseipdbDetails = document.getElementById('abuseipdb-details');
-                    if (data.abuseipdb && data.abuseipdb.data) {
-                        const abuse = data.abuseipdb.data;
-                        abuseipdbDetails.innerHTML = `
-                            <tr>
-                                <td>IP 地址</td>
-                                <td>${abuse.ipAddress}</td>
-                            </tr>
-                            <tr>
-                                <td>風險評分</td>
-                                <td>
-                                    <span class="status-badge ${getRiskClass(abuse.abuseConfidenceScore)}">
-                                        ${abuse.abuseConfidenceScore}%
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>域名</td>
-                                <td>${abuse.domain || '無資料'}</td>
-                            </tr>
-                            <tr>
-                                <td>使用類型</td>
-                                <td>${abuse.usageType || '未知'}</td>
-                            </tr>
-                            <tr>
-                                <td>國家</td>
-                                <td>${abuse.countryCode || '未知'}</td>
-                            </tr>
-                            <tr>
-                                <td>總報告數</td>
-                                <td>${abuse.totalReports || 0}</td>
-                            </tr>
-                            <tr>
-                                <td>最後報告時間</td>
-                                <td>${abuse.lastReportedAt ? new Date(abuse.lastReportedAt).toLocaleString() : '無'}</td>
-                            </tr>
-                        `;
-                    } else {
-                        abuseipdbDetails.innerHTML = '<tr><td colspan="2">無法獲取 AbuseIPDB 資料</td></tr>';
-                    }
-
-                    // 處理 BlacklistMaster 結果
-                    const blacklistDetails = document.getElementById('blacklistmaster-details');
-                    if (data.blacklistmaster) {
-                        const blm = data.blacklistmaster;
-                        blacklistDetails.innerHTML = `
-                            <tr>
-                                <td>黑名單狀態</td>
-                                <td>
-                                    <span class="status-badge ${getBlacklistClass(blm.listed)}">
-                                        ${blm.listed ? '已列入黑名單' : '未列入黑名單'}
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>檢測時間</td>
-                                <td>${new Date().toLocaleString()}</td>
-                            </tr>
-                            ${blm.details ? `
-                            <tr>
-                                <td>詳細資訊</td>
-                                <td>${blm.details}</td>
-                            </tr>
-                            ` : ''}
-                        `;
-                    } else {
-                        blacklistDetails.innerHTML = '<tr><td colspan="2">無法獲取 BlacklistMaster 資料</td></tr>';
-                    }
-
-                    // 自動切換到 IP Check 標籤
-                    showTab('ip-check');
-                })
-                .catch(error => {
-                    document.getElementById('ip-check-result').innerHTML = 
-                        `<p class="error-message">檢查過程中發生錯誤: ${error.message}</p>`;
-                });
-        }
-
-        // 輔助函數：根據風險分數返回對應的 CSS 類
-        function getRiskClass(score) {
-            if (score < 25) return 'status-safe';
-            if (score < 75) return 'status-warning';
-            return 'status-danger';
-        }
-
-        // 輔助函數：根據黑名單狀態返回對應的 CSS 類
-        function getBlacklistClass(listed) {
-            return listed ? 'status-danger' : 'status-safe';
-        }
-
-        let currentFile = '';
-
-        function confirmDownload(filename) {
-            currentFile = filename; // 記錄當前要下載的檔案
-            document.getElementById('download-confirmation').style.display = 'flex'; // 顯示模態框
-        }
-
-        document.getElementById('confirm-download').onclick = function() {
-            window.location.href = `/download/${currentFile}`; // 確認下載
-            document.getElementById('download-confirmation').style.display = 'none'; // 隱藏模態框
-        };
-
-        document.getElementById('cancel-download').onclick = function() {
-            document.getElementById('download-confirmation').style.display = 'none'; // 隱藏模態框
-        };
-
-        async function fetchData(url, options = {}) {
-            try {
-                const response = await fetch(url, options);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return await response.json();
-            } catch (error) {
-                console.error('Fetch error:', error);
-                throw error;
-            }
-        }
-
-        async function checkVirusTotal(fileHash) {
-            console.log(`VT button clicked for hash: ${fileHash}`);
-
-            const loadingDiv = document.getElementById('vt-loading');
-            loadingDiv.style.display = 'block';
-
-            document.getElementById('vt-basic-info').innerHTML = '';
-            document.getElementById('vt-scan-results').innerHTML = '';
-
-            try {
-                console.log(`Fetching data for hash: ${fileHash}`);
-                const data = await fetchData(`/virustotal/${fileHash}`);
-                console.log('Received data:', JSON.stringify(data, null, 2));
-                loadingDiv.style.display = 'none';
-
-                if (data.message) {
-                    document.getElementById('vt-basic-info').innerHTML = 
-                        `<p class="info-message">${data.message}</p>`;
-                    return;
-                }
-
-                const attrs = data.data.attributes;
-                let basicInfo = `
-                    <h3>檔案信息</h3>
-                    <table class="result-table">
-                        <tr>
-                            <td>名稱</td>
-                            <td>${attrs.names.join(', ') || '未知'}</td>
-                        </tr>
-                        <tr>
-                            <td>大小</td>
-                            <td>${attrs.size || '未知'}</td>
-                        </tr>
-                        <tr>
-                            <td>類型</td>
-                            <td>${attrs.type_extension || '未知'}</td>
-                        </tr>
-                    </table>`;
-                document.getElementById('vt-basic-info').innerHTML = basicInfo;
-
-                if (attrs.last_analysis_results) {
-                    const results = attrs.last_analysis_results;
-                    let scanResults = `
-                        <h3>掃描結果</h3>
-                        <table class="result-table">
-                            <thead>
-                                <tr>
-                                    <th>防毒引擎</th>
-                                    <th>結果</th>
-                                    <th>更新時間</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${Object.entries(results).map(([engine, result]) => `
-                                    <tr>
-                                        <td>${engine}</td>
-                                        <td>
-                                            <span class="status-badge ${getStatusClass(result.category)}">
-                                                ${result.result || '清理'}
-                                            </span>
-                                        </td>
-                                        <td>${result.engine_update}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>`;
-                    document.getElementById('vt-scan-results').innerHTML = scanResults;
-                }
-            } catch (error) {
-                loadingDiv.style.display = 'none';
-                console.error('Error fetching data:', error);
-                document.getElementById('vt-basic-info').innerHTML = 
-                    `<p class="error-message">分析過程中發生錯誤: ${error.message}</p>`;
-            }
-        }
-
-        function getStatusClass(category) {
-            switch(category) {
-                case 'malicious':
-                    return 'status-malicious';
-                case 'suspicious':
-                    return 'status-suspicious';
-                default:
-                    return 'status-clean';
-            }
-        }
-
-        function handleVTSearch() {
-            const searchInput = document.getElementById('vt-search-input').value.trim();
-            if (!searchInput) {
-                alert('請輸入要查詢的內容');
-                return;
-            }
-
-            if (isValidUrl(searchInput)) {
-                scanUrl(searchInput);
-            } else if (isValidHash(searchInput)) {
-                checkVirusTotal(searchInput);
-            } else if (isValidIp(searchInput)) {
-                checkIp(searchInput);
-            } else {
-                scanUrl(searchInput);
-            }
-        }
-
-        // 輔助函數：檢查是否為有效的 URL
-        function isValidUrl(string) {
-            try {
-                new URL(string);
-                return true;
-            } catch (_) {
-                return false;
-            }
-        }
-
-        // 輔助函數：檢查是否為有效的文件哈希
-        function isValidHash(string) {
-            const hashRegex = /^[a-fA-F0-9]{32,64}$/;
-            return hashRegex.test(string);
-        }
-
-        // 輔助函數：檢查是否為有效的 IP 地址
-        function isValidIp(string) {
-            const ipRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-            return ipRegex.test(string);
-        }
-
-        // 添加 Enter 鍵觸發搜尋
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('vt-search-input');
-            if (searchInput) {
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        handleVTSearch();
-                    }
-                });
-            }
+            this.classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
         });
-    </script>
-</body>
-</html>
+    });
+
+    function checkIP() {
+        const ip = document.getElementById('ip-address').value;
+        fetch(`/check_ip?ip=${ip}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-check-result').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('ip-check-result').innerText = '檢查失敗';
+            });
+    }
+
+    function checkVirusTotal() {
+        const hash = document.getElementById('file-hash').value;
+        fetch(`/virustotal/${hash}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('virustotal-result').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('virustotal-result').innerText = '檢查失敗';
+            });
+    }
+</script>
+{% endblock %}

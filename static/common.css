@@ -1,0 +1,150 @@
+/* 全局變量 */
+:root {
+    --primary-text: #2c3e50;      /* 主要文字顏色 - 深藍灰色 */
+    --secondary-text: #34495e;     /* 次要文字顏色 - 稍淺的藍灰色 */
+    --heading-color: #1e88e5;      /* 標題顏色 - 明亮的藍色 */
+    --link-color: #1976d2;        /* 連結顏色 - 藍色 */
+    --link-hover: #1565c0;        /* 連結懸停顏色 - 深藍色 */
+    --success-color: #388e3c;      /* 成功顏色 - 綠色 */
+    --warning-color: #f57c00;      /* 警告顏色 - 橙色 */
+    --danger-color: #d32f2f;       /* 危險顏色 - 紅色 */
+    --background-primary: #ffffff;  /* 主要背景色 - 白色 */
+    --background-secondary: #f8f9fa; /* 次要背景色 - 淺灰色 */
+    --border-color: #dee2e6;       /* 邊框顏色 */
+}
+
+/* 基本樣式 */
+body {
+    color: var(--primary-text);
+    background-color: var(--background-secondary);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* 標題樣式 */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    font-weight: bold;
+}
+
+/* 連結樣式 */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* 表格樣式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: var(--background-primary);
+}
+
+th {
+    background-color: var(--heading-color);
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+}
+
+td {
+    background-color: var(--background-secondary);
+    color: var(--primary-text);
+    padding: 12px;
+    border: 1px solid var(--border-color);
+}
+
+/* 狀態標籤 */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.status-safe {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-warning {
+    background-color: var(--warning-color);
+    color: black;
+}
+
+.status-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* 按鈕樣式 */
+.button {
+    background-color: var(--heading-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--link-hover);
+}
+
+/* 文字樣式類 */
+.text-success { color: var(--success-color); }
+.text-warning { color: var(--warning-color); }
+.text-danger { color: var(--danger-color); }
+.text-primary { color: var(--heading-color); }
+
+/* 表單元素 */
+input, select, textarea {
+    color: var(--primary-text);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* 卡片樣式 */
+.card {
+    background-color: var(--background-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* 提示訊息 */
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.message-info {
+    background-color: #e3f2fd;
+    color: var(--link-color);
+    border: 1px solid var(--link-color);
+}
+
+.message-success {
+    background-color: #e8f5e9;
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.message-warning {
+    background-color: #fff3e0;
+    color: var(--warning-color);
+    border: 1px solid var(--warning-color);
+}
+
+.message-error {
+    background-color: #ffebee;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+} 
